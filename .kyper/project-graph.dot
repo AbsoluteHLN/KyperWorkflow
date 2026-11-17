@@ -27,7 +27,7 @@ digraph "KyperWorkflow" {
     label="docs";
     bgcolor="#e7f2e5";
     "docs/AGENT-TEAMS.md" [fillcolor="#e7f2e5", label="docs/AGENT-TEAMS.md\n94 lines"];
-    "docs/FIRST-RUN-SETUP.md" [fillcolor="#e7f2e5", label="docs/FIRST-RUN-SETUP.md\n67 lines"];
+    "docs/FIRST-RUN-SETUP.md" [fillcolor="#e7f2e5", label="docs/FIRST-RUN-SETUP.md\n69 lines"];
     "docs/HOST-ADAPTERS.md" [fillcolor="#e7f2e5", label="docs/HOST-ADAPTERS.md\n166 lines"];
     "docs/INSTALL-CODEX-WINDOWS.md" [fillcolor="#e7f2e5", label="docs/INSTALL-CODEX-WINDOWS.md\n67 lines"];
     "docs/MIGRATION-v0.4-to-plugin.md" [fillcolor="#e7f2e5", label="docs/MIGRATION-v0.4-to-plugin.md\n12 lines"];
@@ -39,7 +39,7 @@ digraph "KyperWorkflow" {
     "docs/STAGE-20261019-0300.md" [fillcolor="#e7f2e5", label="docs/STAGE-20261019-0300.md\n9 lines"];
     "docs/TASK-MATRIX.md" [fillcolor="#e7f2e5", label="docs/TASK-MATRIX.md\n49 lines"];
     "docs/TEXT-POLISHING.md" [fillcolor="#e7f2e5", label="docs/TEXT-POLISHING.md\n12 lines"];
-    "docs/VALIDATION.md" [fillcolor="#e7f2e5", label="docs/VALIDATION.md\n153 lines"];
+    "docs/VALIDATION.md" [fillcolor="#e7f2e5", label="docs/VALIDATION.md\n155 lines"];
     "docs/WINDOWS-RUNNER.md" [fillcolor="#e7f2e5", label="docs/WINDOWS-RUNNER.md\n60 lines"];
     "docs/dsh-tests.log" [fillcolor="#e7f2e5", label="docs/dsh-tests.log\n26 lines"];
     "docs/python-tests.log" [fillcolor="#e7f2e5", label="docs/python-tests.log\n156 lines"];
@@ -59,7 +59,7 @@ digraph "KyperWorkflow" {
     "kyper_workflow/hosts.py" [fillcolor="#faf3d9", label="kyper_workflow/hosts.py\n393 lines"];
     "kyper_workflow/interactive.py" [fillcolor="#faf3d9", label="kyper_workflow/interactive.py\n92 lines"];
     "kyper_workflow/editorial.py" [fillcolor="#faf3d9", label="kyper_workflow/editorial.py\n194 lines"];
-    "kyper_workflow/onboarding.py" [fillcolor="#faf3d9", label="kyper_workflow/onboarding.py\n200 lines"];
+    "kyper_workflow/onboarding.py" [fillcolor="#faf3d9", label="kyper_workflow/onboarding.py\n237 lines"];
     "kyper_workflow/plan.py" [fillcolor="#faf3d9", label="kyper_workflow/plan.py\n223 lines"];
     "kyper_workflow/profiles.py" [fillcolor="#faf3d9", label="kyper_workflow/profiles.py\n474 lines"];
     "kyper_workflow/structure.py" [fillcolor="#faf3d9", label="kyper_workflow/structure.py\n740 lines"];
@@ -94,7 +94,7 @@ digraph "KyperWorkflow" {
     "tests/test_dsh.py" [fillcolor="#fdeef0", label="tests/test_dsh.py\n172 lines"];
     "tests/test_editorial.py" [fillcolor="#fdeef0", label="tests/test_editorial.py\n162 lines"];
     "tests/test_locking.py" [fillcolor="#fdeef0", label="tests/test_locking.py\n16 lines"];
-    "tests/test_onboarding.py" [fillcolor="#fdeef0", label="tests/test_onboarding.py\n117 lines"];
+    "tests/test_onboarding.py" [fillcolor="#fdeef0", label="tests/test_onboarding.py\n134 lines"];
     "tests/test_polishing.py" [fillcolor="#fdeef0", label="tests/test_polishing.py\n157 lines"];
     "tests/test_profiles.py" [fillcolor="#fdeef0", label="tests/test_profiles.py\n268 lines"];
     "tests/test_project_execution.py" [fillcolor="#fdeef0", label="tests/test_project_execution.py\n12 lines"];

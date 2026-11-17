@@ -102,7 +102,7 @@
 kyper-workflow export --list-hosts
 kyper-workflow export --host claude --out .claude/agents
 kyper-workflow export --host codex --out .codex/agents --role explorer --role reviewer
-kyper-workflow export --host cursor --out <显式目录> --check
+kyper-workflow export --host cursor --out <局部路径> --check
 ```
 
 - `--out` 必须显式给出；没有默认安装位置。

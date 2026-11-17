@@ -7,7 +7,7 @@ document links. No model calls, no semantic claims. Regenerate with
 ## Overview
 
 - Files: 82
-- Lines: 9334
+- Lines: 9392
 - Languages: javascript 5, json 2, markdown 20, other 4, python 50, toml 1
 - Internal dependency edges: 91
 - Entry points: `kyper_workflow/cli.py`
@@ -20,10 +20,10 @@ document links. No model calls, no semantic claims. Regenerate with
 | `.agents` | 1 | 35 | 0 | 0 |
 | `adapters` | 7 | 758 | 0 | 0 |
 | `completion_plugin` | 1 | 19 | 1 | 1 |
-| `docs` | 18 | 1239 | 0 | 6 |
-| `kyper_workflow` | 21 | 4374 | 0 | 47 |
+| `docs` | 18 | 1243 | 0 | 6 |
+| `kyper_workflow` | 21 | 4411 | 0 | 47 |
 | `skills` | 1 | 35 | 0 | 0 |
-| `tests` | 28 | 2740 | 47 | 0 |
+| `tests` | 28 | 2757 | 47 | 0 |
 
 ## Relationship graph
 
@@ -46,7 +46,7 @@ graph LR
   end
   subgraph g_docs["docs"]
     g_docs_AGENT_TEAMS_md["docs/AGENT-TEAMS.md<br/>94 lines"]
-    g_docs_FIRST_RUN_SETUP_md["docs/FIRST-RUN-SETUP.md<br/>67 lines"]
+    g_docs_FIRST_RUN_SETUP_md["docs/FIRST-RUN-SETUP.md<br/>69 lines"]
     g_docs_HOST_ADAPTERS_md["docs/HOST-ADAPTERS.md<br/>166 lines"]
     g_docs_INSTALL_CODEX_WINDOWS_md["docs/INSTALL-CODEX-WINDOWS.md<br/>67 lines"]
     g_docs_MIGRATION_v0_4_to_plugin_md["docs/MIGRATION-v0.4-to-plugin.md<br/>12 lines"]
@@ -64,7 +64,7 @@ graph LR
     g_kyper_workflow_hosts_py["kyper_workflow/hosts.py<br/>393 lines"]
     g_kyper_workflow_interactive_py["kyper_workflow/interactive.py<br/>92 lines"]
     g_kyper_workflow_editorial_py["kyper_workflow/editorial.py<br/>194 lines"]
-    g_kyper_workflow_onboarding_py["kyper_workflow/onboarding.py<br/>200 lines"]
+    g_kyper_workflow_onboarding_py["kyper_workflow/onboarding.py<br/>237 lines"]
     g_kyper_workflow_plan_py["kyper_workflow/plan.py<br/>223 lines"]
     g_kyper_workflow_profiles_py["kyper_workflow/profiles.py<br/>474 lines"]
     g_kyper_workflow_structure_py["kyper_workflow/structure.py<br/>740 lines"]
@@ -280,10 +280,10 @@ graph LR
 | File | Lines | Symbols | Summary | Internal imports |
 |---|---|---|---|---|
 | `docs/AGENT-TEAMS.md` | 94 |  | 角色、组件与执行计划（KyperWorkflow） | — |
-| `docs/FIRST-RUN-SETUP.md` | 67 |  | 首次接入配置（KyperWorkflow） | — |
+| `docs/FIRST-RUN-SETUP.md` | 69 |  | 首次接入配置（KyperWorkflow） | — |
 | `docs/HOST-ADAPTERS.md` | 166 |  | 多宿主角色适配（KyperWorkflow） | — |
 | `docs/IMPLEMENTATION-STATUS.md` | 33 |  | Implementation status — 2026-11-17 | — |
-| `docs/INSTALL-CODEX-WINDOWS.md` | 67 |  | Codex 与 Windows 手动试用（v0.1.2） | — |
+| `docs/INSTALL-CODEX-WINDOWS.md` | 67 |  | Codex 与 Windows 手动试用（0.2.0） | — |
 | `docs/MIGRATION-v0.4-to-plugin.md` | 12 |  | 从旧 MCP v0.4 迁移 | — |
 | `docs/PLUGIN-REFACTOR-SPEC.md` | 234 |  | KyperWorkflow 通用插件重构规格 | — |
 | `docs/RELEASE-0.1.1.md` | 7 |  | 0.1.1 Windows storage compatibility patch | — |
@@ -292,7 +292,7 @@ graph LR
 | `docs/STAGE-20261019-0300.md` | 9 |  | QA 插件阶段记录 | — |
 | `docs/TASK-MATRIX.md` | 49 |  | spec-v002 implementation matrix | — |
 | `docs/TEXT-POLISHING.md` | 12 |  | Using the writing workflow | — |
-| `docs/VALIDATION.md` | 153 |  | Current validation | — |
+| `docs/VALIDATION.md` | 155 |  | Current validation | — |
 | `docs/WINDOWS-RUNNER.md` | 60 |  | Windows contained process runner | — |
 | `docs/dsh-tests.log` | 26 |  | — | — |
 | `docs/python-tests.log` | 156 |  | — | — |
@@ -311,7 +311,7 @@ graph LR
 | `kyper_workflow/hosts.py` | 393 | 20 fn / 0 cls | Conservative projections of KyperWorkflow role cards onto coding hosts. | `kyper_workflow/__init__.py` |
 | `kyper_workflow/interactive.py` | 92 | 4 fn / 0 cls | Operator-facing terminal workflow. Agent/host users should use trusted adapters. | `kyper_workflow/runtime.py`, `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
 | `kyper_workflow/locking.py` | 44 | 1 fn / 0 cls | Local advisory writer lock for POSIX and Windows, with bounded waiting. | — |
-| `kyper_workflow/onboarding.py` | 200 | 5 fn / 0 cls | First-run configuration checklist. | `kyper_workflow/__init__.py` |
+| `kyper_workflow/onboarding.py` | 237 | 6 fn / 0 cls | First-run configuration checklist. | `kyper_workflow/__init__.py` |
 | `kyper_workflow/plan.py` | 223 | 13 fn / 0 cls | Deterministic execution plan for approved tasks. | — |
 | `kyper_workflow/polishing.py` | 198 | 6 fn / 3 cls | Host-injected candidate generation and review; no network/provider client. | `kyper_workflow/editorial.py` |
 | `kyper_workflow/process.py` | 33 | 2 fn / 0 cls | Bounded time/output reads for explicitly trusted POSIX or Windows project commands. | `kyper_workflow/windows_process.py` |
@@ -345,7 +345,7 @@ graph LR
 | `tests/test_interactive.py` | 57 | 7 fn / 1 cls | — | `kyper_workflow/interactive.py`, `kyper_workflow/runtime.py`, `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
 | `tests/test_locking.py` | 16 | 2 fn / 1 cls | — | `kyper_workflow/locking.py` |
 | `tests/test_mcp_transport.py` | 21 | 1 fn / 1 cls | — | — |
-| `tests/test_onboarding.py` | 117 | 10 fn / 1 cls | First-run configuration items are explicit, complete and never silently defaulted. | `kyper_workflow/onboarding.py` |
+| `tests/test_onboarding.py` | 134 | 11 fn / 1 cls | First-run configuration items are explicit, complete and never silently defaulted. | `kyper_workflow/onboarding.py` |
 | `tests/test_plan.py` | 99 | 11 fn / 1 cls | Deterministic scheduling: waves, write-scope conflicts, role limits. | `kyper_workflow/catalog.py`, `kyper_workflow/plan.py` |
 | `tests/test_polishing.py` | 157 | 22 fn / 1 cls | Synthetic host contract tests; no real model is called. | `kyper_workflow/polishing.py` |
 | `tests/test_profiles.py` | 268 | 32 fn / 1 cls | — | `kyper_workflow/profiles.py` |

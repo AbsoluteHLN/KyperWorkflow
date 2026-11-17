@@ -23,12 +23,12 @@
   ],
   "areas": {
     "(root)": {
-      "bytes": 12351,
+      "bytes": 12360,
       "files": 5,
       "lines": 134
     },
     ".agents": {
-      "bytes": 6698,
+      "bytes": 6692,
       "files": 1,
       "lines": 35
     },
@@ -43,24 +43,24 @@
       "lines": 19
     },
     "docs": {
-      "bytes": 115502,
+      "bytes": 116527,
       "files": 18,
-      "lines": 1239
+      "lines": 1243
     },
     "kyper_workflow": {
-      "bytes": 224835,
+      "bytes": 226551,
       "files": 21,
-      "lines": 4374
+      "lines": 4411
     },
     "skills": {
-      "bytes": 6698,
+      "bytes": 6692,
       "files": 1,
       "lines": 35
     },
     "tests": {
-      "bytes": 138914,
+      "bytes": 139940,
       "files": 28,
-      "lines": 2740
+      "lines": 2757
     }
   },
   "edges": [
@@ -576,7 +576,7 @@
       "path": "LICENSE"
     },
     {
-      "bytes": 9358,
+      "bytes": 9367,
       "doc": "KyperWorkflow 0.2.0",
       "language": "markdown",
       "lines": 86,
@@ -596,7 +596,7 @@
       "path": "pyproject.toml"
     },
     {
-      "bytes": 6698,
+      "bytes": 6692,
       "doc": "",
       "language": "markdown",
       "lines": 35,
@@ -666,10 +666,10 @@
       "path": "docs/AGENT-TEAMS.md"
     },
     {
-      "bytes": 6160,
+      "bytes": 6632,
       "doc": "首次接入配置（KyperWorkflow）",
       "language": "markdown",
-      "lines": 67,
+      "lines": 69,
       "path": "docs/FIRST-RUN-SETUP.md"
     },
     {
@@ -680,15 +680,15 @@
       "path": "docs/HOST-ADAPTERS.md"
     },
     {
-      "bytes": 6273,
+      "bytes": 6282,
       "doc": "Implementation status — 2026-11-17",
       "language": "markdown",
       "lines": 33,
       "path": "docs/IMPLEMENTATION-STATUS.md"
     },
     {
-      "bytes": 4191,
-      "doc": "Codex 与 Windows 手动试用（v0.1.2）",
+      "bytes": 4332,
+      "doc": "Codex 与 Windows 手动试用（0.2.0）",
       "language": "markdown",
       "lines": 67,
       "path": "docs/INSTALL-CODEX-WINDOWS.md"
@@ -750,10 +750,10 @@
       "path": "docs/TEXT-POLISHING.md"
     },
     {
-      "bytes": 10958,
+      "bytes": 11159,
       "doc": "Current validation",
       "language": "markdown",
-      "lines": 153,
+      "lines": 155,
       "path": "docs/VALIDATION.md"
     },
     {
@@ -776,7 +776,7 @@
       "path": "docs/python-tests.log"
     },
     {
-      "bytes": 1356,
+      "bytes": 1558,
       "language": "json",
       "lines": 22,
       "path": "docs/setup.local.example.json"
@@ -891,7 +891,7 @@
       }
     },
     {
-      "bytes": 16961,
+      "bytes": 16968,
       "doc": "Conservative projections of KyperWorkflow role cards onto coding hosts.",
       "language": "python",
       "lines": 393,
@@ -943,10 +943,10 @@
       }
     },
     {
-      "bytes": 11597,
+      "bytes": 13306,
       "doc": "First-run configuration checklist.",
       "language": "python",
-      "lines": 200,
+      "lines": 237,
       "names": [
         "checklist()",
         "local_config()",
@@ -957,7 +957,7 @@
       "path": "kyper_workflow/onboarding.py",
       "symbols": {
         "classes": 0,
-        "functions": 5
+        "functions": 6
       }
     },
     {
@@ -1178,7 +1178,7 @@
       }
     },
     {
-      "bytes": 6698,
+      "bytes": 6692,
       "doc": "",
       "language": "markdown",
       "lines": 35,
@@ -1406,10 +1406,10 @@
       }
     },
     {
-      "bytes": 5552,
+      "bytes": 6578,
       "doc": "First-run configuration items are explicit, complete and never silently defaulted.",
       "language": "python",
-      "lines": 117,
+      "lines": 134,
       "names": [
         "OnboardingTests",
         "setUp()",
@@ -1418,13 +1418,13 @@
         "test_every_item_has_the_fields_a_session_needs()",
         "test_local_config_file_supplies_values_and_is_named()",
         "test_nothing_is_reported_ready_without_user_input()",
-        "test_project_tests_are_platform_reported()"
+        "test_placeholders_stay_unconfirmed()"
       ],
       "parse_error": null,
       "path": "tests/test_onboarding.py",
       "symbols": {
         "classes": 1,
-        "functions": 10
+        "functions": 11
       }
     },
     {

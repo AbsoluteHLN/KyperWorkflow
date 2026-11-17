@@ -65,6 +65,23 @@ class OnboardingTests(unittest.TestCase):
         self.assertNotIn('project_root', result['needs_input'])
         self.assertIn('host_checks', result['needs_input'])
 
+    def test_placeholders_stay_unconfirmed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = onboarding.checklist(
+                Path(directory), state_dir='待配置',
+                environ={'PYTHONPATH': '局部路径'},
+                host_checks={'text': '<待配置>'},
+                model_routes=[{'role': '<待配置>', 'models': ['<待配置>'],
+                               'effort': '<待配置>', 'max_parallel': 1}],
+                execution_topology={'mode': '待配置'})
+        statuses = {item['id']: item['status'] for item in result['items']}
+        self.assertEqual(statuses['project_root'], 'ok')
+        self.assertEqual(statuses['state_dir'], 'needs_user_input')
+        self.assertEqual(statuses['dependency_paths'], 'needs_user_input')
+        self.assertEqual(statuses['host_checks'], 'needs_user_input')
+        self.assertEqual(statuses['model_routes'], 'needs_user_input')
+        self.assertEqual(statuses['execution_topology'], 'needs_user_input')
+
     def test_project_tests_are_platform_reported(self):
         result = onboarding.checklist()
         status = {item['id']: item['status'] for item in result['items']}['project_tests']

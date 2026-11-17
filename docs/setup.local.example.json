@@ -1,22 +1,22 @@
 {
   "_note": "Copy to .kyper/setup.local.json (git-ignored), or to ~/.kyper/setup.local.json, and fill in this machine only. Placeholder values below are deliberately unusable; anything left unset stays a question in setup_checklist instead of being defaulted. Never commit real paths.",
-  "state_dir": "<absolute path outside every reviewed project>",
+  "state_dir": "<局部路径：项目外；待配置>",
   "dependency_paths": {
-    "interpreter": "<absolute python.exe or python binary>",
-    "pythonpath": ["<library root>"],
-    "node_modules": ["<node_modules root>"],
-    "offline_cache": ["<dependency cache root>"]
+    "interpreter": "<局部路径：Python 解释器；待配置>",
+    "pythonpath": ["<局部路径：库目录；待配置>"],
+    "node_modules": ["<局部路径：node_modules；待配置>"],
+    "offline_cache": ["<局部路径：依赖缓存；待配置>"]
   },
   "project_tests": {"allowed": false, "platform": "<windows|posix>"},
   "host_checks": {
-    "text": "<who supplies semantic text review>",
-    "model": "<who supplies model-output review>",
-    "browser": "<who supplies browser checks>",
-    "native": "<who supplies native-device checks>"
+    "text": "<待配置：谁提供语义文本复核>",
+    "model": "<待配置：谁提供模型输出复核>",
+    "browser": "<待配置：谁提供浏览器检查>",
+    "native": "<待配置：谁提供真机检查>"
   },
-  "model_routes": [{"role": "<role>", "models": ["<allowed model>"], "effort": "<tier>", "max_parallel": 1}],
-  "execution_topology": {"host": "<claude|cursor|codex|gemini|copilot|generic>", "mode": "<native|sequential|mixed>", "export_dir": "<explicit directory>"},
-  "budget": {"limit": 0, "currency": "<currency>", "unknown_usage": "<block|reserve>"},
-  "shared_memory": {"enabled": false, "namespace": "<block or entity namespace>"},
+  "model_routes": [{"role": "<待配置：角色>", "models": ["<待配置：允许模型>"], "effort": "<待配置：档位>", "max_parallel": 1}],
+  "execution_topology": {"host": "<待配置：claude|cursor|codex|gemini|copilot|generic>", "mode": "<待配置：native|sequential|mixed>", "export_dir": "<局部路径：导出目录；待配置>"},
+  "budget": {"limit": 0, "currency": "<待配置：币种>", "unknown_usage": "<待配置：block|reserve>"},
+  "shared_memory": {"enabled": false, "namespace": "<待配置：块或实体命名空间>"},
   "skills_install": "<project|global|none>"
 }

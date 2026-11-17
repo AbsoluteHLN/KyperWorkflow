@@ -137,7 +137,7 @@
       <data key="label">kyper_workflow/onboarding.py</data>
       <data key="area">kyper_workflow</data>
       <data key="language">python</data>
-      <data key="lines">200</data>
+      <data key="lines">237</data>
       <data key="inbound">3</data>
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
@@ -283,7 +283,7 @@
       <data key="label">docs/FIRST-RUN-SETUP.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">67</data>
+      <data key="lines">69</data>
       <data key="inbound">2</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -307,7 +307,7 @@
       <data key="inbound">1</data>
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
-      <data key="summary">Codex 与 Windows 手动试用（v0.1.2）</data>
+      <data key="summary">Codex 与 Windows 手动试用（0.2.0）</data>
     </node>
     <node id="kyper_workflow/polishing.py">
       <data key="label">kyper_workflow/polishing.py</data>
@@ -450,7 +450,7 @@
       <data key="label">tests/test_onboarding.py</data>
       <data key="area">tests</data>
       <data key="language">python</data>
-      <data key="lines">117</data>
+      <data key="lines">134</data>
       <data key="inbound">0</data>
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
@@ -707,7 +707,7 @@
       <data key="label">docs/VALIDATION.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">153</data>
+      <data key="lines">155</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>

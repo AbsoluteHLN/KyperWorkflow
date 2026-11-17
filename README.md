@@ -50,7 +50,7 @@ Components are parameterised task templates (`code-change`, `test-covered-change
 
 `kyper-workflow plan --state <file>` (MCP `workflow_plan`) turns the approved graph into dependency waves, start batches that respect write-scope and role-parallel limits, the critical path and the blocker list. `kyper-workflow roles` (MCP `role_catalog`) prints the cards.
 
-`kyper-workflow export --host <claude|cursor|codex|gemini|copilot|generic> --out <dir>` projects the same cards for one host. `--list-hosts` shows the capability matrix; `--check` detects drift; `--role` limits the export. Names are prefixed `kyper-` so they cannot override built-in agents. Only Cursor's `readonly` is close to a read-only switch; every host's path scope is still a contract, not a sandbox. No model ids or turn limits are invented, and nothing is installed automatically. See [docs/HOST-ADAPTERS.md](docs/HOST-ADAPTERS.md) and [docs/AGENT-TEAMS.md](docs/AGENT-TEAMS.md).
+`kyper-workflow export --host <claude|cursor|codex|gemini|copilot|generic> --out <局部路径>` projects the same cards for one host. `--list-hosts` shows the capability matrix; `--check` detects drift; `--role` limits the export. Names are prefixed `kyper-` so they cannot override built-in agents. Only Cursor's `readonly` is close to a read-only switch; every host's path scope is still a contract, not a sandbox. No model ids or turn limits are invented, and nothing is installed automatically. See [docs/HOST-ADAPTERS.md](docs/HOST-ADAPTERS.md) and [docs/AGENT-TEAMS.md](docs/AGENT-TEAMS.md).
 
 ## Interactive terminal path
 

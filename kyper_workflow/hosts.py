@@ -375,7 +375,7 @@ def check(host_id, catalog, out, role_ids=None):
 
 
 def write(host_id, catalog, out, role_ids=None):
-    """Write exactly the expected cards and manifest into an explicit directory."""
+    """Write exactly the expected cards and manifest into a caller-supplied local path."""
     expected = files(host_id, catalog, role_ids)
     root = Path(out)
     root.mkdir(parents=True, exist_ok=True)

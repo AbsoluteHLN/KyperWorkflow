@@ -1,4 +1,4 @@
-# Codex 与 Windows 手动试用（v0.1.2）
+# Codex 与 Windows 手动试用（0.2.0）
 
 2026-10-19。仓库现为独立 KyperWorkflow；旧 CompletionQAMCP v0.4 保留在 Git 历史。新代码无需 API key；模型候选生成使用已授权宿主，未接入时明确 blocked。
 
@@ -26,11 +26,11 @@ py -3 -m venv .venv
 首次接入先跑配置清单与项目图谱；两处都只读本地、不联网：
 
 ```powershell
-py -3 -m kyper_workflow.cli setup --root E:\path\to\project
-py -3 -m kyper_workflow.cli map --root E:\path\to\project --write
+py -3 -m kyper_workflow.cli setup --root .\project
+py -3 -m kyper_workflow.cli map --root .\project --write
 ```
 
-`setup` 输出应先在会话中逐条确认的问题清单（见 [FIRST-RUN-SETUP.md](FIRST-RUN-SETUP.md)）；`map` 生成关系图谱 `docs/PROJECT-MAP.md`，以及 `.kyper/project-map.json`、`.kyper/project-graph.dot`、`.kyper/project-graph.graphml`、`.kyper/project-graph.tsv`，`--check` 可用于 CI 检查图谱是否过期。
+`.\project` 是示例局部路径，按本机实际目录替换；未确定时在配置中使用 `待配置`，不要把机器路径提交。`setup` 输出应先在会话中逐条确认的问题清单（见 [FIRST-RUN-SETUP.md](FIRST-RUN-SETUP.md)）；`map` 生成关系图谱 `docs/PROJECT-MAP.md`，以及 `.kyper/project-map.json`、`.kyper/project-graph.dot`、`.kyper/project-graph.graphml`、`.kyper/project-graph.tsv`，`--check` 可用于 CI 检查图谱是否过期。
 
 ## 2. 在 Codex 中加载 Skill
 
@@ -55,13 +55,13 @@ Windows runner 预期 11 通过、1 个仅非 Windows 适用的检查跳过，�
 
 ## 4. 真实终端取消与恢复
 
-用一个临时测试项目，状态放在项目外；示例路径请按机器调整：
+用一个临时测试项目，状态放在项目外；示例使用局部相对路径，请按机器调整：
 
 ```powershell
-py -3 -m kyper_workflow.cli wizard --root C:\QA-Trial --state C:\QA-State\task.json --artifact main.py
-py -3 -m kyper_workflow.cli resume --state C:\QA-State\task.json
+py -3 -m kyper_workflow.cli wizard --root .\qa-trial --state ..\qa-state\task.json --artifact main.py
+py -3 -m kyper_workflow.cli resume --state ..\qa-state\task.json
 ```
 
-先创建 `C:\QA-Trial\main.py`，内容 `x = 1`。依提示输入中文目标；调研链接在此简化向导里不会联网读取，必须明确承认未核验或选择豁免。先拒绝最终规格，再 resume，确认显示同一规格后输入其要求的精确批准文本。此向导只执行语法检查，不能代替项目测试或文字语义审查。
+先创建 `.\qa-trial\main.py`，内容 `x = 1`。依提示输入中文目标；调研链接在此简化向导里不会联网读取，必须明确承认未核验或选择豁免。先拒绝最终规格，再 resume，确认显示同一规格后输入其要求的精确批准文本。此向导只执行语法检查，不能代替项目测试或文字语义审查。
 
 反馈时提供 Python/Windows 版本、命令、完整错误、通过/失败/跳过数。不要上传密钥、个人正文或其他项目资料。

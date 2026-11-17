@@ -29,25 +29,25 @@ CONFIG_KEYS = ('state_dir', 'dependency_paths', 'project_tests', 'host_checks',
 RUNTIME_ITEM = {'id': 'python_runtime', 'category': 'environment', 'required': True,
                 'title': 'Python 运行时',
                 'why': '包要求 Python 3.11+（tomllib 与标准库类型注解）。',
-                'how': '使用 3.11 或更新版本的独立虚拟环境，并记录解释器绝对路径。',
-                'question': '使用哪个 Python 解释器（绝对路径）？'}
+                'how': '使用 3.11 或更新版本的独立虚拟环境，并记录解释器的局部路径。',
+                'question': '使用哪个 Python 解释器（局部路径；未确定时写“待配置”）？'}
 
 ITEMS = (
     {'id': 'project_root', 'category': 'scope', 'required': True,
      'title': '被审查项目根目录',
-     'why': '所有文件检查都相对一个显式绝对路径，缺少它无法界定写入范围。',
-     'how': '在会话中给出项目根目录绝对路径；不使用相对路径或仓库外符号链接。',
-     'question': '要审查或生成的项目根目录绝对路径是什么？'},
+     'why': '所有文件检查都相对一个显式局部路径，缺少它无法界定写入范围。',
+     'how': '在会话中给出项目根目录的本机局部路径；未确定时写“待配置”，不要把机器路径提交。',
+     'question': '要审查或生成的项目根目录使用哪个局部路径（未确定时写“待配置”）？'},
     {'id': 'state_dir', 'category': 'scope', 'required': True,
      'title': '状态与账本目录（项目外）',
      'why': '任务状态与用量账本若写在被审查项目内，会改变被检查内容并让复核失效。',
-     'how': '指定一个项目之外的私有目录，例如 ~/.kyper/state/<project>。',
-     'question': '状态、账本和配置放在哪个项目外目录？'},
+     'how': '指定一个项目之外的私有局部路径；未确定时写“待配置”。',
+     'question': '状态、账本和配置放在哪个项目外的局部路径（未确定时写“待配置”）？'},
     {'id': 'dependency_paths', 'category': 'environment', 'required': True,
      'title': '依赖库路径',
      'why': '项目测试与导入解析需要知道额外的库目录、虚拟环境或离线缓存位置。',
-     'how': '给出 PYTHONPATH 追加项、虚拟环境解释器绝对路径、node_modules 与离线缓存根目录。',
-     'question': '项目依赖位于哪些路径（解释器、PYTHONPATH、node_modules、离线缓存）？'},
+     'how': '给出 PYTHONPATH 追加项、虚拟环境解释器、node_modules 与离线缓存的局部路径。',
+     'question': '项目依赖位于哪些局部路径（解释器、PYTHONPATH、node_modules、离线缓存）？'},
     {'id': 'project_tests', 'category': 'checks', 'required': True,
      'title': '项目测试执行许可',
      'why': '运行项目测试等于执行项目代码；只有获得明确许可才可开启，且需平台支持进程树清理。',
@@ -117,17 +117,47 @@ def local_config(root=None, *, path=None):
     return {}, (str(candidates[0]) if candidates else None), None
 
 
+PLACEHOLDER_VALUES = ('待配置', '局部路径', 'tbd', 'todo', 'unset', 'none')
+
+
+def _configured(value, *, require_all=False):
+    """False for absent values and for human placeholders, never a default."""
+    if value is None:
+        return False
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return False
+        lowered = text.lower()
+        if lowered in PLACEHOLDER_VALUES:
+            return False
+        if any(marker in text for marker in ('待配置', '局部路径')):
+            return False
+        if text.startswith('<') and text.endswith('>'):
+            return False
+        return True
+    if isinstance(value, dict):
+        leaves = [_configured(item, require_all=require_all) for item in value.values()]
+        return all(leaves) if require_all else any(leaves)
+    if isinstance(value, (list, tuple)):
+        leaves = [_configured(item, require_all=require_all) for item in value]
+        return any(leaves)
+    return bool(value)
+
+
 def _detect(item_id, context):
     root = context.get('root')
     config = context.get('config') or {}
     if item_id == 'python_runtime':
         return 'ok' if sys.version_info >= (3, 11) else 'blocked'
     if item_id == 'project_root':
-        return 'ok' if root and Path(root).is_dir() else 'needs_user_input'
+        return 'ok' if _configured(root) and Path(root).is_dir() else 'needs_user_input'
     if item_id == 'state_dir':
-        return 'ok' if (context.get('state_dir') or config.get('state_dir')) else 'needs_user_input'
+        return 'ok' if (_configured(context.get('state_dir')) or
+                        _configured(config.get('state_dir'))) else 'needs_user_input'
     if item_id == 'dependency_paths':
-        if context.get('environ', {}).get('PYTHONPATH') or config.get('dependency_paths'):
+        if (_configured(context.get('environ', {}).get('PYTHONPATH')) or
+                _configured(config.get('dependency_paths'))):
             return 'ok'
         return 'needs_user_input'
     if item_id == 'project_tests':
@@ -139,9 +169,16 @@ def _detect(item_id, context):
         candidates.append(Path(__file__).resolve().parent.parent / 'skills' / 'kyper-workflow' / 'SKILL.md')
         return 'ok' if any(path.is_file() for path in candidates) else 'needs_user_input'
     if item_id in ('host_checks', 'model_routes', 'execution_topology', 'budget',
-                   'shared_memory') and (
-            context.get(item_id) or config.get(item_id)):
-        return 'ok'
+                   'shared_memory'):
+        require_all = item_id in ('host_checks', 'model_routes',
+                                  'execution_topology', 'budget')
+        if (_configured(context.get(item_id), require_all=require_all) or
+                _configured(config.get(item_id), require_all=require_all)):
+            return 'ok'
+        if item_id == 'shared_memory':
+            for value in (context.get(item_id), config.get(item_id)):
+                if isinstance(value, dict) and value.get('enabled') is False:
+                    return 'ok'
     return 'needs_user_input'
 
 
