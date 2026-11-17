@@ -38,7 +38,7 @@
       "lines": 14
     },
     "docs": {
-      "bytes": 87379,
+      "bytes": 87595,
       "files": 15,
       "lines": 849
     },
@@ -591,7 +591,7 @@
       "path": "docs/STAGE-20261019-0300.md"
     },
     {
-      "bytes": 5820,
+      "bytes": 6036,
       "doc": "spec-v002 implementation matrix",
       "language": "markdown",
       "lines": 47,
