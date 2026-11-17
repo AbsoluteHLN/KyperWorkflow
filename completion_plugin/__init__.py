@@ -16,4 +16,4 @@ __path__ = [os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file_
 # Deployed configuration still launches `-m completion_plugin.server`, and that
 # module does `from . import __version__`. __path__ alone forwards submodules but
 # not package attributes, so re-export the metadata here as well.
-from kyper_workflow import __version__  # noqa: E402,F401
+from kyper_workflow import PROMPT_ALIAS, __version__  # noqa: E402,F401

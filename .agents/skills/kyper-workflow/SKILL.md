@@ -1,7 +1,9 @@
 ---
 name: kyper-workflow
-description: Configure once, map the project, plan small verifiable tasks, obtain explicit specification approval, then track execution and review code and prose before completion.
+description: Configure once, map the project, plan small verifiable tasks, obtain explicit specification approval, then track execution and review code and prose before completion. Prompt alias: KalWf.
 ---
+
+`KalWf` is the short prompt alias for this Skill/MCP; the server name remains `kyper-workflow`.
 
 ## First use in a session
 

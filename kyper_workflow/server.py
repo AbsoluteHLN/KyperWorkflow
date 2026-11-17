@@ -1,6 +1,6 @@
 """Optional MCP surface. Approval and file writes stay with trusted host actions."""
 from mcp.server.fastmcp import FastMCP
-from . import __version__, catalog, hosts, onboarding, plan, structure
+from . import PROMPT_ALIAS, __version__, catalog, hosts, onboarding, plan, structure
 from .editorial import review
 from .workflow import Workflow
 
@@ -10,6 +10,8 @@ app = FastMCP('kyper-workflow')
 @app.tool()
 def capabilities() -> dict:
     return {'product': 'KyperWorkflow', 'version': __version__,
+            'prompt_alias': PROMPT_ALIAS,
+            'alias_scope': 'prompt_shortcut_only',
             'text': 'deterministic diagnostics, project map and review-only candidate comparison',
             'semantic_verification': 'not_configured', 'native': 'not_configured',
             'user_confirmation': 'trusted_host_only', 'stop_installed': False,

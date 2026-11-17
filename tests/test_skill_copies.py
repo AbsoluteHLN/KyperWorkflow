@@ -13,6 +13,9 @@ class SkillCopyTests(unittest.TestCase):
         self.assertTrue(PROJECT_COPY.is_file(), 'project Skill copy is missing')
         self.assertEqual(PROJECT_COPY.read_bytes(), SOURCE.read_bytes(),
                          'skills/kyper-workflow and .agents/skills/kyper-workflow differ')
+        text = SOURCE.read_text(encoding='utf-8')
+        self.assertIn('Prompt alias: KalWf', text)
+        self.assertIn('server name remains `kyper-workflow`', text)
 
 
 if __name__ == '__main__':

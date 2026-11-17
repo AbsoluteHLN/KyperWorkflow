@@ -34,6 +34,7 @@ class RenameShimTests(unittest.TestCase):
             import completion_plugin
             import kyper_workflow
         self.assertEqual(completion_plugin.__version__, kyper_workflow.__version__)
+        self.assertEqual(completion_plugin.PROMPT_ALIAS, kyper_workflow.PROMPT_ALIAS)
 
     @unittest.skipUnless(MCP_AVAILABLE, 'optional mcp extra is not installed')
     def test_deprecated_server_module_imports(self):

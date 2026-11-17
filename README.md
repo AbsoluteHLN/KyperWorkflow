@@ -1,5 +1,7 @@
 # KyperWorkflow 0.2.0
 
+提示词快捷别名：`KalWf`。它只用于在对话中快速唤出，MCP server 注册名仍是 `kyper-workflow`。当前 MCP 契约、8 个只读工具和验收边界见 [docs/MCP-SPEC.md](docs/MCP-SPEC.md)。
+
 中文快速入口：[Codex / Windows 安装与手动测试](docs/INSTALL-CODEX-WINDOWS.md)。旧 MCP 迁移：[说明](docs/MIGRATION-v0.4-to-plugin.md)。
 
 Renamed from CompletionQAMCP / Completion Review Plugin, including the GitHub repository, which is now `https://github.com/AbsoluteHLN/KyperWorkflow.git`; see [rename notes](docs/RENAME-KYPERWORKFLOW.md). The old `completion_plugin` import path still works as a deprecated shim.

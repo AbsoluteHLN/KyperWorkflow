@@ -9,6 +9,8 @@ except ImportError:  # Optional [mcp] extra; a skip is not transport evidence.
 class TransportTests(unittest.IsolatedAsyncioTestCase):
  @unittest.skipUnless(MCP_AVAILABLE,'optional mcp extra is not installed')
  async def test_real_local_stdio(self):
+  from kyper_workflow import server
+  self.assertEqual(server.capabilities()['prompt_alias'],'KalWf')
   async with stdio_client(StdioServerParameters(command=sys.executable,args=['-m','kyper_workflow.server'])) as (read,write):
    async with ClientSession(read,write) as session:
     await session.initialize()

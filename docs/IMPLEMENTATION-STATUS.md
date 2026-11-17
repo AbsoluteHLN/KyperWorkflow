@@ -2,6 +2,8 @@
 
 Product renamed to KyperWorkflow 0.2.0: package `kyper_workflow`, CLI `kyper-workflow`, MCP server `kyper-workflow`, Skill `kyper-workflow`. `completion_plugin` remains only as a deprecated import shim. See docs/RENAME-KYPERWORKFLOW.md.
 
+Prompt alias `KalWf` is exposed by `capabilities()` and documented in [MCP-SPEC.md](MCP-SPEC.md). It is a dialog shortcut only; server registration remains `kyper-workflow`.
+
 Approved design: spec-v002. This is an implementation increment, not certification of every host.
 
 Implemented and locally exercised:

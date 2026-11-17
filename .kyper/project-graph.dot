@@ -5,7 +5,7 @@ digraph "KyperWorkflow" {
   subgraph "cluster_.agents" {
     label=".agents";
     bgcolor="#fdefe0";
-    ".agents/skills/kyper-workflow/SKILL.md" [fillcolor="#fdefe0", label=".agents/skills/kyper-workflow/SKILL.md\n35 lines"];
+    ".agents/skills/kyper-workflow/SKILL.md" [fillcolor="#fdefe0", label=".agents/skills/kyper-workflow/SKILL.md\n37 lines"];
   }
   subgraph "cluster_adapters" {
     label="adapters";
@@ -26,20 +26,21 @@ digraph "KyperWorkflow" {
   subgraph "cluster_docs" {
     label="docs";
     bgcolor="#e7f2e5";
-    "docs/AGENT-TEAMS.md" [fillcolor="#e7f2e5", label="docs/AGENT-TEAMS.md\n94 lines"];
-    "docs/FIRST-RUN-SETUP.md" [fillcolor="#e7f2e5", label="docs/FIRST-RUN-SETUP.md\n69 lines"];
+    "docs/MCP-SPEC.md" [fillcolor="#e7f2e5", label="docs/MCP-SPEC.md\n197 lines"];
+    "docs/AGENT-TEAMS.md" [fillcolor="#e7f2e5", label="docs/AGENT-TEAMS.md\n96 lines"];
+    "docs/FIRST-RUN-SETUP.md" [fillcolor="#e7f2e5", label="docs/FIRST-RUN-SETUP.md\n71 lines"];
     "docs/HOST-ADAPTERS.md" [fillcolor="#e7f2e5", label="docs/HOST-ADAPTERS.md\n166 lines"];
     "docs/INSTALL-CODEX-WINDOWS.md" [fillcolor="#e7f2e5", label="docs/INSTALL-CODEX-WINDOWS.md\n67 lines"];
+    "docs/PLUGIN-REFACTOR-SPEC.md" [fillcolor="#e7f2e5", label="docs/PLUGIN-REFACTOR-SPEC.md\n236 lines"];
+    "docs/IMPLEMENTATION-STATUS.md" [fillcolor="#e7f2e5", label="docs/IMPLEMENTATION-STATUS.md\n35 lines"];
     "docs/MIGRATION-v0.4-to-plugin.md" [fillcolor="#e7f2e5", label="docs/MIGRATION-v0.4-to-plugin.md\n12 lines"];
     "docs/RENAME-KYPERWORKFLOW.md" [fillcolor="#e7f2e5", label="docs/RENAME-KYPERWORKFLOW.md\n53 lines"];
-    "docs/IMPLEMENTATION-STATUS.md" [fillcolor="#e7f2e5", label="docs/IMPLEMENTATION-STATUS.md\n33 lines"];
-    "docs/PLUGIN-REFACTOR-SPEC.md" [fillcolor="#e7f2e5", label="docs/PLUGIN-REFACTOR-SPEC.md\n234 lines"];
     "docs/RELEASE-0.1.1.md" [fillcolor="#e7f2e5", label="docs/RELEASE-0.1.1.md\n7 lines"];
     "docs/RELEASE-0.1.2.md" [fillcolor="#e7f2e5", label="docs/RELEASE-0.1.2.md\n19 lines"];
     "docs/STAGE-20261019-0300.md" [fillcolor="#e7f2e5", label="docs/STAGE-20261019-0300.md\n9 lines"];
-    "docs/TASK-MATRIX.md" [fillcolor="#e7f2e5", label="docs/TASK-MATRIX.md\n49 lines"];
+    "docs/TASK-MATRIX.md" [fillcolor="#e7f2e5", label="docs/TASK-MATRIX.md\n50 lines"];
     "docs/TEXT-POLISHING.md" [fillcolor="#e7f2e5", label="docs/TEXT-POLISHING.md\n12 lines"];
-    "docs/VALIDATION.md" [fillcolor="#e7f2e5", label="docs/VALIDATION.md\n155 lines"];
+    "docs/VALIDATION.md" [fillcolor="#e7f2e5", label="docs/VALIDATION.md\n157 lines"];
     "docs/WINDOWS-RUNNER.md" [fillcolor="#e7f2e5", label="docs/WINDOWS-RUNNER.md\n60 lines"];
     "docs/dsh-tests.log" [fillcolor="#e7f2e5", label="docs/dsh-tests.log\n26 lines"];
     "docs/python-tests.log" [fillcolor="#e7f2e5", label="docs/python-tests.log\n156 lines"];
@@ -52,10 +53,10 @@ digraph "KyperWorkflow" {
     "kyper_workflow/usage.py" [fillcolor="#faf3d9", label="kyper_workflow/usage.py\n126 lines"];
     "kyper_workflow/cli.py" [fillcolor="#faf3d9", penwidth=2.0, label="kyper_workflow/cli.py\n137 lines"];
     "kyper_workflow/catalog.py" [fillcolor="#faf3d9", label="kyper_workflow/catalog.py\n400 lines"];
+    "kyper_workflow/server.py" [fillcolor="#faf3d9", label="kyper_workflow/server.py\n107 lines"];
     "kyper_workflow/evidence.py" [fillcolor="#faf3d9", label="kyper_workflow/evidence.py\n161 lines"];
     "kyper_workflow/runtime.py" [fillcolor="#faf3d9", label="kyper_workflow/runtime.py\n104 lines"];
-    "kyper_workflow/server.py" [fillcolor="#faf3d9", label="kyper_workflow/server.py\n105 lines"];
-    "kyper_workflow/__init__.py" [fillcolor="#faf3d9", label="kyper_workflow/__init__.py\n2 lines"];
+    "kyper_workflow/__init__.py" [fillcolor="#faf3d9", label="kyper_workflow/__init__.py\n3 lines"];
     "kyper_workflow/hosts.py" [fillcolor="#faf3d9", label="kyper_workflow/hosts.py\n393 lines"];
     "kyper_workflow/interactive.py" [fillcolor="#faf3d9", label="kyper_workflow/interactive.py\n92 lines"];
     "kyper_workflow/editorial.py" [fillcolor="#faf3d9", label="kyper_workflow/editorial.py\n194 lines"];
@@ -73,7 +74,7 @@ digraph "KyperWorkflow" {
   subgraph "cluster_skills" {
     label="skills";
     bgcolor="#f0e9f1";
-    "skills/kyper-workflow/SKILL.md" [fillcolor="#f0e9f1", label="skills/kyper-workflow/SKILL.md\n35 lines"];
+    "skills/kyper-workflow/SKILL.md" [fillcolor="#f0e9f1", label="skills/kyper-workflow/SKILL.md\n37 lines"];
   }
   subgraph "cluster_tests" {
     label="tests";
@@ -87,13 +88,15 @@ digraph "KyperWorkflow" {
     "tests/test_workflow.py" [fillcolor="#fdeef0", label="tests/test_workflow.py\n37 lines"];
     "tests/test_hosts.py" [fillcolor="#fdeef0", label="tests/test_hosts.py\n172 lines"];
     "tests/test_plan.py" [fillcolor="#fdeef0", label="tests/test_plan.py\n99 lines"];
-    "tests/test_rename_shim.py" [fillcolor="#fdeef0", label="tests/test_rename_shim.py\n47 lines"];
+    "tests/test_rename_shim.py" [fillcolor="#fdeef0", label="tests/test_rename_shim.py\n48 lines"];
     "tests/test_roles.py" [fillcolor="#fdeef0", label="tests/test_roles.py\n137 lines"];
     "tests/test_unicode_storage.py" [fillcolor="#fdeef0", label="tests/test_unicode_storage.py\n9 lines"];
     "tests/test_catalog.py" [fillcolor="#fdeef0", label="tests/test_catalog.py\n167 lines"];
     "tests/test_dsh.py" [fillcolor="#fdeef0", label="tests/test_dsh.py\n172 lines"];
     "tests/test_editorial.py" [fillcolor="#fdeef0", label="tests/test_editorial.py\n162 lines"];
+    "tests/test_identity.py" [fillcolor="#fdeef0", label="tests/test_identity.py\n18 lines"];
     "tests/test_locking.py" [fillcolor="#fdeef0", label="tests/test_locking.py\n16 lines"];
+    "tests/test_mcp_transport.py" [fillcolor="#fdeef0", label="tests/test_mcp_transport.py\n23 lines"];
     "tests/test_onboarding.py" [fillcolor="#fdeef0", label="tests/test_onboarding.py\n134 lines"];
     "tests/test_polishing.py" [fillcolor="#fdeef0", label="tests/test_polishing.py\n157 lines"];
     "tests/test_profiles.py" [fillcolor="#fdeef0", label="tests/test_profiles.py\n268 lines"];
@@ -103,11 +106,10 @@ digraph "KyperWorkflow" {
     "tests/test_supervisor_host.py" [fillcolor="#fdeef0", label="tests/test_supervisor_host.py\n11 lines"];
     "tests/test_usage_persistence.py" [fillcolor="#fdeef0", label="tests/test_usage_persistence.py\n13 lines"];
     "tests/test_windows_process.py" [fillcolor="#fdeef0", label="tests/test_windows_process.py\n128 lines"];
-    "tests/test_mcp_transport.py" [fillcolor="#fdeef0", label="tests/test_mcp_transport.py\n21 lines"];
-    "tests/test_skill_copies.py" [fillcolor="#fdeef0", label="tests/test_skill_copies.py\n19 lines"];
+    "tests/test_skill_copies.py" [fillcolor="#fdeef0", label="tests/test_skill_copies.py\n22 lines"];
     "tests/test_terminal_process.py" [fillcolor="#fdeef0", label="tests/test_terminal_process.py\n29 lines"];
   }
-  "README.md" [fillcolor="#e8eef6", label="README.md\n86 lines"];
+  "README.md" [fillcolor="#e8eef6", label="README.md\n88 lines"];
   ".gitignore" [fillcolor="#e8eef6", label=".gitignore\n14 lines"];
   "LICENSE" [fillcolor="#e8eef6", label="LICENSE\n10 lines"];
   "THIRD_PARTY_NOTICES.md" [fillcolor="#e8eef6", label="THIRD_PARTY_NOTICES.md\n10 lines"];
@@ -116,11 +118,15 @@ digraph "KyperWorkflow" {
   "README.md" -> "docs/FIRST-RUN-SETUP.md" [style=dashed];
   "README.md" -> "docs/HOST-ADAPTERS.md" [style=dashed];
   "README.md" -> "docs/INSTALL-CODEX-WINDOWS.md" [style=dashed];
+  "README.md" -> "docs/MCP-SPEC.md" [style=dashed];
   "README.md" -> "docs/MIGRATION-v0.4-to-plugin.md" [style=dashed];
   "README.md" -> "docs/RENAME-KYPERWORKFLOW.md" [style=dashed];
   "completion_plugin/__init__.py" -> "kyper_workflow/__init__.py" [style=solid];
   "docs/AGENT-TEAMS.md" -> "docs/HOST-ADAPTERS.md" [style=dashed];
+  "docs/IMPLEMENTATION-STATUS.md" -> "docs/MCP-SPEC.md" [style=dashed];
   "docs/INSTALL-CODEX-WINDOWS.md" -> "docs/FIRST-RUN-SETUP.md" [style=dashed];
+  "docs/MCP-SPEC.md" -> "docs/PLUGIN-REFACTOR-SPEC.md" [style=dashed];
+  "docs/PLUGIN-REFACTOR-SPEC.md" -> "docs/MCP-SPEC.md" [style=dashed];
   "kyper_workflow/catalog.py" -> "kyper_workflow/__init__.py" [style=solid];
   "kyper_workflow/catalog.py" -> "kyper_workflow/hosts.py" [style=solid];
   "kyper_workflow/cli.py" -> "kyper_workflow/catalog.py" [style=solid];
@@ -172,6 +178,7 @@ digraph "KyperWorkflow" {
   "tests/test_host_attestation.py" -> "kyper_workflow/workflow.py" [style=solid];
   "tests/test_hosts.py" -> "kyper_workflow/catalog.py" [style=solid];
   "tests/test_hosts.py" -> "kyper_workflow/hosts.py" [style=solid];
+  "tests/test_identity.py" -> "kyper_workflow/__init__.py" [style=solid];
   "tests/test_independent_workflow.py" -> "kyper_workflow/evidence.py" [style=solid];
   "tests/test_independent_workflow.py" -> "kyper_workflow/usage.py" [style=solid];
   "tests/test_independent_workflow.py" -> "kyper_workflow/workflow.py" [style=solid];
@@ -180,6 +187,7 @@ digraph "KyperWorkflow" {
   "tests/test_interactive.py" -> "kyper_workflow/usage.py" [style=solid];
   "tests/test_interactive.py" -> "kyper_workflow/workflow.py" [style=solid];
   "tests/test_locking.py" -> "kyper_workflow/locking.py" [style=solid];
+  "tests/test_mcp_transport.py" -> "kyper_workflow/server.py" [style=solid];
   "tests/test_onboarding.py" -> "kyper_workflow/onboarding.py" [style=solid];
   "tests/test_plan.py" -> "kyper_workflow/catalog.py" [style=solid];
   "tests/test_plan.py" -> "kyper_workflow/plan.py" [style=solid];

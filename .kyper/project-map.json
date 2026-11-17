@@ -1,7 +1,7 @@
 {
   "area_edges": [
     {
-      "count": 6,
+      "count": 7,
       "from": "(root)",
       "to": "docs"
     },
@@ -16,21 +16,21 @@
       "to": "completion_plugin"
     },
     {
-      "count": 46,
+      "count": 48,
       "from": "tests",
       "to": "kyper_workflow"
     }
   ],
   "areas": {
     "(root)": {
-      "bytes": 12360,
+      "bytes": 12578,
       "files": 5,
-      "lines": 134
+      "lines": 136
     },
     ".agents": {
-      "bytes": 6692,
+      "bytes": 6812,
       "files": 1,
-      "lines": 35
+      "lines": 37
     },
     "adapters": {
       "bytes": 44232,
@@ -38,29 +38,29 @@
       "lines": 758
     },
     "completion_plugin": {
-      "bytes": 827,
+      "bytes": 841,
       "files": 1,
       "lines": 19
     },
     "docs": {
-      "bytes": 116527,
-      "files": 18,
-      "lines": 1243
+      "bytes": 127101,
+      "files": 19,
+      "lines": 1451
     },
     "kyper_workflow": {
-      "bytes": 226551,
+      "bytes": 226684,
       "files": 21,
-      "lines": 4411
+      "lines": 4414
     },
     "skills": {
-      "bytes": 6692,
+      "bytes": 6812,
       "files": 1,
-      "lines": 35
+      "lines": 37
     },
     "tests": {
-      "bytes": 139940,
-      "files": 28,
-      "lines": 2757
+      "bytes": 140837,
+      "files": 29,
+      "lines": 2781
     }
   },
   "edges": [
@@ -87,6 +87,11 @@
     {
       "from": "README.md",
       "kind": "doc_link",
+      "to": "docs/MCP-SPEC.md"
+    },
+    {
+      "from": "README.md",
+      "kind": "doc_link",
       "to": "docs/MIGRATION-v0.4-to-plugin.md"
     },
     {
@@ -105,9 +110,24 @@
       "to": "docs/HOST-ADAPTERS.md"
     },
     {
+      "from": "docs/IMPLEMENTATION-STATUS.md",
+      "kind": "doc_link",
+      "to": "docs/MCP-SPEC.md"
+    },
+    {
       "from": "docs/INSTALL-CODEX-WINDOWS.md",
       "kind": "doc_link",
       "to": "docs/FIRST-RUN-SETUP.md"
+    },
+    {
+      "from": "docs/MCP-SPEC.md",
+      "kind": "doc_link",
+      "to": "docs/PLUGIN-REFACTOR-SPEC.md"
+    },
+    {
+      "from": "docs/PLUGIN-REFACTOR-SPEC.md",
+      "kind": "doc_link",
+      "to": "docs/MCP-SPEC.md"
     },
     {
       "from": "kyper_workflow/catalog.py",
@@ -365,6 +385,11 @@
       "to": "kyper_workflow/hosts.py"
     },
     {
+      "from": "tests/test_identity.py",
+      "kind": "import",
+      "to": "kyper_workflow/__init__.py"
+    },
+    {
       "from": "tests/test_independent_workflow.py",
       "kind": "import",
       "to": "kyper_workflow/evidence.py"
@@ -403,6 +428,11 @@
       "from": "tests/test_locking.py",
       "kind": "import",
       "to": "kyper_workflow/locking.py"
+    },
+    {
+      "from": "tests/test_mcp_transport.py",
+      "kind": "import",
+      "to": "kyper_workflow/server.py"
     },
     {
       "from": "tests/test_onboarding.py",
@@ -557,7 +587,7 @@
     "tomllib": 2,
     "types": 1,
     "typing": 3,
-    "unittest": 33,
+    "unittest": 34,
     "uuid": 6,
     "warnings": 2,
     "xml": 1
@@ -576,10 +606,10 @@
       "path": "LICENSE"
     },
     {
-      "bytes": 9367,
+      "bytes": 9585,
       "doc": "KyperWorkflow 0.2.0",
       "language": "markdown",
-      "lines": 86,
+      "lines": 88,
       "path": "README.md"
     },
     {
@@ -596,10 +626,10 @@
       "path": "pyproject.toml"
     },
     {
-      "bytes": 6692,
+      "bytes": 6812,
       "doc": "",
       "language": "markdown",
-      "lines": 35,
+      "lines": 37,
       "path": ".agents/skills/kyper-workflow/SKILL.md"
     },
     {
@@ -646,7 +676,7 @@
       "path": "adapters/dsh/profiles.js"
     },
     {
-      "bytes": 827,
+      "bytes": 841,
       "doc": "Deprecated import path.",
       "language": "python",
       "lines": 19,
@@ -659,17 +689,17 @@
       }
     },
     {
-      "bytes": 5677,
+      "bytes": 5780,
       "doc": "角色、组件与执行计划（KyperWorkflow）",
       "language": "markdown",
-      "lines": 94,
+      "lines": 96,
       "path": "docs/AGENT-TEAMS.md"
     },
     {
-      "bytes": 6632,
+      "bytes": 6743,
       "doc": "首次接入配置（KyperWorkflow）",
       "language": "markdown",
-      "lines": 69,
+      "lines": 71,
       "path": "docs/FIRST-RUN-SETUP.md"
     },
     {
@@ -680,10 +710,10 @@
       "path": "docs/HOST-ADAPTERS.md"
     },
     {
-      "bytes": 6282,
+      "bytes": 6459,
       "doc": "Implementation status — 2026-11-17",
       "language": "markdown",
-      "lines": 33,
+      "lines": 35,
       "path": "docs/IMPLEMENTATION-STATUS.md"
     },
     {
@@ -694,6 +724,13 @@
       "path": "docs/INSTALL-CODEX-WINDOWS.md"
     },
     {
+      "bytes": 9313,
+      "doc": "KyperWorkflow MCP 接入规格（KalWf）",
+      "language": "markdown",
+      "lines": 197,
+      "path": "docs/MCP-SPEC.md"
+    },
+    {
       "bytes": 1114,
       "doc": "从旧 MCP v0.4 迁移",
       "language": "markdown",
@@ -701,10 +738,10 @@
       "path": "docs/MIGRATION-v0.4-to-plugin.md"
     },
     {
-      "bytes": 29419,
+      "bytes": 29757,
       "doc": "KyperWorkflow 通用插件重构规格",
       "language": "markdown",
-      "lines": 234,
+      "lines": 236,
       "path": "docs/PLUGIN-REFACTOR-SPEC.md"
     },
     {
@@ -736,10 +773,10 @@
       "path": "docs/STAGE-20261019-0300.md"
     },
     {
-      "bytes": 7044,
+      "bytes": 7392,
       "doc": "spec-v002 implementation matrix",
       "language": "markdown",
-      "lines": 49,
+      "lines": 50,
       "path": "docs/TASK-MATRIX.md"
     },
     {
@@ -750,10 +787,10 @@
       "path": "docs/TEXT-POLISHING.md"
     },
     {
-      "bytes": 11159,
+      "bytes": 11343,
       "doc": "Current validation",
       "language": "markdown",
-      "lines": 155,
+      "lines": 157,
       "path": "docs/VALIDATION.md"
     },
     {
@@ -782,10 +819,10 @@
       "path": "docs/setup.local.example.json"
     },
     {
-      "bytes": 114,
+      "bytes": 138,
       "doc": "KyperWorkflow: explicit specification approval, bounded review and project mapping.",
       "language": "python",
-      "lines": 2,
+      "lines": 3,
       "names": [],
       "parse_error": null,
       "path": "kyper_workflow/__init__.py",
@@ -1055,10 +1092,10 @@
       }
     },
     {
-      "bytes": 5155,
+      "bytes": 5264,
       "doc": "Optional MCP surface. Approval and file writes stay with trusted host actions.",
       "language": "python",
-      "lines": 105,
+      "lines": 107,
       "names": [
         "capabilities()",
         "host_adapters()",
@@ -1178,10 +1215,10 @@
       }
     },
     {
-      "bytes": 6692,
+      "bytes": 6812,
       "doc": "",
       "language": "markdown",
-      "lines": 35,
+      "lines": 37,
       "path": "skills/kyper-workflow/SKILL.md"
     },
     {
@@ -1329,6 +1366,23 @@
       }
     },
     {
+      "bytes": 538,
+      "doc": "The prompt shortcut is an alias, not a second MCP identity.",
+      "language": "python",
+      "lines": 18,
+      "names": [
+        "IdentityTests",
+        "test_prompt_alias_is_stable_and_short()",
+        "test_version_remains_separate_from_alias()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_identity.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 2
+      }
+    },
+    {
       "bytes": 16258,
       "doc": "Independent negative-path coverage of the local workflow and evidence APIs.",
       "language": "python",
@@ -1390,10 +1444,10 @@
       }
     },
     {
-      "bytes": 1182,
+      "bytes": 1286,
       "doc": "",
       "language": "python",
-      "lines": 21,
+      "lines": 23,
       "names": [
         "TransportTests",
         "test_real_local_stdio()"
@@ -1511,10 +1565,10 @@
       }
     },
     {
-      "bytes": 1967,
+      "bytes": 2053,
       "doc": "The pre-rename import path keeps working while pointing at the new package.",
       "language": "python",
-      "lines": 47,
+      "lines": 48,
       "names": [
         "RenameShimTests",
         "test_deprecated_package_forwards_to_kyper_workflow()",
@@ -1589,10 +1643,10 @@
       }
     },
     {
-      "bytes": 767,
+      "bytes": 936,
       "doc": "The distributable Skill and the project copy must not drift apart.",
       "language": "python",
-      "lines": 19,
+      "lines": 22,
       "names": [
         "SkillCopyTests",
         "test_project_copy_matches_distributable_skill()"

@@ -3,11 +3,15 @@ README.md	docs/AGENT-TEAMS.md	doc_link	(root)	docs	1
 README.md	docs/FIRST-RUN-SETUP.md	doc_link	(root)	docs	1
 README.md	docs/HOST-ADAPTERS.md	doc_link	(root)	docs	1
 README.md	docs/INSTALL-CODEX-WINDOWS.md	doc_link	(root)	docs	1
+README.md	docs/MCP-SPEC.md	doc_link	(root)	docs	1
 README.md	docs/MIGRATION-v0.4-to-plugin.md	doc_link	(root)	docs	1
 README.md	docs/RENAME-KYPERWORKFLOW.md	doc_link	(root)	docs	1
 completion_plugin/__init__.py	kyper_workflow/__init__.py	import	completion_plugin	kyper_workflow	1
 docs/AGENT-TEAMS.md	docs/HOST-ADAPTERS.md	doc_link	docs	docs	1
+docs/IMPLEMENTATION-STATUS.md	docs/MCP-SPEC.md	doc_link	docs	docs	1
 docs/INSTALL-CODEX-WINDOWS.md	docs/FIRST-RUN-SETUP.md	doc_link	docs	docs	1
+docs/MCP-SPEC.md	docs/PLUGIN-REFACTOR-SPEC.md	doc_link	docs	docs	1
+docs/PLUGIN-REFACTOR-SPEC.md	docs/MCP-SPEC.md	doc_link	docs	docs	1
 kyper_workflow/catalog.py	kyper_workflow/__init__.py	import	kyper_workflow	kyper_workflow	1
 kyper_workflow/catalog.py	kyper_workflow/hosts.py	import	kyper_workflow	kyper_workflow	1
 kyper_workflow/cli.py	kyper_workflow/catalog.py	import	kyper_workflow	kyper_workflow	1
@@ -59,6 +63,7 @@ tests/test_host_attestation.py	kyper_workflow/usage.py	import	tests	kyper_workfl
 tests/test_host_attestation.py	kyper_workflow/workflow.py	import	tests	kyper_workflow	1
 tests/test_hosts.py	kyper_workflow/catalog.py	import	tests	kyper_workflow	1
 tests/test_hosts.py	kyper_workflow/hosts.py	import	tests	kyper_workflow	1
+tests/test_identity.py	kyper_workflow/__init__.py	import	tests	kyper_workflow	1
 tests/test_independent_workflow.py	kyper_workflow/evidence.py	import	tests	kyper_workflow	1
 tests/test_independent_workflow.py	kyper_workflow/usage.py	import	tests	kyper_workflow	1
 tests/test_independent_workflow.py	kyper_workflow/workflow.py	import	tests	kyper_workflow	1
@@ -67,6 +72,7 @@ tests/test_interactive.py	kyper_workflow/runtime.py	import	tests	kyper_workflow	
 tests/test_interactive.py	kyper_workflow/usage.py	import	tests	kyper_workflow	1
 tests/test_interactive.py	kyper_workflow/workflow.py	import	tests	kyper_workflow	1
 tests/test_locking.py	kyper_workflow/locking.py	import	tests	kyper_workflow	1
+tests/test_mcp_transport.py	kyper_workflow/server.py	import	tests	kyper_workflow	1
 tests/test_onboarding.py	kyper_workflow/onboarding.py	import	tests	kyper_workflow	1
 tests/test_plan.py	kyper_workflow/catalog.py	import	tests	kyper_workflow	1
 tests/test_plan.py	kyper_workflow/plan.py	import	tests	kyper_workflow	1

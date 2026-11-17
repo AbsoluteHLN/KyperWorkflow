@@ -4,11 +4,11 @@
 
 ## 2026-11-17 multi-host role projections
 
-`python -m unittest discover -s tests`: 261 discovered, 255 passed, 6 skipped, 0 failures
-and 0 errors on the development interpreter; 261 / 257 / 4 on the shared interpreter with the
+`python -m unittest discover -s tests`: 263 discovered, 257 passed, 6 skipped, 0 failures
+and 0 errors on the development interpreter; 263 / 259 / 4 on the shared interpreter with the
 optional `mcp` extra, which exercises the real stdio transport against the eight-tool surface.
-The 13 JavaScript adapter tests pass. `map --check` passes on the refreshed map: 82 files and
-91 internal edges.
+The 13 JavaScript adapter tests pass. `map --check` passes on the refreshed map: 84 files and
+97 internal edges.
 
 Added exercises:
 
@@ -25,6 +25,8 @@ Added exercises:
 - export leaves unrelated files alone and never edits host configuration.
 - configuration placeholders (`待配置`, `局部路径`, `<...>`) stay `needs_user_input` even when
   they occupy path fields or nested route records; the shipped example contains no machine path.
+- `PROMPT_ALIAS` is `KalWf`; `capabilities()` exposes it with `alias_scope: prompt_shortcut_only`;
+  the Skill copy test requires the alias in both distributable and project copies.
 
 Not exercised: no exported file was loaded by all six real hosts. Frontmatter was checked
 against official field shapes, not a vendor schema validator. Codex parsing is a real TOML
