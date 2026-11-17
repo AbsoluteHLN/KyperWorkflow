@@ -16,7 +16,7 @@ Run without installation:
 
 ## First-run configuration
 
-An MCP client should call `setup_checklist` at the start of a session and ask the user to confirm the items before planning work: project root, a state directory outside the project, dependency and library paths, whether project tests may run, who supplies text/model/browser/native checks, sub-agent roles with allowed models and effort, the budget, the optional shared-memory target, and where the Skill is installed. Unconfirmed items keep their tasks blocked; nothing is defaulted on the user's behalf. See [docs/FIRST-RUN-SETUP.md](docs/FIRST-RUN-SETUP.md).
+An MCP client should call `setup_checklist` at the start of a session and ask the user to confirm the items before planning work: project root, a state directory outside the project, dependency and library paths, whether project tests may run, who supplies text/model/browser/native checks, sub-agent roles with allowed models and effort, whether the host uses native subagents or sequential execution, the budget, the optional shared-memory target, and where the Skill is installed. Unconfirmed items keep their tasks blocked; nothing is defaulted on the user's behalf. See [docs/FIRST-RUN-SETUP.md](docs/FIRST-RUN-SETUP.md).
 
 ## Project map
 
@@ -48,7 +48,9 @@ Tasks can be bound to a declarative role card that caps what they may touch: `ex
 
 Components are parameterised task templates (`code-change`, `test-covered-change`, `test-only`, `doc-sync`, `review-only`, `investigation`). They render `add_task` fields and never add, remove or approve a task themselves. Paths are normalised and rejected if absolute or escaping the workspace.
 
-`kyper-workflow plan --state <file>` (MCP `workflow_plan`) turns the approved graph into dependency waves, start batches that respect write-scope and role-parallel limits, the critical path and the blocker list. `kyper-workflow roles` (MCP `role_catalog`) prints the cards; `--export <role>` emits a Markdown + frontmatter card in the shape hosts such as Claude Code use for subagents. Everything is deterministic: no model calls, no process spawning, no automatic start. See [docs/AGENT-TEAMS.md](docs/AGENT-TEAMS.md).
+`kyper-workflow plan --state <file>` (MCP `workflow_plan`) turns the approved graph into dependency waves, start batches that respect write-scope and role-parallel limits, the critical path and the blocker list. `kyper-workflow roles` (MCP `role_catalog`) prints the cards.
+
+`kyper-workflow export --host <claude|cursor|codex|gemini|copilot|generic> --out <dir>` projects the same cards for one host. `--list-hosts` shows the capability matrix; `--check` detects drift; `--role` limits the export. Names are prefixed `kyper-` so they cannot override built-in agents. Only Cursor's `readonly` is close to a read-only switch; every host's path scope is still a contract, not a sandbox. No model ids or turn limits are invented, and nothing is installed automatically. See [docs/HOST-ADAPTERS.md](docs/HOST-ADAPTERS.md) and [docs/AGENT-TEAMS.md](docs/AGENT-TEAMS.md).
 
 ## Interactive terminal path
 

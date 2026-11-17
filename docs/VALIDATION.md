@@ -2,6 +2,32 @@
 
 2026-10-19 UTC; independent plugin 0.1.0, approved design spec-v002.
 
+## 2026-11-17 multi-host role projections
+
+`python -m unittest discover -s tests`: 260 discovered, 254 passed, 6 skipped, 0 failures
+and 0 errors on the development interpreter; 260 / 256 / 4 on the shared interpreter with the
+optional `mcp` extra, which exercises the real stdio transport against the eight-tool surface.
+The 13 JavaScript adapter tests pass. `map --check` passes on the refreshed map: 82 files and
+91 internal edges.
+
+Added exercises:
+
+- six host projections (Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot and a generic
+  prompt pack) render all five roles deterministically with `kyper-` namespaced names;
+- Codex TOML is parsed with `tomllib`; Claude/Gemini/Copilot frontmatter has the documented
+  field names and real tool names; Cursor `readonly` is `true` only for roles with no write
+  scopes;
+- model ids, `maxTurns`/`max_turns` and other invented host controls are absent; the capability
+  matrix records `instruction_only` for Codex and `readonly_flag` for Cursor;
+- Copilot's 30,000-character prompt limit is fail-closed; the export manifest is relative,
+  hash-based, written with LF, accepts a CRLF checkout, and `--check` detects missing and
+  changed files, including a partial export whose role subset comes from the manifest;
+- export leaves unrelated files alone and never edits host configuration.
+
+Not exercised: no exported file was loaded by all six real hosts. Frontmatter was checked
+against official field shapes, not a vendor schema validator. Codex parsing is a real TOML
+parse; this does not prove that a particular Codex release accepts every feature flag.
+
 ## 2026-11-17 KyperWorkflow 0.2.0 (rename + project map + first-run setup)
 
 ### 2026-11-17 roles, components and execution plan (same batch)

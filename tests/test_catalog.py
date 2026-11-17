@@ -120,10 +120,10 @@ class CatalogTests(unittest.TestCase):
 
     def test_subagent_card_is_portable_markdown(self):
         card = catalog.export_subagent(catalog.role(self.catalog, 'reviewer'))
-        self.assertTrue(card.startswith('---\nname: reviewer\n'))
-        self.assertIn('description:', card)
-        self.assertIn('## Scope', card)
-        self.assertIn('read only', card)
+        self.assertTrue(card.startswith('# KyperWorkflow role: Reviewer\n'))
+        self.assertIn('Role id: `reviewer`', card)
+        self.assertIn('Writes: none (read only)', card)
+        self.assertIn('Path scopes remain a contract', card)
 
     def test_markdown_and_digest_are_deterministic(self):
         first = catalog.render_markdown(self.catalog)

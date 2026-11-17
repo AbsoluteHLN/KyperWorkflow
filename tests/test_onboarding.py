@@ -36,11 +36,13 @@ class OnboardingTests(unittest.TestCase):
     def test_subagents_and_dependency_paths_are_covered(self):
         ids = {item['id'] for item in onboarding.ALL_ITEMS}
         self.assertIn('model_routes', ids)
+        self.assertIn('execution_topology', ids)
         self.assertIn('dependency_paths', ids)
         self.assertIn('host_checks', ids)
         self.assertIn('state_dir', ids)
         table = onboarding.markdown()
         self.assertIn('子智能体与模型路由', table)
+        self.assertIn('子智能体执行方式', table)
         self.assertIn('依赖库路径', table)
 
     def test_nothing_is_reported_ready_without_user_input(self):

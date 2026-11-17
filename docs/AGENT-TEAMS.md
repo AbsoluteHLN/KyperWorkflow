@@ -67,10 +67,24 @@
 
 同层不等于能并行：两个任务都写 `src/` 时会被拆进不同 batch 并列入 conflicts；三个 `implementer` 任务会按 `max_parallel=2` 拆成两批。
 
+## 多宿主投影
+
+同一张角色卡可以投到 Claude Code、Cursor、Codex、Gemini CLI、GitHub Copilot 和通用提示包。`kyper_workflow.hosts` 只发出各宿主官方文档承认的字段，并明确记录省略项：
+
+- 名称统一加 `kyper-` 前缀，避免覆盖宿主内置 `explorer` 等角色；
+- 不注入模型 id，模型路由仍由首次接入配置决定；
+- `max_parallel` 不映射为 `maxTurns`/`timeout`，并发是计划层概念；
+- 只有 Cursor 的 `readonly` 接近只读开关；其余宿主的路径范围仍是契约，不是沙箱；
+- 角色默认是叶子工人，不授予再生成子代理的工具；
+- 导出只写调用方显式给出的目录，并附 `.kyper-export.json` 供 `--check` 检查漂移。
+
+完整能力矩阵、各宿主字段与验证边界见 [HOST-ADAPTERS.md](HOST-ADAPTERS.md)。
+
 ## 与现有生态的对应关系
 
-- **Claude Code subagents**：Markdown + YAML frontmatter（`name` / `description` / `tools` / `model`）。`kyper-workflow roles --export implementer` 输出同形状的卡片；工具名与模型 id 属于宿主，不在这里编造。
-- **Agent Skills**：`SKILL.md` 是能力包。角色卡与组件表是**任务级**契约，Skill 是**流程级**提示，两者互补；Skill 只负责让助手记得先问、先规划、先批准。
+- **原生子智能体宿主**：把角色卡当作可复用工人定义；主代理负责委派任务、验收和汇总，子代理不接管审批。
+- **无原生子智能体的宿主**：使用 `generic` 提示包，一次执行一个角色与一个任务；组件和计划仍然有效。
+- **Agent Skills**：`SKILL.md` 是流程级能力包；角色卡是任务级契约；两者互补，Skill 不能替代宿主的权限系统。
 - **能力注册表 / DAG 编排**：本模块取拓扑排序与能力约束，不取“编排器自行扩权”。
 
 ## 边界

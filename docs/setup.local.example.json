@@ -15,6 +15,7 @@
     "native": "<who supplies native-device checks>"
   },
   "model_routes": [{"role": "<role>", "models": ["<allowed model>"], "effort": "<tier>", "max_parallel": 1}],
+  "execution_topology": {"host": "<claude|cursor|codex|gemini|copilot|generic>", "mode": "<native|sequential|mixed>", "export_dir": "<explicit directory>"},
   "budget": {"limit": 0, "currency": "<currency>", "unknown_usage": "<block|reserve>"},
   "shared_memory": {"enabled": false, "namespace": "<block or entity namespace>"},
   "skills_install": "<project|global|none>"

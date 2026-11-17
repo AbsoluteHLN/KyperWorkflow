@@ -37,11 +37,21 @@
       <data key="label">kyper_workflow/cli.py</data>
       <data key="area">kyper_workflow</data>
       <data key="language">python</data>
-      <data key="lines">120</data>
+      <data key="lines">137</data>
       <data key="inbound">0</data>
-      <data key="outbound">9</data>
+      <data key="outbound">10</data>
       <data key="entryPoint">true</data>
       <data key="summary">Local explicit actions. No automatic user confirmation through model inputs.</data>
+    </node>
+    <node id="kyper_workflow/catalog.py">
+      <data key="label">kyper_workflow/catalog.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">400</data>
+      <data key="inbound">7</data>
+      <data key="outbound">2</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Reusable role cards and task components.</data>
     </node>
     <node id="kyper_workflow/evidence.py">
       <data key="label">kyper_workflow/evidence.py</data>
@@ -63,23 +73,13 @@
       <data key="entryPoint">false</data>
       <data key="summary">Approved local review execution integrated with task state and usage.</data>
     </node>
-    <node id="kyper_workflow/catalog.py">
-      <data key="label">kyper_workflow/catalog.py</data>
-      <data key="area">kyper_workflow</data>
-      <data key="language">python</data>
-      <data key="lines">405</data>
-      <data key="inbound">6</data>
-      <data key="outbound">1</data>
-      <data key="entryPoint">false</data>
-      <data key="summary">Reusable role cards and task components.</data>
-    </node>
     <node id="kyper_workflow/server.py">
       <data key="label">kyper_workflow/server.py</data>
       <data key="area">kyper_workflow</data>
       <data key="language">python</data>
-      <data key="lines">85</data>
+      <data key="lines">105</data>
       <data key="inbound">0</data>
-      <data key="outbound">7</data>
+      <data key="outbound">8</data>
       <data key="entryPoint">false</data>
       <data key="summary">Optional MCP surface. Approval and file writes stay with trusted host actions.</data>
     </node>
@@ -87,9 +87,9 @@
       <data key="label">README.md</data>
       <data key="area">(root)</data>
       <data key="language">markdown</data>
-      <data key="lines">84</data>
+      <data key="lines">86</data>
       <data key="inbound">0</data>
-      <data key="outbound">5</data>
+      <data key="outbound">6</data>
       <data key="entryPoint">false</data>
       <data key="summary">KyperWorkflow 0.2.0</data>
     </node>
@@ -98,10 +98,20 @@
       <data key="area">kyper_workflow</data>
       <data key="language">python</data>
       <data key="lines">2</data>
-      <data key="inbound">5</data>
+      <data key="inbound">6</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
       <data key="summary">KyperWorkflow: explicit specification approval, bounded review and project mapping.</data>
+    </node>
+    <node id="kyper_workflow/hosts.py">
+      <data key="label">kyper_workflow/hosts.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">393</data>
+      <data key="inbound">4</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Conservative projections of KyperWorkflow role cards onto coding hosts.</data>
     </node>
     <node id="kyper_workflow/interactive.py">
       <data key="label">kyper_workflow/interactive.py</data>
@@ -127,7 +137,7 @@
       <data key="label">kyper_workflow/onboarding.py</data>
       <data key="area">kyper_workflow</data>
       <data key="language">python</data>
-      <data key="lines">192</data>
+      <data key="lines">200</data>
       <data key="inbound">3</data>
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
@@ -259,15 +269,35 @@
       <data key="entryPoint">false</data>
       <data key="summary">Deprecated import path.</data>
     </node>
+    <node id="docs/AGENT-TEAMS.md">
+      <data key="label">docs/AGENT-TEAMS.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">94</data>
+      <data key="inbound">1</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">角色、组件与执行计划（KyperWorkflow）</data>
+    </node>
     <node id="docs/FIRST-RUN-SETUP.md">
       <data key="label">docs/FIRST-RUN-SETUP.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">65</data>
+      <data key="lines">67</data>
       <data key="inbound">2</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
       <data key="summary">首次接入配置（KyperWorkflow）</data>
+    </node>
+    <node id="docs/HOST-ADAPTERS.md">
+      <data key="label">docs/HOST-ADAPTERS.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">166</data>
+      <data key="inbound">2</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">多宿主角色适配（KyperWorkflow）</data>
     </node>
     <node id="docs/INSTALL-CODEX-WINDOWS.md">
       <data key="label">docs/INSTALL-CODEX-WINDOWS.md</data>
@@ -298,6 +328,16 @@
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
       <data key="summary">Bounded time/output reads for explicitly trusted POSIX or Windows project commands.</data>
+    </node>
+    <node id="tests/test_hosts.py">
+      <data key="label">tests/test_hosts.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">172</data>
+      <data key="inbound">0</data>
+      <data key="outbound">2</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Host adapters are deterministic projections, not installed configuration.</data>
     </node>
     <node id="tests/test_plan.py">
       <data key="label">tests/test_plan.py</data>
@@ -337,16 +377,6 @@
       <data key="inbound">0</data>
       <data key="outbound">2</data>
       <data key="entryPoint">false</data>
-    </node>
-    <node id="docs/AGENT-TEAMS.md">
-      <data key="label">docs/AGENT-TEAMS.md</data>
-      <data key="area">docs</data>
-      <data key="language">markdown</data>
-      <data key="lines">80</data>
-      <data key="inbound">1</data>
-      <data key="outbound">0</data>
-      <data key="entryPoint">false</data>
-      <data key="summary">角色、组件与执行计划（KyperWorkflow）</data>
     </node>
     <node id="docs/MIGRATION-v0.4-to-plugin.md">
       <data key="label">docs/MIGRATION-v0.4-to-plugin.md</data>
@@ -420,7 +450,7 @@
       <data key="label">tests/test_onboarding.py</data>
       <data key="area">tests</data>
       <data key="language">python</data>
-      <data key="lines">115</data>
+      <data key="lines">117</data>
       <data key="inbound">0</data>
       <data key="outbound">1</data>
       <data key="entryPoint">false</data>
@@ -506,7 +536,7 @@
       <data key="label">.agents/skills/kyper-workflow/SKILL.md</data>
       <data key="area">.agents</data>
       <data key="language">markdown</data>
-      <data key="lines">34</data>
+      <data key="lines">35</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -607,7 +637,7 @@
       <data key="label">docs/IMPLEMENTATION-STATUS.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">31</data>
+      <data key="lines">33</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -657,7 +687,7 @@
       <data key="label">docs/TASK-MATRIX.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">48</data>
+      <data key="lines">49</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -677,7 +707,7 @@
       <data key="label">docs/VALIDATION.md</data>
       <data key="area">docs</data>
       <data key="language">markdown</data>
-      <data key="lines">127</data>
+      <data key="lines">153</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -715,7 +745,7 @@
       <data key="label">docs/setup.local.example.json</data>
       <data key="area">docs</data>
       <data key="language">json</data>
-      <data key="lines">21</data>
+      <data key="lines">22</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -743,7 +773,7 @@
       <data key="label">skills/kyper-workflow/SKILL.md</data>
       <data key="area">skills</data>
       <data key="language">markdown</data>
-      <data key="lines">34</data>
+      <data key="lines">35</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -752,7 +782,7 @@
       <data key="label">tests/test_mcp_transport.py</data>
       <data key="area">tests</data>
       <data key="language">python</data>
-      <data key="lines">19</data>
+      <data key="lines">21</data>
       <data key="inbound">0</data>
       <data key="outbound">0</data>
       <data key="entryPoint">false</data>
@@ -783,247 +813,271 @@
     <edge id="e1" source="README.md" target="docs/FIRST-RUN-SETUP.md">
       <data key="kind">doc_link</data>
     </edge>
-    <edge id="e2" source="README.md" target="docs/INSTALL-CODEX-WINDOWS.md">
+    <edge id="e2" source="README.md" target="docs/HOST-ADAPTERS.md">
       <data key="kind">doc_link</data>
     </edge>
-    <edge id="e3" source="README.md" target="docs/MIGRATION-v0.4-to-plugin.md">
+    <edge id="e3" source="README.md" target="docs/INSTALL-CODEX-WINDOWS.md">
       <data key="kind">doc_link</data>
     </edge>
-    <edge id="e4" source="README.md" target="docs/RENAME-KYPERWORKFLOW.md">
+    <edge id="e4" source="README.md" target="docs/MIGRATION-v0.4-to-plugin.md">
       <data key="kind">doc_link</data>
     </edge>
-    <edge id="e5" source="completion_plugin/__init__.py" target="kyper_workflow/__init__.py">
-      <data key="kind">import</data>
-    </edge>
-    <edge id="e6" source="docs/INSTALL-CODEX-WINDOWS.md" target="docs/FIRST-RUN-SETUP.md">
+    <edge id="e5" source="README.md" target="docs/RENAME-KYPERWORKFLOW.md">
       <data key="kind">doc_link</data>
     </edge>
-    <edge id="e7" source="kyper_workflow/catalog.py" target="kyper_workflow/__init__.py">
+    <edge id="e6" source="completion_plugin/__init__.py" target="kyper_workflow/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e8" source="kyper_workflow/cli.py" target="kyper_workflow/catalog.py">
+    <edge id="e7" source="docs/AGENT-TEAMS.md" target="docs/HOST-ADAPTERS.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e8" source="docs/INSTALL-CODEX-WINDOWS.md" target="docs/FIRST-RUN-SETUP.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e9" source="kyper_workflow/catalog.py" target="kyper_workflow/__init__.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e10" source="kyper_workflow/catalog.py" target="kyper_workflow/hosts.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e11" source="kyper_workflow/cli.py" target="kyper_workflow/catalog.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e12" source="kyper_workflow/cli.py" target="kyper_workflow/editorial.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e13" source="kyper_workflow/cli.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e14" source="kyper_workflow/cli.py" target="kyper_workflow/hosts.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e15" source="kyper_workflow/cli.py" target="kyper_workflow/interactive.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e16" source="kyper_workflow/cli.py" target="kyper_workflow/onboarding.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e9" source="kyper_workflow/cli.py" target="kyper_workflow/editorial.py">
+    <edge id="e17" source="kyper_workflow/cli.py" target="kyper_workflow/plan.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e10" source="kyper_workflow/cli.py" target="kyper_workflow/evidence.py">
+    <edge id="e18" source="kyper_workflow/cli.py" target="kyper_workflow/profiles.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e11" source="kyper_workflow/cli.py" target="kyper_workflow/interactive.py">
+    <edge id="e19" source="kyper_workflow/cli.py" target="kyper_workflow/structure.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e12" source="kyper_workflow/cli.py" target="kyper_workflow/onboarding.py">
+    <edge id="e20" source="kyper_workflow/cli.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e13" source="kyper_workflow/cli.py" target="kyper_workflow/plan.py">
+    <edge id="e21" source="kyper_workflow/evidence.py" target="kyper_workflow/process.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e14" source="kyper_workflow/cli.py" target="kyper_workflow/profiles.py">
+    <edge id="e22" source="kyper_workflow/evidence.py" target="kyper_workflow/windows_process.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e15" source="kyper_workflow/cli.py" target="kyper_workflow/structure.py">
+    <edge id="e23" source="kyper_workflow/hosts.py" target="kyper_workflow/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e16" source="kyper_workflow/cli.py" target="kyper_workflow/workflow.py">
+    <edge id="e24" source="kyper_workflow/interactive.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e17" source="kyper_workflow/evidence.py" target="kyper_workflow/process.py">
+    <edge id="e25" source="kyper_workflow/interactive.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e18" source="kyper_workflow/evidence.py" target="kyper_workflow/windows_process.py">
+    <edge id="e26" source="kyper_workflow/interactive.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e19" source="kyper_workflow/interactive.py" target="kyper_workflow/runtime.py">
+    <edge id="e27" source="kyper_workflow/onboarding.py" target="kyper_workflow/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e20" source="kyper_workflow/interactive.py" target="kyper_workflow/usage.py">
+    <edge id="e28" source="kyper_workflow/polishing.py" target="kyper_workflow/editorial.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e21" source="kyper_workflow/interactive.py" target="kyper_workflow/workflow.py">
+    <edge id="e29" source="kyper_workflow/process.py" target="kyper_workflow/windows_process.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e22" source="kyper_workflow/onboarding.py" target="kyper_workflow/__init__.py">
+    <edge id="e30" source="kyper_workflow/runtime.py" target="kyper_workflow/evidence.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e23" source="kyper_workflow/polishing.py" target="kyper_workflow/editorial.py">
+    <edge id="e31" source="kyper_workflow/runtime.py" target="kyper_workflow/profiles.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e24" source="kyper_workflow/process.py" target="kyper_workflow/windows_process.py">
+    <edge id="e32" source="kyper_workflow/server.py" target="kyper_workflow/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e25" source="kyper_workflow/runtime.py" target="kyper_workflow/evidence.py">
+    <edge id="e33" source="kyper_workflow/server.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e26" source="kyper_workflow/runtime.py" target="kyper_workflow/profiles.py">
+    <edge id="e34" source="kyper_workflow/server.py" target="kyper_workflow/editorial.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e27" source="kyper_workflow/server.py" target="kyper_workflow/__init__.py">
+    <edge id="e35" source="kyper_workflow/server.py" target="kyper_workflow/hosts.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e28" source="kyper_workflow/server.py" target="kyper_workflow/catalog.py">
+    <edge id="e36" source="kyper_workflow/server.py" target="kyper_workflow/onboarding.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e29" source="kyper_workflow/server.py" target="kyper_workflow/editorial.py">
+    <edge id="e37" source="kyper_workflow/server.py" target="kyper_workflow/plan.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e30" source="kyper_workflow/server.py" target="kyper_workflow/onboarding.py">
+    <edge id="e38" source="kyper_workflow/server.py" target="kyper_workflow/structure.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e31" source="kyper_workflow/server.py" target="kyper_workflow/plan.py">
+    <edge id="e39" source="kyper_workflow/server.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e32" source="kyper_workflow/server.py" target="kyper_workflow/structure.py">
+    <edge id="e40" source="kyper_workflow/usage.py" target="kyper_workflow/locking.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e33" source="kyper_workflow/server.py" target="kyper_workflow/workflow.py">
+    <edge id="e41" source="kyper_workflow/workflow.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e34" source="kyper_workflow/usage.py" target="kyper_workflow/locking.py">
+    <edge id="e42" source="kyper_workflow/workflow.py" target="kyper_workflow/locking.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e35" source="kyper_workflow/workflow.py" target="kyper_workflow/catalog.py">
+    <edge id="e43" source="kyper_workflow/workflow.py" target="kyper_workflow/plan.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e36" source="kyper_workflow/workflow.py" target="kyper_workflow/locking.py">
+    <edge id="e44" source="tests/test_acceptance_mode.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e37" source="kyper_workflow/workflow.py" target="kyper_workflow/plan.py">
+    <edge id="e45" source="tests/test_acceptance_mode.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e38" source="tests/test_acceptance_mode.py" target="kyper_workflow/runtime.py">
+    <edge id="e46" source="tests/test_acceptance_mode.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e39" source="tests/test_acceptance_mode.py" target="kyper_workflow/usage.py">
+    <edge id="e47" source="tests/test_catalog.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e40" source="tests/test_acceptance_mode.py" target="kyper_workflow/workflow.py">
+    <edge id="e48" source="tests/test_dispatch.py" target="kyper_workflow/profiles.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e41" source="tests/test_catalog.py" target="kyper_workflow/catalog.py">
+    <edge id="e49" source="tests/test_dispatch.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e42" source="tests/test_dispatch.py" target="kyper_workflow/profiles.py">
+    <edge id="e50" source="tests/test_dispatch.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e43" source="tests/test_dispatch.py" target="kyper_workflow/runtime.py">
+    <edge id="e51" source="tests/test_dispatch.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e44" source="tests/test_dispatch.py" target="kyper_workflow/usage.py">
+    <edge id="e52" source="tests/test_dsh.py" target="kyper_workflow/dsh.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e45" source="tests/test_dispatch.py" target="kyper_workflow/workflow.py">
+    <edge id="e53" source="tests/test_editorial.py" target="kyper_workflow/editorial.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e46" source="tests/test_dsh.py" target="kyper_workflow/dsh.py">
+    <edge id="e54" source="tests/test_host_attestation.py" target="kyper_workflow/evidence.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e47" source="tests/test_editorial.py" target="kyper_workflow/editorial.py">
+    <edge id="e55" source="tests/test_host_attestation.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e48" source="tests/test_host_attestation.py" target="kyper_workflow/evidence.py">
+    <edge id="e56" source="tests/test_host_attestation.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e49" source="tests/test_host_attestation.py" target="kyper_workflow/runtime.py">
+    <edge id="e57" source="tests/test_host_attestation.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e50" source="tests/test_host_attestation.py" target="kyper_workflow/usage.py">
+    <edge id="e58" source="tests/test_hosts.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e51" source="tests/test_host_attestation.py" target="kyper_workflow/workflow.py">
+    <edge id="e59" source="tests/test_hosts.py" target="kyper_workflow/hosts.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e52" source="tests/test_independent_workflow.py" target="kyper_workflow/evidence.py">
+    <edge id="e60" source="tests/test_independent_workflow.py" target="kyper_workflow/evidence.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e53" source="tests/test_independent_workflow.py" target="kyper_workflow/usage.py">
+    <edge id="e61" source="tests/test_independent_workflow.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e54" source="tests/test_independent_workflow.py" target="kyper_workflow/workflow.py">
+    <edge id="e62" source="tests/test_independent_workflow.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e55" source="tests/test_interactive.py" target="kyper_workflow/interactive.py">
+    <edge id="e63" source="tests/test_interactive.py" target="kyper_workflow/interactive.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e56" source="tests/test_interactive.py" target="kyper_workflow/runtime.py">
+    <edge id="e64" source="tests/test_interactive.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e57" source="tests/test_interactive.py" target="kyper_workflow/usage.py">
+    <edge id="e65" source="tests/test_interactive.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e58" source="tests/test_interactive.py" target="kyper_workflow/workflow.py">
+    <edge id="e66" source="tests/test_interactive.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e59" source="tests/test_locking.py" target="kyper_workflow/locking.py">
+    <edge id="e67" source="tests/test_locking.py" target="kyper_workflow/locking.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e60" source="tests/test_onboarding.py" target="kyper_workflow/onboarding.py">
+    <edge id="e68" source="tests/test_onboarding.py" target="kyper_workflow/onboarding.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e61" source="tests/test_plan.py" target="kyper_workflow/catalog.py">
+    <edge id="e69" source="tests/test_plan.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e62" source="tests/test_plan.py" target="kyper_workflow/plan.py">
+    <edge id="e70" source="tests/test_plan.py" target="kyper_workflow/plan.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e63" source="tests/test_polishing.py" target="kyper_workflow/polishing.py">
+    <edge id="e71" source="tests/test_polishing.py" target="kyper_workflow/polishing.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e64" source="tests/test_profiles.py" target="kyper_workflow/profiles.py">
+    <edge id="e72" source="tests/test_profiles.py" target="kyper_workflow/profiles.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e65" source="tests/test_project_execution.py" target="kyper_workflow/evidence.py">
+    <edge id="e73" source="tests/test_project_execution.py" target="kyper_workflow/evidence.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e66" source="tests/test_rename_shim.py" target="completion_plugin/__init__.py">
+    <edge id="e74" source="tests/test_rename_shim.py" target="completion_plugin/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e67" source="tests/test_rename_shim.py" target="kyper_workflow/__init__.py">
+    <edge id="e75" source="tests/test_rename_shim.py" target="kyper_workflow/__init__.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e68" source="tests/test_repo_hygiene.py" target="kyper_workflow/structure.py">
+    <edge id="e76" source="tests/test_repo_hygiene.py" target="kyper_workflow/structure.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e69" source="tests/test_roles.py" target="kyper_workflow/catalog.py">
+    <edge id="e77" source="tests/test_roles.py" target="kyper_workflow/catalog.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e70" source="tests/test_roles.py" target="kyper_workflow/workflow.py">
+    <edge id="e78" source="tests/test_roles.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e71" source="tests/test_runtime.py" target="kyper_workflow/runtime.py">
+    <edge id="e79" source="tests/test_runtime.py" target="kyper_workflow/runtime.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e72" source="tests/test_runtime.py" target="kyper_workflow/usage.py">
+    <edge id="e80" source="tests/test_runtime.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e73" source="tests/test_runtime.py" target="kyper_workflow/workflow.py">
+    <edge id="e81" source="tests/test_runtime.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e74" source="tests/test_structure.py" target="kyper_workflow/structure.py">
+    <edge id="e82" source="tests/test_structure.py" target="kyper_workflow/structure.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e75" source="tests/test_supervisor_host.py" target="kyper_workflow/usage.py">
+    <edge id="e83" source="tests/test_supervisor_host.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e76" source="tests/test_unicode_storage.py" target="kyper_workflow/usage.py">
+    <edge id="e84" source="tests/test_unicode_storage.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e77" source="tests/test_unicode_storage.py" target="kyper_workflow/workflow.py">
+    <edge id="e85" source="tests/test_unicode_storage.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e78" source="tests/test_usage_persistence.py" target="kyper_workflow/usage.py">
+    <edge id="e86" source="tests/test_usage_persistence.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e79" source="tests/test_windows_process.py" target="kyper_workflow/windows_process.py">
+    <edge id="e87" source="tests/test_windows_process.py" target="kyper_workflow/windows_process.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e80" source="tests/test_workflow.py" target="kyper_workflow/evidence.py">
+    <edge id="e88" source="tests/test_workflow.py" target="kyper_workflow/evidence.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e81" source="tests/test_workflow.py" target="kyper_workflow/usage.py">
+    <edge id="e89" source="tests/test_workflow.py" target="kyper_workflow/usage.py">
       <data key="kind">import</data>
     </edge>
-    <edge id="e82" source="tests/test_workflow.py" target="kyper_workflow/workflow.py">
+    <edge id="e90" source="tests/test_workflow.py" target="kyper_workflow/workflow.py">
       <data key="kind">import</data>
     </edge>
   </graph>

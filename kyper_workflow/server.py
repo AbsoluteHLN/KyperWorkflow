@@ -1,6 +1,6 @@
 """Optional MCP surface. Approval and file writes stay with trusted host actions."""
 from mcp.server.fastmcp import FastMCP
-from . import __version__, catalog, onboarding, plan, structure
+from . import __version__, catalog, hosts, onboarding, plan, structure
 from .editorial import review
 from .workflow import Workflow
 
@@ -17,8 +17,10 @@ def capabilities() -> dict:
             'project_map': 'deterministic_static_analysis',
             'team_model': 'declarative_roles_and_components',
             'scheduling': 'deterministic_dag_plan_no_auto_start',
+            'host_adapters': 'five_native_hosts_plus_generic_prompt_pack',
             'note': ('Call setup_checklist and ask the user to configure the items before '
-                     'planning work. role_catalog and workflow_plan are read-only.')}
+                     'planning work. role_catalog, workflow_plan and host_adapters are '
+                     'read-only.')}
 
 
 @app.tool()
@@ -62,6 +64,24 @@ def role_catalog(catalog_path: str | None = None) -> dict:
     return {'catalog': loaded, 'digest': catalog.digest(loaded),
             'markdown': catalog.render_markdown(loaded),
             'write_policy': 'Read only. Components render task fields; they never add tasks.'}
+
+
+@app.tool()
+def host_adapters(host: str | None = None, role: str | None = None,
+                  catalog_path: str | None = None) -> dict:
+    """Host capability matrix and a read-only preview of one projected role card."""
+    matrix = hosts.capabilities()
+    if host is None:
+        return matrix
+    entry = hosts.host(host)
+    if role is None:
+        return {'host': entry, 'matrix': matrix,
+                'write_policy': 'Read only. Use the CLI to export files.'}
+    loaded = catalog.load(catalog_path)
+    card = hosts.render(host, catalog.role(loaded, role))
+    return {'host': entry, 'card': card,
+            'write_policy': ('Prepared only; no host configuration was modified. '
+                             'The CLI export requires an explicit --out directory.')}
 
 
 @app.tool()

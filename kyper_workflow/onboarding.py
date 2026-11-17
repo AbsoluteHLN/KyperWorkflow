@@ -23,7 +23,8 @@ PRODUCT = 'KyperWorkflow'
 LOCAL_CONFIG_RELATIVE = Path('.kyper') / 'setup.local.json'
 LOCAL_CONFIG_ENV = 'KYPER_SETUP_CONFIG'
 CONFIG_KEYS = ('state_dir', 'dependency_paths', 'project_tests', 'host_checks',
-               'model_routes', 'budget', 'shared_memory', 'skills_install')
+               'model_routes', 'execution_topology', 'budget', 'shared_memory',
+               'skills_install')
 
 RUNTIME_ITEM = {'id': 'python_runtime', 'category': 'environment', 'required': True,
                 'title': 'Python 运行时',
@@ -62,6 +63,11 @@ ITEMS = (
      'why': '角色→模型→effort→并发与 fallback 属于用户决策；未批准的路由不得使用。',
      'how': '给出角色名、允许的模型与 effort 档位、并发上限、允许的 fallback 顺序。',
      'question': '需要哪些子智能体角色，各自允许哪些模型/effort/并发，fallback 顺序如何？'},
+    {'id': 'execution_topology', 'category': 'routing', 'required': False,
+     'title': '子智能体执行方式',
+     'why': '有的宿主有原生子智能体，有的只能顺序执行；同一角色契约需要明确投影方式。',
+     'how': '确认宿主、是否使用原生角色卡、单智能体顺序执行或混合，并记录导出目录。',
+     'question': '本次由哪个宿主执行，使用原生子智能体、顺序执行，还是混合？'},
     {'id': 'budget', 'category': 'routing', 'required': False,
      'title': '消耗预算',
      'why': '未知消耗下不能承诺硬预算；需要上限、币种和未核算额度的处理方式。',
@@ -132,14 +138,15 @@ def _detect(item_id, context):
             candidates.append(Path(root) / '.agents' / 'skills' / 'kyper-workflow' / 'SKILL.md')
         candidates.append(Path(__file__).resolve().parent.parent / 'skills' / 'kyper-workflow' / 'SKILL.md')
         return 'ok' if any(path.is_file() for path in candidates) else 'needs_user_input'
-    if item_id in ('host_checks', 'model_routes', 'budget', 'shared_memory') and (
+    if item_id in ('host_checks', 'model_routes', 'execution_topology', 'budget',
+                   'shared_memory') and (
             context.get(item_id) or config.get(item_id)):
         return 'ok'
     return 'needs_user_input'
 
 
 def checklist(root=None, *, state_dir=None, environ=None, host_checks=None,
-              model_routes=None, budget=None, shared_memory=None,
+              model_routes=None, execution_topology=None, budget=None, shared_memory=None,
               config=None, config_path=None):
     """Return the first-run items, detected state and a session prompt.
 
@@ -153,7 +160,8 @@ def checklist(root=None, *, state_dir=None, environ=None, host_checks=None,
     context = {'root': root, 'state_dir': state_dir,
                'environ': dict(environ if environ is not None else os.environ),
                'host_checks': host_checks, 'model_routes': model_routes,
-               'budget': budget, 'shared_memory': shared_memory, 'config': config}
+               'execution_topology': execution_topology, 'budget': budget,
+               'shared_memory': shared_memory, 'config': config}
     items = [dict(item, status=_detect(item['id'], context)) for item in ALL_ITEMS]
     needs = [item['id'] for item in items if item['status'] in ('needs_user_input', 'blocked')]
     return {'product': PRODUCT, 'version': __version__, 'items': items,

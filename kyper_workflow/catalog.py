@@ -356,24 +356,19 @@ def instantiate(catalog, component_id, *, name, params, depends=()):
     return result
 
 
-def export_subagent(role_entry):
-    """Drop-in Markdown + frontmatter card for hosts that read subagents.
+def export_role_card(role_entry):
+    """Host-neutral card for manual use; it carries no invented host fields."""
+    from . import hosts
+    return hosts.render('generic', role_entry)['content']
 
-    Only name, description and the declared checks are exported; tool names and
-    model ids are host-specific and deliberately not invented here.
+
+def export_subagent(role_entry):
+    """Deprecated alias for :func:`export_role_card`.
+
+    A host-specific subagent should be produced by `kyper_workflow.hosts`, which
+    documents the fields it emits and omits for that host.
     """
-    lines = ['---', 'name: %s' % role_entry['id'],
-             'description: %s' % role_entry['purpose'],
-             'tools: %s' % (', '.join(role_entry['allowed_checks']) or 'none'),
-             '---', '',
-             '## Scope', '',
-             '- Writes: %s' % (', '.join('`%s`' % s for s in role_entry['write_scopes'])
-                               or 'none — read only'),
-             '- Checks: %s' % ', '.join(role_entry['allowed_checks']),
-             '- Complexity: %s' % ', '.join(role_entry['complexity']),
-             '- Parallel limit: %d' % role_entry['max_parallel'],
-             '- Required handoff: %s' % ', '.join(role_entry['required_outputs'])]
-    return '\n'.join(lines) + '\n'
+    return export_role_card(role_entry)
 
 
 def render_markdown(catalog):

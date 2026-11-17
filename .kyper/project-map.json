@@ -1,7 +1,7 @@
 {
   "area_edges": [
     {
-      "count": 5,
+      "count": 6,
       "from": "(root)",
       "to": "docs"
     },
@@ -16,21 +16,21 @@
       "to": "completion_plugin"
     },
     {
-      "count": 44,
+      "count": 46,
       "from": "tests",
       "to": "kyper_workflow"
     }
   ],
   "areas": {
     "(root)": {
-      "bytes": 11940,
+      "bytes": 12351,
       "files": 5,
-      "lines": 132
+      "lines": 134
     },
     ".agents": {
-      "bytes": 6049,
+      "bytes": 6698,
       "files": 1,
-      "lines": 34
+      "lines": 35
     },
     "adapters": {
       "bytes": 44232,
@@ -43,24 +43,24 @@
       "lines": 19
     },
     "docs": {
-      "bytes": 100713,
-      "files": 17,
-      "lines": 1027
+      "bytes": 115502,
+      "files": 18,
+      "lines": 1239
     },
     "kyper_workflow": {
-      "bytes": 205794,
-      "files": 20,
-      "lines": 3941
+      "bytes": 224835,
+      "files": 21,
+      "lines": 4374
     },
     "skills": {
-      "bytes": 6049,
+      "bytes": 6698,
       "files": 1,
-      "lines": 34
+      "lines": 35
     },
     "tests": {
-      "bytes": 130108,
-      "files": 27,
-      "lines": 2564
+      "bytes": 138914,
+      "files": 28,
+      "lines": 2740
     }
   },
   "edges": [
@@ -73,6 +73,11 @@
       "from": "README.md",
       "kind": "doc_link",
       "to": "docs/FIRST-RUN-SETUP.md"
+    },
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/HOST-ADAPTERS.md"
     },
     {
       "from": "README.md",
@@ -95,6 +100,11 @@
       "to": "kyper_workflow/__init__.py"
     },
     {
+      "from": "docs/AGENT-TEAMS.md",
+      "kind": "doc_link",
+      "to": "docs/HOST-ADAPTERS.md"
+    },
+    {
       "from": "docs/INSTALL-CODEX-WINDOWS.md",
       "kind": "doc_link",
       "to": "docs/FIRST-RUN-SETUP.md"
@@ -103,6 +113,11 @@
       "from": "kyper_workflow/catalog.py",
       "kind": "import",
       "to": "kyper_workflow/__init__.py"
+    },
+    {
+      "from": "kyper_workflow/catalog.py",
+      "kind": "import",
+      "to": "kyper_workflow/hosts.py"
     },
     {
       "from": "kyper_workflow/cli.py",
@@ -118,6 +133,11 @@
       "from": "kyper_workflow/cli.py",
       "kind": "import",
       "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/hosts.py"
     },
     {
       "from": "kyper_workflow/cli.py",
@@ -158,6 +178,11 @@
       "from": "kyper_workflow/evidence.py",
       "kind": "import",
       "to": "kyper_workflow/windows_process.py"
+    },
+    {
+      "from": "kyper_workflow/hosts.py",
+      "kind": "import",
+      "to": "kyper_workflow/__init__.py"
     },
     {
       "from": "kyper_workflow/interactive.py",
@@ -213,6 +238,11 @@
       "from": "kyper_workflow/server.py",
       "kind": "import",
       "to": "kyper_workflow/editorial.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/hosts.py"
     },
     {
       "from": "kyper_workflow/server.py",
@@ -323,6 +353,16 @@
       "from": "tests/test_host_attestation.py",
       "kind": "import",
       "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_hosts.py",
+      "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
+      "from": "tests/test_hosts.py",
+      "kind": "import",
+      "to": "kyper_workflow/hosts.py"
     },
     {
       "from": "tests/test_independent_workflow.py",
@@ -484,7 +524,7 @@
     "kyper_workflow/cli.py"
   ],
   "external_imports": {
-    "__future__": 6,
+    "__future__": 7,
     "argparse": 1,
     "ast": 2,
     "collections": 2,
@@ -495,28 +535,29 @@
     "datetime": 10,
     "difflib": 1,
     "fcntl": 1,
+    "hashlib": 1,
     "io": 1,
-    "json": 19,
+    "json": 21,
     "math": 5,
     "mcp": 5,
     "msvcrt": 2,
     "os": 14,
-    "pathlib": 35,
+    "pathlib": 37,
     "pty": 1,
-    "re": 5,
+    "re": 6,
     "resource": 1,
     "select": 1,
     "signal": 1,
     "stat": 1,
     "subprocess": 7,
     "sys": 11,
-    "tempfile": 21,
+    "tempfile": 22,
     "threading": 2,
     "time": 5,
-    "tomllib": 1,
+    "tomllib": 2,
     "types": 1,
     "typing": 3,
-    "unittest": 32,
+    "unittest": 33,
     "uuid": 6,
     "warnings": 2,
     "xml": 1
@@ -535,10 +576,10 @@
       "path": "LICENSE"
     },
     {
-      "bytes": 8947,
+      "bytes": 9358,
       "doc": "KyperWorkflow 0.2.0",
       "language": "markdown",
-      "lines": 84,
+      "lines": 86,
       "path": "README.md"
     },
     {
@@ -555,10 +596,10 @@
       "path": "pyproject.toml"
     },
     {
-      "bytes": 6049,
+      "bytes": 6698,
       "doc": "",
       "language": "markdown",
-      "lines": 34,
+      "lines": 35,
       "path": ".agents/skills/kyper-workflow/SKILL.md"
     },
     {
@@ -618,24 +659,31 @@
       }
     },
     {
-      "bytes": 4832,
+      "bytes": 5677,
       "doc": "角色、组件与执行计划（KyperWorkflow）",
       "language": "markdown",
-      "lines": 80,
+      "lines": 94,
       "path": "docs/AGENT-TEAMS.md"
     },
     {
-      "bytes": 5834,
+      "bytes": 6160,
       "doc": "首次接入配置（KyperWorkflow）",
       "language": "markdown",
-      "lines": 65,
+      "lines": 67,
       "path": "docs/FIRST-RUN-SETUP.md"
     },
     {
-      "bytes": 5457,
+      "bytes": 10519,
+      "doc": "多宿主角色适配（KyperWorkflow）",
+      "language": "markdown",
+      "lines": 166,
+      "path": "docs/HOST-ADAPTERS.md"
+    },
+    {
+      "bytes": 6273,
       "doc": "Implementation status — 2026-11-17",
       "language": "markdown",
-      "lines": 31,
+      "lines": 33,
       "path": "docs/IMPLEMENTATION-STATUS.md"
     },
     {
@@ -688,10 +736,10 @@
       "path": "docs/STAGE-20261019-0300.md"
     },
     {
-      "bytes": 6558,
+      "bytes": 7044,
       "doc": "spec-v002 implementation matrix",
       "language": "markdown",
-      "lines": 48,
+      "lines": 49,
       "path": "docs/TASK-MATRIX.md"
     },
     {
@@ -702,10 +750,10 @@
       "path": "docs/TEXT-POLISHING.md"
     },
     {
-      "bytes": 9318,
+      "bytes": 10958,
       "doc": "Current validation",
       "language": "markdown",
-      "lines": 127,
+      "lines": 153,
       "path": "docs/VALIDATION.md"
     },
     {
@@ -728,9 +776,9 @@
       "path": "docs/python-tests.log"
     },
     {
-      "bytes": 1199,
+      "bytes": 1356,
       "language": "json",
-      "lines": 21,
+      "lines": 22,
       "path": "docs/setup.local.example.json"
     },
     {
@@ -747,32 +795,32 @@
       }
     },
     {
-      "bytes": 21074,
+      "bytes": 20572,
       "doc": "Reusable role cards and task components.",
       "language": "python",
-      "lines": 405,
+      "lines": 400,
       "names": [
         "bind()",
         "builtin()",
         "component()",
         "digest()",
+        "export_role_card()",
         "export_subagent()",
         "instantiate()",
-        "load()",
-        "render_markdown()"
+        "load()"
       ],
       "parse_error": null,
       "path": "kyper_workflow/catalog.py",
       "symbols": {
         "classes": 0,
-        "functions": 14
+        "functions": 15
       }
     },
     {
-      "bytes": 7601,
+      "bytes": 8625,
       "doc": "Local explicit actions. No automatic user confirmation through model inputs.",
       "language": "python",
-      "lines": 120,
+      "lines": 137,
       "names": [
         "main()"
       ],
@@ -843,6 +891,26 @@
       }
     },
     {
+      "bytes": 16961,
+      "doc": "Conservative projections of KyperWorkflow role cards onto coding hosts.",
+      "language": "python",
+      "lines": 393,
+      "names": [
+        "capabilities()",
+        "check()",
+        "files()",
+        "host()",
+        "render()",
+        "write()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/hosts.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 20
+      }
+    },
+    {
       "bytes": 5556,
       "doc": "Operator-facing terminal workflow. Agent/host users should use trusted adapters.",
       "language": "python",
@@ -875,10 +943,10 @@
       }
     },
     {
-      "bytes": 10966,
+      "bytes": 11597,
       "doc": "First-run configuration checklist.",
       "language": "python",
-      "lines": 192,
+      "lines": 200,
       "names": [
         "checklist()",
         "local_config()",
@@ -987,12 +1055,13 @@
       }
     },
     {
-      "bytes": 4228,
+      "bytes": 5155,
       "doc": "Optional MCP surface. Approval and file writes stay with trusted host actions.",
       "language": "python",
-      "lines": 85,
+      "lines": 105,
       "names": [
         "capabilities()",
+        "host_adapters()",
         "project_map()",
         "project_memory()",
         "review_text()",
@@ -1004,7 +1073,7 @@
       "path": "kyper_workflow/server.py",
       "symbols": {
         "classes": 0,
-        "functions": 7
+        "functions": 8
       }
     },
     {
@@ -1109,10 +1178,10 @@
       }
     },
     {
-      "bytes": 6049,
+      "bytes": 6698,
       "doc": "",
       "language": "markdown",
-      "lines": 34,
+      "lines": 35,
       "path": "skills/kyper-workflow/SKILL.md"
     },
     {
@@ -1134,7 +1203,7 @@
       }
     },
     {
-      "bytes": 8450,
+      "bytes": 8504,
       "doc": "Reusable roles and components: fail-closed validation, no hidden defaults.",
       "language": "python",
       "lines": 167,
@@ -1238,6 +1307,28 @@
       }
     },
     {
+      "bytes": 8501,
+      "doc": "Host adapters are deterministic projections, not installed configuration.",
+      "language": "python",
+      "lines": 172,
+      "names": [
+        "HostAdapterTests",
+        "frontmatter()",
+        "role()",
+        "setUp()",
+        "test_capability_matrix_names_the_limits()",
+        "test_claude_frontmatter_has_a_real_tool_allowlist()",
+        "test_codex_output_is_valid_standalone_toml()",
+        "test_copilot_prompt_limit_is_fail_closed()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_hosts.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 16
+      }
+    },
+    {
       "bytes": 16258,
       "doc": "Independent negative-path coverage of the local workflow and evidence APIs.",
       "language": "python",
@@ -1299,10 +1390,10 @@
       }
     },
     {
-      "bytes": 1037,
+      "bytes": 1182,
       "doc": "",
       "language": "python",
-      "lines": 19,
+      "lines": 21,
       "names": [
         "TransportTests",
         "test_real_local_stdio()"
@@ -1315,10 +1406,10 @@
       }
     },
     {
-      "bytes": 5446,
+      "bytes": 5552,
       "doc": "First-run configuration items are explicit, complete and never silently defaulted.",
       "language": "python",
-      "lines": 115,
+      "lines": 117,
       "names": [
         "OnboardingTests",
         "setUp()",

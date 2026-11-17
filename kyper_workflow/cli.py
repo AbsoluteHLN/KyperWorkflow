@@ -26,6 +26,7 @@ def main():
  ro=sub.add_parser('roles');ro.add_argument('--catalog');ro.add_argument('--json',dest='as_json',action='store_true');ro.add_argument('--export',metavar='ROLE')
  pl=sub.add_parser('plan');pl.add_argument('--state',required=True);pl.add_argument('--catalog');pl.add_argument('--json',dest='as_json',action='store_true')
  cp=sub.add_parser('component');cp.add_argument('id');cp.add_argument('--name',required=True);cp.add_argument('--catalog');cp.add_argument('--param',action='append',default=[]);cp.add_argument('--json',dest='as_json',action='store_true')
+ ex=sub.add_parser('export');ex.add_argument('--host',choices=('claude','cursor','codex','gemini','copilot','generic'));ex.add_argument('--out');ex.add_argument('--role',action='append',default=[]);ex.add_argument('--catalog');ex.add_argument('--check',action='store_true');ex.add_argument('--list-hosts',action='store_true');ex.add_argument('--json',dest='as_json',action='store_true')
  a=p.parse_args()
  stale=[]
  if a.command=='resume':
@@ -38,9 +39,25 @@ def main():
   from . import catalog as catalog_mod
   loaded=catalog_mod.load(a.catalog)
   if a.export:
-   result={'role':a.export,'card':catalog_mod.export_subagent(catalog_mod.role(loaded,a.export))}
+   result={'role':a.export,'card':catalog_mod.export_role_card(catalog_mod.role(loaded,a.export))}
   else:
    result={'catalog':loaded,'digest':catalog_mod.digest(loaded),'markdown':catalog_mod.render_markdown(loaded)}
+ elif a.command=='export':
+  from . import catalog as catalog_mod
+  from . import hosts
+  loaded=catalog_mod.load(a.catalog)
+  if a.list_hosts:
+   result=hosts.capabilities()
+  else:
+   if not a.host:raise ValueError('Choose --host or use --list-hosts')
+   if a.check:
+    if not a.out:raise ValueError('--check requires --out')
+    result=hosts.check(a.host,loaded,a.out,role_ids=a.role or None)
+    stale=[item['path'] for item in result['stale']]
+   else:
+    if not a.out:raise ValueError('--out is required')
+    result=hosts.write(a.host,loaded,a.out,role_ids=a.role)
+   result['capabilities']=hosts.host(a.host)
  elif a.command=='plan':
   from .workflow import Workflow
   from . import plan as plan_mod

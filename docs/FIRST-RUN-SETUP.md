@@ -11,9 +11,10 @@ KyperWorkflow 不替用户猜配置。接入 MCP 后，助手应**先在会话�
 > 4. 项目测试执行许可（必填）：是否允许对受信任项目运行项目测试？在哪个平台执行？
 > 5. 宿主检查提供方（必填）：文本语义、模型输出、浏览器和真机检查分别由谁提供？
 > 6. 子智能体与模型路由（可选）：需要哪些角色，各自允许哪些模型/effort/并发，fallback 顺序如何？
-> 7. 消耗预算（可选）：预算上限和币种？未知消耗时阻塞还是允许预留额？
-> 8. 共享记忆接入（可选）：是否把项目图谱摘要写入共享记忆？写入哪个命名空间？
-> 9. Skill 安装位置（可选）：安装在项目级还是全局技能目录？
+> 7. 子智能体执行方式（可选）：本次由哪个宿主执行，使用原生子智能体、顺序执行，还是混合？
+> 8. 消耗预算（可选）：预算上限和币种？未知消耗时阻塞还是允许预留额？
+> 9. 共享记忆接入（可选）：是否把项目图谱摘要写入共享记忆？写入哪个命名空间？
+> 10. Skill 安装位置（可选）：安装在项目级还是全局技能目录？
 
 ## 条目表
 
@@ -26,6 +27,7 @@ KyperWorkflow 不替用户猜配置。接入 MCP 后，助手应**先在会话�
 | 项目测试执行许可 | 是 | 运行测试等于执行项目代码；需要明确许可与平台清理能力 | 确认是否允许 `project_tests`；Windows 用 Job Object，其他平台受限 |
 | 宿主检查提供方 | 是 | text/model/browser/native 本地无法完成，没有回调只能 blocked | 说明由哪一层提供，以及由谁批准 |
 | 子智能体与模型路由 | 否 | 角色→模型→effort→并发与 fallback 属于用户决策 | 给出角色名、允许模型与 effort、并发上限、fallback 顺序 |
+| 子智能体执行方式 | 否 | 原生角色卡与顺序执行的隔离、成本和可观测性不同 | 给出宿主、`native`/`sequential`/`mixed` 和导出目录 |
 | 消耗预算 | 否 | 未知消耗下不能承诺硬预算 | 给出上限与币种，以及未知消耗的预留额或直接阻塞 |
 | 共享记忆接入 | 否 | 项目图谱摘要可被其他会话复用 | 指定共享记忆 MCP 与写入的块/实体命名空间 |
 | Skill 安装位置 | 否 | Skill 只是流程指引，不会被自动发现 | 复制 `skills/kyper-workflow` 到 `.agents/skills/kyper-workflow` 或全局目录 |
@@ -39,7 +41,7 @@ KyperWorkflow 不替用户猜配置。接入 MCP 后，助手应**先在会话�
 - `project_tests`：平台是否为原生 Windows（Job Object）；其他平台返回 `platform_limited`。
 - `dependency_paths`：是否设置了 `PYTHONPATH`；没有则仍需用户说明实际依赖位置。
 - `skills_install`：项目 `.agents/skills/kyper-workflow/SKILL.md` 或包内 Skill 是否存在。
-- `host_checks` / `model_routes` / `budget` / `shared_memory`：无法从本地推断，默认 `needs_user_input`；只有调用方显式传入配置才记为 `ok`。
+- `host_checks` / `model_routes` / `execution_topology` / `budget` / `shared_memory`：无法从本地推断，默认 `needs_user_input`；只有调用方显式传入配置才记为 `ok`。
 
 状态值只有三种：`ok`、`needs_user_input`、`blocked`/`platform_limited`。**没有"默认可用"这一档**，检测不到就是需要用户确认。
 
