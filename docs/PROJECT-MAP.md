@@ -6,24 +6,24 @@ document links. No model calls, no semantic claims. Regenerate with
 
 ## Overview
 
-- Files: 71
-- Lines: 6974
-- Languages: javascript 5, json 1, markdown 18, other 4, python 42, toml 1
-- Internal dependency edges: 66
+- Files: 73
+- Lines: 7265
+- Languages: javascript 5, json 2, markdown 18, other 4, python 43, toml 1
+- Internal dependency edges: 69
 - Entry points: `kyper_workflow/cli.py`
 
 ## Areas
 
 | Area | Files | Lines | Outbound edges | Inbound edges |
 |---|---|---|---|---|
-| `(root)` | 5 | 120 | 4 | 0 |
+| `(root)` | 5 | 124 | 4 | 0 |
 | `.agents` | 1 | 32 | 0 | 0 |
 | `adapters` | 7 | 758 | 0 | 0 |
-| `completion_plugin` | 1 | 14 | 0 | 1 |
-| `docs` | 15 | 849 | 0 | 4 |
-| `kyper_workflow` | 18 | 3165 | 0 | 37 |
+| `completion_plugin` | 1 | 19 | 1 | 1 |
+| `docs` | 16 | 918 | 0 | 4 |
+| `kyper_workflow` | 18 | 3222 | 0 | 40 |
 | `skills` | 1 | 32 | 0 | 0 |
-| `tests` | 23 | 2004 | 38 | 0 |
+| `tests` | 24 | 2160 | 40 | 0 |
 
 ## Relationship graph
 
@@ -34,7 +34,7 @@ throughout this map, so the graph, the tables below and `.kyper/project-map.json
 describe the same graph. Machine-readable copies:
 `.kyper/project-graph.dot`, `.kyper/project-graph.graphml`, `.kyper/project-graph.tsv`.
 
-- Nodes shown: 40 of 71 files; edges shown: 63 of 66
+- Nodes shown: 40 of 73 files; edges shown: 65 of 69
 
 ```mermaid
 graph LR
@@ -42,13 +42,13 @@ graph LR
     g_README_md["README.md<br/>76 lines"]
   end
   subgraph g_completion_plugin["completion_plugin"]
-    g_completion_plugin___init___py["completion_plugin/__init__.py<br/>14 lines"]
+    g_completion_plugin___init___py["completion_plugin/__init__.py<br/>19 lines"]
   end
   subgraph g_docs["docs"]
-    g_docs_FIRST_RUN_SETUP_md["docs/FIRST-RUN-SETUP.md<br/>50 lines"]
+    g_docs_FIRST_RUN_SETUP_md["docs/FIRST-RUN-SETUP.md<br/>65 lines"]
     g_docs_INSTALL_CODEX_WINDOWS_md["docs/INSTALL-CODEX-WINDOWS.md<br/>67 lines"]
     g_docs_MIGRATION_v0_4_to_plugin_md["docs/MIGRATION-v0.4-to-plugin.md<br/>12 lines"]
-    g_docs_RENAME_KYPERWORKFLOW_md["docs/RENAME-KYPERWORKFLOW.md<br/>47 lines"]
+    g_docs_RENAME_KYPERWORKFLOW_md["docs/RENAME-KYPERWORKFLOW.md<br/>53 lines"]
   end
   subgraph g_kyper_workflow["kyper_workflow"]
     g_kyper_workflow_usage_py["kyper_workflow/usage.py<br/>126 lines"]
@@ -57,14 +57,14 @@ graph LR
     g_kyper_workflow_runtime_py["kyper_workflow/runtime.py<br/>104 lines"]
     g_kyper_workflow_cli_py["kyper_workflow/cli.py (entry)<br/>90 lines"]
     g_kyper_workflow_interactive_py["kyper_workflow/interactive.py<br/>92 lines"]
+    g_kyper_workflow___init___py["kyper_workflow/__init__.py<br/>2 lines"]
     g_kyper_workflow_editorial_py["kyper_workflow/editorial.py<br/>194 lines"]
-    g_kyper_workflow_onboarding_py["kyper_workflow/onboarding.py<br/>138 lines"]
+    g_kyper_workflow_onboarding_py["kyper_workflow/onboarding.py<br/>192 lines"]
     g_kyper_workflow_profiles_py["kyper_workflow/profiles.py<br/>474 lines"]
     g_kyper_workflow_server_py["kyper_workflow/server.py<br/>60 lines"]
+    g_kyper_workflow_structure_py["kyper_workflow/structure.py<br/>740 lines"]
     g_kyper_workflow_locking_py["kyper_workflow/locking.py<br/>44 lines"]
-    g_kyper_workflow_structure_py["kyper_workflow/structure.py<br/>737 lines"]
     g_kyper_workflow_windows_process_py["kyper_workflow/windows_process.py<br/>240 lines"]
-    g_kyper_workflow___init___py["kyper_workflow/__init__.py<br/>2 lines"]
     g_kyper_workflow_polishing_py["kyper_workflow/polishing.py<br/>198 lines"]
     g_kyper_workflow_process_py["kyper_workflow/process.py<br/>33 lines"]
     g_kyper_workflow_dsh_py["kyper_workflow/dsh.py<br/>251 lines"]
@@ -77,21 +77,22 @@ graph LR
     g_tests_test_independent_workflow_py["tests/test_independent_workflow.py<br/>360 lines"]
     g_tests_test_runtime_py["tests/test_runtime.py<br/>17 lines"]
     g_tests_test_workflow_py["tests/test_workflow.py<br/>37 lines"]
+    g_tests_test_rename_shim_py["tests/test_rename_shim.py<br/>47 lines"]
     g_tests_test_unicode_storage_py["tests/test_unicode_storage.py<br/>9 lines"]
     g_tests_test_dsh_py["tests/test_dsh.py<br/>172 lines"]
     g_tests_test_editorial_py["tests/test_editorial.py<br/>162 lines"]
     g_tests_test_locking_py["tests/test_locking.py<br/>16 lines"]
-    g_tests_test_onboarding_py["tests/test_onboarding.py<br/>62 lines"]
+    g_tests_test_onboarding_py["tests/test_onboarding.py<br/>115 lines"]
     g_tests_test_polishing_py["tests/test_polishing.py<br/>157 lines"]
     g_tests_test_profiles_py["tests/test_profiles.py<br/>268 lines"]
     g_tests_test_project_execution_py["tests/test_project_execution.py<br/>12 lines"]
-    g_tests_test_rename_shim_py["tests/test_rename_shim.py<br/>24 lines"]
-    g_tests_test_structure_py["tests/test_structure.py<br/>227 lines"]
+    g_tests_test_repo_hygiene_py["tests/test_repo_hygiene.py<br/>69 lines"]
   end
   g_README_md -.-> g_docs_FIRST_RUN_SETUP_md
   g_README_md -.-> g_docs_INSTALL_CODEX_WINDOWS_md
   g_README_md -.-> g_docs_MIGRATION_v0_4_to_plugin_md
   g_README_md -.-> g_docs_RENAME_KYPERWORKFLOW_md
+  g_completion_plugin___init___py --> g_kyper_workflow___init___py
   g_docs_INSTALL_CODEX_WINDOWS_md -.-> g_docs_FIRST_RUN_SETUP_md
   g_kyper_workflow_cli_py --> g_kyper_workflow_editorial_py
   g_kyper_workflow_cli_py --> g_kyper_workflow_evidence_py
@@ -142,10 +143,11 @@ graph LR
   g_tests_test_profiles_py --> g_kyper_workflow_profiles_py
   g_tests_test_project_execution_py --> g_kyper_workflow_evidence_py
   g_tests_test_rename_shim_py --> g_completion_plugin___init___py
+  g_tests_test_rename_shim_py --> g_kyper_workflow___init___py
+  g_tests_test_repo_hygiene_py --> g_kyper_workflow_structure_py
   g_tests_test_runtime_py --> g_kyper_workflow_runtime_py
   g_tests_test_runtime_py --> g_kyper_workflow_usage_py
   g_tests_test_runtime_py --> g_kyper_workflow_workflow_py
-  g_tests_test_structure_py --> g_kyper_workflow_structure_py
   g_tests_test_unicode_storage_py --> g_kyper_workflow_usage_py
   g_tests_test_unicode_storage_py --> g_kyper_workflow_workflow_py
   g_tests_test_workflow_py --> g_kyper_workflow_evidence_py
@@ -167,27 +169,28 @@ graph LR
   class g_kyper_workflow_cli_py g_area_kyper_workflow,entry;
   class g_kyper_workflow_interactive_py g_area_kyper_workflow;
   class g_README_md g_area__root_;
+  class g_kyper_workflow___init___py g_area_kyper_workflow;
   class g_kyper_workflow_editorial_py g_area_kyper_workflow;
   class g_kyper_workflow_onboarding_py g_area_kyper_workflow;
   class g_kyper_workflow_profiles_py g_area_kyper_workflow;
   class g_kyper_workflow_server_py g_area_kyper_workflow;
+  class g_kyper_workflow_structure_py g_area_kyper_workflow;
   class g_tests_test_dispatch_py g_area_tests;
   class g_tests_test_host_attestation_py g_area_tests;
   class g_tests_test_interactive_py g_area_tests;
   class g_kyper_workflow_locking_py g_area_kyper_workflow;
-  class g_kyper_workflow_structure_py g_area_kyper_workflow;
   class g_kyper_workflow_windows_process_py g_area_kyper_workflow;
   class g_tests_test_acceptance_mode_py g_area_tests;
   class g_tests_test_independent_workflow_py g_area_tests;
   class g_tests_test_runtime_py g_area_tests;
   class g_tests_test_workflow_py g_area_tests;
+  class g_completion_plugin___init___py g_area_completion_plugin;
   class g_docs_FIRST_RUN_SETUP_md g_area_docs;
   class g_docs_INSTALL_CODEX_WINDOWS_md g_area_docs;
-  class g_kyper_workflow___init___py g_area_kyper_workflow;
   class g_kyper_workflow_polishing_py g_area_kyper_workflow;
   class g_kyper_workflow_process_py g_area_kyper_workflow;
+  class g_tests_test_rename_shim_py g_area_tests;
   class g_tests_test_unicode_storage_py g_area_tests;
-  class g_completion_plugin___init___py g_area_completion_plugin;
   class g_docs_MIGRATION_v0_4_to_plugin_md g_area_docs;
   class g_docs_RENAME_KYPERWORKFLOW_md g_area_docs;
   class g_kyper_workflow_dsh_py g_area_kyper_workflow;
@@ -198,11 +201,10 @@ graph LR
   class g_tests_test_polishing_py g_area_tests;
   class g_tests_test_profiles_py g_area_tests;
   class g_tests_test_project_execution_py g_area_tests;
-  class g_tests_test_rename_shim_py g_area_tests;
-  class g_tests_test_structure_py g_area_tests;
+  class g_tests_test_repo_hygiene_py g_area_tests;
 ```
 
-_3 lower-degree file node(s) omitted; the complete graph is in the graph exports and the JSON map._
+_4 lower-degree file node(s) omitted; the complete graph is in the graph exports and the JSON map._
 
 ### Area summary
 
@@ -214,13 +216,14 @@ graph LR
   g__agents[".agents<br/>1 files"]
   g_adapters["adapters<br/>7 files"]
   g_completion_plugin["completion_plugin<br/>1 files"]
-  g_docs["docs<br/>15 files"]
+  g_docs["docs<br/>16 files"]
   g_kyper_workflow["kyper_workflow<br/>18 files"]
   g_skills["skills<br/>1 files"]
-  g_tests["tests<br/>23 files"]
+  g_tests["tests<br/>24 files"]
   g__root_ -->|4| g_docs
+  g_completion_plugin --> g_kyper_workflow
   g_tests --> g_completion_plugin
-  g_tests -->|37| g_kyper_workflow
+  g_tests -->|39| g_kyper_workflow
 ```
 
 ## Files
@@ -229,7 +232,7 @@ graph LR
 
 | File | Lines | Symbols | Summary | Internal imports |
 |---|---|---|---|---|
-| `.gitignore` | 10 |  | — | — |
+| `.gitignore` | 14 |  | — | — |
 | `LICENSE` | 10 |  | — | — |
 | `README.md` | 76 |  | KyperWorkflow 0.2.0 | — |
 | `THIRD_PARTY_NOTICES.md` | 10 |  | Sources and licensing | — |
@@ -257,27 +260,28 @@ graph LR
 
 | File | Lines | Symbols | Summary | Internal imports |
 |---|---|---|---|---|
-| `completion_plugin/__init__.py` | 14 | 0 fn / 0 cls | Deprecated import path. | — |
+| `completion_plugin/__init__.py` | 19 | 0 fn / 0 cls | Deprecated import path. | `kyper_workflow/__init__.py` |
 
 ### `docs`
 
 | File | Lines | Symbols | Summary | Internal imports |
 |---|---|---|---|---|
-| `docs/FIRST-RUN-SETUP.md` | 50 |  | 首次接入配置（KyperWorkflow） | — |
+| `docs/FIRST-RUN-SETUP.md` | 65 |  | 首次接入配置（KyperWorkflow） | — |
 | `docs/IMPLEMENTATION-STATUS.md` | 30 |  | Implementation status — 2026-11-17 | — |
 | `docs/INSTALL-CODEX-WINDOWS.md` | 67 |  | Codex 与 Windows 手动试用（v0.1.2） | — |
 | `docs/MIGRATION-v0.4-to-plugin.md` | 12 |  | 从旧 MCP v0.4 迁移 | — |
 | `docs/PLUGIN-REFACTOR-SPEC.md` | 234 |  | KyperWorkflow 通用插件重构规格 | — |
 | `docs/RELEASE-0.1.1.md` | 7 |  | 0.1.1 Windows storage compatibility patch | — |
 | `docs/RELEASE-0.1.2.md` | 19 |  | 0.1.2 Windows runner and Unicode patch | — |
-| `docs/RENAME-KYPERWORKFLOW.md` | 47 |  | 改名：CompletionQAMCP → KyperWorkflow | — |
+| `docs/RENAME-KYPERWORKFLOW.md` | 53 |  | 改名：CompletionQAMCP → KyperWorkflow | — |
 | `docs/STAGE-20261019-0300.md` | 9 |  | QA 插件阶段记录 | — |
 | `docs/TASK-MATRIX.md` | 47 |  | spec-v002 implementation matrix | — |
 | `docs/TEXT-POLISHING.md` | 12 |  | Using the writing workflow | — |
-| `docs/VALIDATION.md` | 73 |  | Current validation | — |
+| `docs/VALIDATION.md` | 100 |  | Current validation | — |
 | `docs/WINDOWS-RUNNER.md` | 60 |  | Windows contained process runner | — |
 | `docs/dsh-tests.log` | 26 |  | — | — |
 | `docs/python-tests.log` | 156 |  | — | — |
+| `docs/setup.local.example.json` | 21 |  | — | — |
 
 ### `kyper_workflow`
 
@@ -290,13 +294,13 @@ graph LR
 | `kyper_workflow/evidence.py` | 161 | 11 fn / 1 cls | Bounded direct-content checks; trusted local runner, not tamper protection. | `kyper_workflow/process.py`, `kyper_workflow/windows_process.py` |
 | `kyper_workflow/interactive.py` | 92 | 4 fn / 0 cls | Operator-facing terminal workflow. Agent/host users should use trusted adapters. | `kyper_workflow/runtime.py`, `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
 | `kyper_workflow/locking.py` | 44 | 1 fn / 0 cls | Local advisory writer lock for POSIX and Windows, with bounded waiting. | — |
-| `kyper_workflow/onboarding.py` | 138 | 4 fn / 0 cls | First-run configuration checklist. | `kyper_workflow/__init__.py` |
+| `kyper_workflow/onboarding.py` | 192 | 5 fn / 0 cls | First-run configuration checklist. | `kyper_workflow/__init__.py` |
 | `kyper_workflow/polishing.py` | 198 | 6 fn / 3 cls | Host-injected candidate generation and review; no network/provider client. | `kyper_workflow/editorial.py` |
 | `kyper_workflow/process.py` | 33 | 2 fn / 0 cls | Bounded time/output reads for explicitly trusted POSIX or Windows project commands. | `kyper_workflow/windows_process.py` |
 | `kyper_workflow/profiles.py` | 474 | 24 fn / 8 cls | Versioned, secret-free profile configuration and fail-closed validation. | — |
 | `kyper_workflow/runtime.py` | 104 | 3 fn / 0 cls | Approved local review execution integrated with task state and usage. | `kyper_workflow/evidence.py`, `kyper_workflow/profiles.py` |
 | `kyper_workflow/server.py` | 60 | 5 fn / 0 cls | Optional MCP surface. Approval and file writes stay with trusted host actions. | `kyper_workflow/__init__.py`, `kyper_workflow/editorial.py`, `kyper_workflow/onboarding.py`, `kyper_workflow/structure.py` |
-| `kyper_workflow/structure.py` | 737 | 30 fn / 0 cls | Deterministic project structure map: files, imports, doc links and areas. | — |
+| `kyper_workflow/structure.py` | 740 | 30 fn / 0 cls | Deterministic project structure map: files, imports, doc links and areas. | — |
 | `kyper_workflow/test_runner.py` | 32 | 1 fn / 0 cls | Explicitly trusted project tests, not a security sandbox. | — |
 | `kyper_workflow/usage.py` | 126 | 8 fn / 2 cls | Local attempt accounting and bounded progress supervision. | `kyper_workflow/locking.py` |
 | `kyper_workflow/windows_process.py` | 240 | 7 fn / 7 cls | Windows-only bounded runner for trusted, fixed executable/argument lists. | — |
@@ -321,14 +325,15 @@ graph LR
 | `tests/test_interactive.py` | 57 | 7 fn / 1 cls | — | `kyper_workflow/interactive.py`, `kyper_workflow/runtime.py`, `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
 | `tests/test_locking.py` | 16 | 2 fn / 1 cls | — | `kyper_workflow/locking.py` |
 | `tests/test_mcp_transport.py` | 18 | 1 fn / 1 cls | — | — |
-| `tests/test_onboarding.py` | 62 | 6 fn / 1 cls | First-run configuration items are explicit, complete and never silently defaulted. | `kyper_workflow/onboarding.py` |
+| `tests/test_onboarding.py` | 115 | 10 fn / 1 cls | First-run configuration items are explicit, complete and never silently defaulted. | `kyper_workflow/onboarding.py` |
 | `tests/test_polishing.py` | 157 | 22 fn / 1 cls | Synthetic host contract tests; no real model is called. | `kyper_workflow/polishing.py` |
 | `tests/test_profiles.py` | 268 | 32 fn / 1 cls | — | `kyper_workflow/profiles.py` |
 | `tests/test_project_execution.py` | 12 | 2 fn / 1 cls | — | `kyper_workflow/evidence.py` |
-| `tests/test_rename_shim.py` | 24 | 2 fn / 1 cls | The pre-rename import path keeps working while pointing at the new package. | `completion_plugin/__init__.py` |
+| `tests/test_rename_shim.py` | 47 | 4 fn / 1 cls | The pre-rename import path keeps working while pointing at the new package. | `completion_plugin/__init__.py`, `kyper_workflow/__init__.py` |
+| `tests/test_repo_hygiene.py` | 69 | 6 fn / 1 cls | Generated maps and tracked files must not carry this machine's layout. | `kyper_workflow/structure.py` |
 | `tests/test_runtime.py` | 17 | 1 fn / 1 cls | — | `kyper_workflow/runtime.py`, `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
 | `tests/test_skill_copies.py` | 19 | 1 fn / 1 cls | The distributable Skill and the project copy must not drift apart. | — |
-| `tests/test_structure.py` | 227 | 24 fn / 2 cls | Deterministic project map: files, imports, doc links, areas and memory payload. | `kyper_workflow/structure.py` |
+| `tests/test_structure.py` | 238 | 25 fn / 2 cls | Deterministic project map: files, imports, doc links, areas and memory payload. | `kyper_workflow/structure.py` |
 | `tests/test_supervisor_host.py` | 11 | 3 fn / 1 cls | — | `kyper_workflow/usage.py` |
 | `tests/test_terminal_process.py` | 29 | 3 fn / 1 cls | Synthetic operator input over real PTY; not real user authorization evidence. | — |
 | `tests/test_unicode_storage.py` | 9 | 1 fn / 1 cls | — | `kyper_workflow/usage.py`, `kyper_workflow/workflow.py` |
@@ -344,11 +349,11 @@ graphs or proof that a dependency is used correctly.
 - `(root)`: depends on `docs` (4); used by nothing outside itself
 - `.agents`: depends on nothing outside itself; used by nothing outside itself
 - `adapters`: depends on nothing outside itself; used by nothing outside itself
-- `completion_plugin`: depends on nothing outside itself; used by `tests` (1)
+- `completion_plugin`: depends on `kyper_workflow` (1); used by `tests` (1)
 - `docs`: depends on nothing outside itself; used by `(root)` (4)
-- `kyper_workflow`: depends on nothing outside itself; used by `tests` (37)
+- `kyper_workflow`: depends on nothing outside itself; used by `completion_plugin` (1), `tests` (39)
 - `skills`: depends on nothing outside itself; used by nothing outside itself
-- `tests`: depends on `completion_plugin` (1), `kyper_workflow` (37); used by nothing outside itself
+- `tests`: depends on `completion_plugin` (1), `kyper_workflow` (39); used by nothing outside itself
 
 ## Isolated files
 
@@ -378,6 +383,7 @@ configuration files that legitimately have none.
 - `docs/WINDOWS-RUNNER.md`
 - `docs/dsh-tests.log`
 - `docs/python-tests.log`
+- `docs/setup.local.example.json`
 - `kyper_workflow/test_runner.py`
 - `skills/kyper-workflow/SKILL.md`
 - `tests/test_mcp_transport.py`
@@ -400,27 +406,27 @@ Top-level names that do not resolve to a project file.
 - `difflib` (stdlib) — 1 site(s)
 - `fcntl` (stdlib) — 1 site(s)
 - `io` (stdlib) — 1 site(s)
-- `json` (stdlib) — 14 site(s)
+- `json` (stdlib) — 17 site(s)
 - `math` (stdlib) — 5 site(s)
-- `mcp` — 4 site(s)
+- `mcp` — 5 site(s)
 - `msvcrt` (stdlib) — 2 site(s)
 - `os` (stdlib) — 14 site(s)
-- `pathlib` (stdlib) — 30 site(s)
+- `pathlib` (stdlib) — 31 site(s)
 - `pty` (stdlib) — 1 site(s)
-- `re` (stdlib) — 3 site(s)
+- `re` (stdlib) — 4 site(s)
 - `resource` (stdlib) — 1 site(s)
 - `select` (stdlib) — 1 site(s)
 - `signal` (stdlib) — 1 site(s)
 - `stat` (stdlib) — 1 site(s)
-- `subprocess` (stdlib) — 6 site(s)
-- `sys` (stdlib) — 10 site(s)
+- `subprocess` (stdlib) — 7 site(s)
+- `sys` (stdlib) — 11 site(s)
 - `tempfile` (stdlib) — 19 site(s)
 - `threading` (stdlib) — 2 site(s)
 - `time` (stdlib) — 5 site(s)
 - `tomllib` (stdlib) — 1 site(s)
 - `types` (stdlib) — 1 site(s)
 - `typing` (stdlib) — 3 site(s)
-- `unittest` (stdlib) — 27 site(s)
+- `unittest` (stdlib) — 29 site(s)
 - `uuid` (stdlib) — 6 site(s)
 - `warnings` (stdlib) — 2 site(s)
 - `xml` (stdlib) — 1 site(s)

@@ -12,3 +12,8 @@ warnings.warn('completion_plugin is deprecated; import kyper_workflow instead',
 
 __path__ = [os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                          'kyper_workflow')]
+
+# Deployed configuration still launches `-m completion_plugin.server`, and that
+# module does `from . import __version__`. __path__ alone forwards submodules but
+# not package attributes, so re-export the metadata here as well.
+from kyper_workflow import __version__  # noqa: E402,F401

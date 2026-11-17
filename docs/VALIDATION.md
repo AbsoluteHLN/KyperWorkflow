@@ -4,6 +4,33 @@
 
 ## 2026-11-17 KyperWorkflow 0.2.0 (rename + project map + first-run setup)
 
+### 2026-11-17 machine-local config isolation + MCP reinstall (same batch)
+
+`python -m unittest discover -s tests`: 214 discovered, 208 passed, 6 skipped, 0 failures
+and 0 errors on the development interpreter, and 214 / 210 / 4 on the shared interpreter that
+has the optional `mcp` extra. The 13 JavaScript adapter tests still pass.
+
+Committed and generated files no longer carry the operator's disk layout: `render_json` drops
+the resolved absolute `root`, so the map document and all four graph exports contain repository
+relative paths only. `tests/test_repo_hygiene.py` enforces this against the working tree
+(drive-letter paths with a boundary so `http://` is not a false positive, the home directory,
+the checkout path), asserts `.kyper/setup.local.json` stays ignored, and asserts the
+placeholder-only `docs/setup.local.example.json` ships. The onboarding checklist now reads
+answers from `KYPER_SETUP_CONFIG`, `~/.kyper/setup.local.json` or
+`<root>/.kyper/setup.local.json`, reports the file it read, and treats a malformed file as
+still-unconfirmed rather than as configuration. Onboarding tests patch `Path.home` and the
+environment variable so they cannot read the developer's own config.
+
+Reinstalling the deployed MCP exposed a rename regression: `completion_plugin.server` does
+`from . import __version__`, which `__path__` forwarding does not provide, so the pre-rename
+launch command failed with `ImportError`. `completion_plugin/__init__.py` now re-exports
+`__version__`; `tests/test_rename_shim.py` covers both the attribute and importing the server
+through the old path. After the fix, `-m completion_plugin.server` and
+`-m kyper_workflow.server` both report `serverInfo.name = kyper-workflow` over stdio, and both
+interpreters run the suite green. A host gateway in front of the server kept serving a cached
+two-tool `tools/list` until its client reconnected, so that path needs a reconnect after
+upgrades; direct stdio listing shows all five tools.
+
 ### 2026-11-17 graph views (same batch)
 
 `python -m unittest discover -s tests`: 204 discovered, 199 passed, 5 skipped, 0 failures

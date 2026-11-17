@@ -48,3 +48,18 @@ KyperWorkflow 不替用户猜配置。接入 MCP 后，助手应**先在会话�
 - `capabilities()` 返回 `first_run_setup: required_before_planning`，提醒客户端先走本流程。
 - `setup_checklist` 只返回清单与建议话术，不写任何文件、不改配置。
 - 用户确认后的值由宿主写入项目外状态目录；KyperWorkflow 不会把模型自报的值当成用户确认。
+
+## 本机配置放哪里（不要提交）
+
+答案属于个人机器，不入库。把 `docs/setup.local.example.json` 复制为下列任一路径并填自己的值：
+
+1. 环境变量 `KYPER_SETUP_CONFIG` 指向的文件；
+2. `~/.kyper/setup.local.json`（跨项目共用一份）；
+3. `<root>/.kyper/setup.local.json`（单项目，已在 `.gitignore` 中）。
+
+查找顺序：显式 `config_path` → `KYPER_SETUP_CONFIG` → `~/.kyper/setup.local.json` → `<root>/.kyper/setup.local.json`。`setup_checklist` 会回显实际读取的 `config_source`，JSON 坏了记为 `config_error` 并继续把条目当未确认。
+
+- 只认 `state_dir`、`dependency_paths`、`project_tests`、`host_checks`、`model_routes`、`budget`、`shared_memory`、`skills_install` 这些键，其他键忽略。
+- 文件里出现绝对路径是正常的：它被 `.gitignore` 排除。示例文件只含占位符，`tests/test_onboarding.py` 会检查示例文件不含真实盘符路径。
+- 项目图谱同样不写机器路径：`render_json` 在序列化时丢弃解析出的绝对 `root`，只保留仓库相对路径，所以 `.kyper/project-map.json` 与导出的图谱文件可以安全公开。
+- 读取本机配置只是**读取**，不构成用户确认的替代：跨项目复用同一份配置前，仍应在会话里确认一遍。

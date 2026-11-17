@@ -8,6 +8,7 @@ planning work instead of inventing defaults.
 """
 from __future__ import annotations
 
+import json
 import os
 import sys
 from pathlib import Path
@@ -15,6 +16,14 @@ from pathlib import Path
 from . import __version__
 
 PRODUCT = 'KyperWorkflow'
+
+# Machine-local configuration stays out of the repository. The file holds absolute
+# paths and provider choices that belong to one operator's machine, so it is
+# git-ignored; an example with placeholders is committed instead.
+LOCAL_CONFIG_RELATIVE = Path('.kyper') / 'setup.local.json'
+LOCAL_CONFIG_ENV = 'KYPER_SETUP_CONFIG'
+CONFIG_KEYS = ('state_dir', 'dependency_paths', 'project_tests', 'host_checks',
+               'model_routes', 'budget', 'shared_memory', 'skills_install')
 
 RUNTIME_ITEM = {'id': 'python_runtime', 'category': 'environment', 'required': True,
                 'title': 'Python 运行时',
@@ -73,16 +82,48 @@ ITEMS = (
 ALL_ITEMS = (RUNTIME_ITEM,) + ITEMS
 
 
+def local_config(root=None, *, path=None):
+    """Read operator-local settings, or a placeholder-only example, from disk.
+
+    Precedence: explicit `path`, then `KYPER_SETUP_CONFIG`, then
+    `<root>/.kyper/setup.local.json`. Values are never invented: a missing file is
+    reported as `source: None` and every item stays a question.
+    """
+    candidates = []
+    if path:
+        candidates.append(Path(path))
+    elif os.environ.get(LOCAL_CONFIG_ENV):
+        candidates.append(Path(os.environ[LOCAL_CONFIG_ENV]))
+    else:
+        candidates.append(Path.home() / '.kyper' / 'setup.local.json')
+    if root and Path(root) / LOCAL_CONFIG_RELATIVE not in candidates:
+        candidates.append(Path(root) / LOCAL_CONFIG_RELATIVE)
+    for candidate in candidates:
+        if not candidate.is_file():
+            continue
+        try:
+            data = json.loads(candidate.read_text(encoding='utf-8'))
+        except (ValueError, UnicodeError) as error:
+            return {}, str(candidate), 'unreadable: %s' % type(error).__name__
+        if not isinstance(data, dict):
+            return {}, str(candidate), 'unreadable: expected a JSON object'
+        return {key: data[key] for key in CONFIG_KEYS if key in data}, str(candidate), None
+    return {}, (str(candidates[0]) if candidates else None), None
+
+
 def _detect(item_id, context):
     root = context.get('root')
+    config = context.get('config') or {}
     if item_id == 'python_runtime':
         return 'ok' if sys.version_info >= (3, 11) else 'blocked'
     if item_id == 'project_root':
         return 'ok' if root and Path(root).is_dir() else 'needs_user_input'
     if item_id == 'state_dir':
-        return 'ok' if context.get('state_dir') else 'needs_user_input'
+        return 'ok' if (context.get('state_dir') or config.get('state_dir')) else 'needs_user_input'
     if item_id == 'dependency_paths':
-        return 'ok' if context.get('environ', {}).get('PYTHONPATH') else 'needs_user_input'
+        if context.get('environ', {}).get('PYTHONPATH') or config.get('dependency_paths'):
+            return 'ok'
+        return 'needs_user_input'
     if item_id == 'project_tests':
         return 'ok' if os.name == 'nt' else 'platform_limited'
     if item_id == 'skills_install':
@@ -91,22 +132,35 @@ def _detect(item_id, context):
             candidates.append(Path(root) / '.agents' / 'skills' / 'kyper-workflow' / 'SKILL.md')
         candidates.append(Path(__file__).resolve().parent.parent / 'skills' / 'kyper-workflow' / 'SKILL.md')
         return 'ok' if any(path.is_file() for path in candidates) else 'needs_user_input'
-    if item_id in ('host_checks', 'model_routes', 'budget', 'shared_memory') and context.get(item_id):
+    if item_id in ('host_checks', 'model_routes', 'budget', 'shared_memory') and (
+            context.get(item_id) or config.get(item_id)):
         return 'ok'
     return 'needs_user_input'
 
 
 def checklist(root=None, *, state_dir=None, environ=None, host_checks=None,
-              model_routes=None, budget=None, shared_memory=None):
-    """Return the first-run items, detected state and a session prompt."""
+              model_routes=None, budget=None, shared_memory=None,
+              config=None, config_path=None):
+    """Return the first-run items, detected state and a session prompt.
+
+    Answers recorded in the git-ignored local file count as confirmed; explicit
+    keyword arguments override them. Nothing here is written to disk.
+    """
+    if config is None:
+        config, source, error = local_config(root, path=config_path)
+    else:
+        source, error = ('<caller-supplied>' if config else None), None
     context = {'root': root, 'state_dir': state_dir,
                'environ': dict(environ if environ is not None else os.environ),
                'host_checks': host_checks, 'model_routes': model_routes,
-               'budget': budget, 'shared_memory': shared_memory}
+               'budget': budget, 'shared_memory': shared_memory, 'config': config}
     items = [dict(item, status=_detect(item['id'], context)) for item in ALL_ITEMS]
     needs = [item['id'] for item in items if item['status'] in ('needs_user_input', 'blocked')]
     return {'product': PRODUCT, 'version': __version__, 'items': items,
             'needs_input': needs, 'ready': not needs,
+            'config_source': source, 'config_error': error,
+            'config_note': ('machine-local values are read from a git-ignored file; '
+                            'nothing is committed or uploaded'),
             'prompt': session_prompt(items, needs)}
 
 

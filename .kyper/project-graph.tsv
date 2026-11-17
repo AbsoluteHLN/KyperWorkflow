@@ -3,6 +3,7 @@ README.md	docs/FIRST-RUN-SETUP.md	doc_link	(root)	docs	1
 README.md	docs/INSTALL-CODEX-WINDOWS.md	doc_link	(root)	docs	1
 README.md	docs/MIGRATION-v0.4-to-plugin.md	doc_link	(root)	docs	1
 README.md	docs/RENAME-KYPERWORKFLOW.md	doc_link	(root)	docs	1
+completion_plugin/__init__.py	kyper_workflow/__init__.py	import	completion_plugin	kyper_workflow	1
 docs/INSTALL-CODEX-WINDOWS.md	docs/FIRST-RUN-SETUP.md	doc_link	docs	docs	1
 kyper_workflow/cli.py	kyper_workflow/editorial.py	import	kyper_workflow	kyper_workflow	1
 kyper_workflow/cli.py	kyper_workflow/evidence.py	import	kyper_workflow	kyper_workflow	1
@@ -53,6 +54,8 @@ tests/test_polishing.py	kyper_workflow/polishing.py	import	tests	kyper_workflow	
 tests/test_profiles.py	kyper_workflow/profiles.py	import	tests	kyper_workflow	1
 tests/test_project_execution.py	kyper_workflow/evidence.py	import	tests	kyper_workflow	1
 tests/test_rename_shim.py	completion_plugin/__init__.py	import	tests	completion_plugin	1
+tests/test_rename_shim.py	kyper_workflow/__init__.py	import	tests	kyper_workflow	1
+tests/test_repo_hygiene.py	kyper_workflow/structure.py	import	tests	kyper_workflow	1
 tests/test_runtime.py	kyper_workflow/runtime.py	import	tests	kyper_workflow	1
 tests/test_runtime.py	kyper_workflow/usage.py	import	tests	kyper_workflow	1
 tests/test_runtime.py	kyper_workflow/workflow.py	import	tests	kyper_workflow	1

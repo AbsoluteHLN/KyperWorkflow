@@ -26,7 +26,9 @@ GitHub 仓库已改名为 `https://github.com/AbsoluteHLN/KyperWorkflow.git`，�
 如果 MCP 客户端仍指向共享环境里的旧包（例如 `-m completion_plugin.server`），需要在该环境重装：
 
 ```powershell
-& '<python.exe>' -m pip install --upgrade <本仓库路径>
+# 发行名也改了，所以 --upgrade 不会替换旧包：先卸载再安装
+& '<python.exe>' -m pip uninstall -y completion-review-plugin
+& '<python.exe>' -m pip install -e "<本仓库路径>[mcp]"   # 可编辑安装，改代码即生效
 ```
 
 然后二选一：
@@ -35,6 +37,10 @@ GitHub 仓库已改名为 `https://github.com/AbsoluteHLN/KyperWorkflow.git`，�
 2. 把客户端配置改为 `-m kyper_workflow.server`，重启该 MCP server。
 
 `capabilities()` 会返回 `product`/`version`，可用来确认实际运行的是新版。
+
+保留旧入口时注意：旧入口不只是 `__path__` 转发，包属性也要转发，因为 `completion_plugin.server` 的模块体里有 `from . import __version__`。`completion_plugin/__init__.py` 因此重新导出了 `__version__`，`tests/test_rename_shim.py` 覆盖这一点。
+
+经宿主网关（例如把 server 挂在 HTTP 网关后面）连接的客户端会缓存 `tools/list` 结果：升级后要在宿主侧重连或重启该 server 才能看到新工具，直接 stdio 探测可作为对照。
 
 ## 未改名之处
 

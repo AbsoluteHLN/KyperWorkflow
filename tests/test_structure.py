@@ -90,6 +90,17 @@ class StructureTests(unittest.TestCase):
         core = next(entity for entity in payload['entities'] if entity['name'] == 'pkg/core.py')
         self.assertIn('functions: 1', core['observations'])
 
+    def test_serialized_map_carries_no_absolute_path(self):
+        """Committed maps are shared; they must not reveal the operator's layout."""
+        payload = structure.render_json(self.project)
+        self.assertNotIn(str(self.root), payload)
+        self.assertNotIn('"root"', payload)
+        self.assertIn('"name"', payload)
+        document = structure.render_markdown(self.project)
+        for relative, text in structure.render_graph_exports(self.project).items():
+            self.assertNotIn(str(self.root), text, relative)
+        self.assertNotIn(str(self.root), structure.digest(self.project))
+
     def test_unparsable_file_is_reported_not_hidden(self):
         (self.root / 'pkg' / 'broken.py').write_text('def (\n', encoding='utf-8')
         project = structure.scan(self.root)

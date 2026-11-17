@@ -662,7 +662,10 @@ def render_markdown(project, *, title=None):
 
 
 def render_json(project):
-    return json.dumps(project, ensure_ascii=False, indent=2, sort_keys=True) + '\n'
+    """Serialized map for committing. The resolved absolute root is deliberately
+    dropped so a committed or shared map cannot leak the operator's disk layout."""
+    payload = {key: value for key, value in project.items() if key != 'root'}
+    return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + '\n'
 
 
 def digest(project, *, max_modules=24):

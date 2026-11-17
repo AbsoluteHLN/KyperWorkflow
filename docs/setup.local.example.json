@@ -1,0 +1,21 @@
+{
+  "_note": "Copy to .kyper/setup.local.json (git-ignored), or to ~/.kyper/setup.local.json, and fill in this machine only. Placeholder values below are deliberately unusable; anything left unset stays a question in setup_checklist instead of being defaulted. Never commit real paths.",
+  "state_dir": "<absolute path outside every reviewed project>",
+  "dependency_paths": {
+    "interpreter": "<absolute python.exe or python binary>",
+    "pythonpath": ["<library root>"],
+    "node_modules": ["<node_modules root>"],
+    "offline_cache": ["<dependency cache root>"]
+  },
+  "project_tests": {"allowed": false, "platform": "<windows|posix>"},
+  "host_checks": {
+    "text": "<who supplies semantic text review>",
+    "model": "<who supplies model-output review>",
+    "browser": "<who supplies browser checks>",
+    "native": "<who supplies native-device checks>"
+  },
+  "model_routes": [{"role": "<role>", "models": ["<allowed model>"], "effort": "<tier>", "max_parallel": 1}],
+  "budget": {"limit": 0, "currency": "<currency>", "unknown_usage": "<block|reserve>"},
+  "shared_memory": {"enabled": false, "namespace": "<block or entity namespace>"},
+  "skills_install": "<project|global|none>"
+}
