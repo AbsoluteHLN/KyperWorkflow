@@ -1,6 +1,6 @@
 import unittest,tempfile
 from pathlib import Path
-from completion_plugin.usage import Ledger
+from kyper_workflow.usage import Ledger
 class LedgerTests(unittest.TestCase):
  def test_recover_unknown_and_duplicate(self):
   with tempfile.TemporaryDirectory() as d:

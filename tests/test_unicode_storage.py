@@ -1,7 +1,7 @@
 import tempfile,unittest
 from pathlib import Path
-from completion_plugin.workflow import Workflow
-from completion_plugin.usage import Ledger
+from kyper_workflow.workflow import Workflow
+from kyper_workflow.usage import Ledger
 class UnicodeTests(unittest.TestCase):
  def test_utf8_state_and_usage(self):
   with tempfile.TemporaryDirectory() as d:

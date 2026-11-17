@@ -1,9 +1,9 @@
 import tempfile
 import unittest
 from pathlib import Path
-from completion_plugin.workflow import Workflow
-from completion_plugin.evidence import Review
-from completion_plugin.usage import Ledger, Supervisor
+from kyper_workflow.workflow import Workflow
+from kyper_workflow.evidence import Review
+from kyper_workflow.usage import Ledger, Supervisor
 class WorkflowTests(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)

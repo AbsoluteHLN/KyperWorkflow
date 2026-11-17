@@ -1,10 +1,10 @@
 """Synthetic host dispatcher integration; no external model invocation."""
 import unittest,tempfile
 from pathlib import Path
-from completion_plugin.profiles import Profile,Route,Role,ProfileValidator,ProbeResult,HostContext,STAGES
-from completion_plugin.workflow import Workflow
-from completion_plugin.runtime import dispatch_profile
-from completion_plugin.usage import Ledger,Supervisor
+from kyper_workflow.profiles import Profile,Route,Role,ProfileValidator,ProbeResult,HostContext,STAGES
+from kyper_workflow.workflow import Workflow
+from kyper_workflow.runtime import dispatch_profile
+from kyper_workflow.usage import Ledger,Supervisor
 class DispatchTests(unittest.TestCase):
  def test_approved_route_to_pending_qa(self):
   with tempfile.TemporaryDirectory() as d:

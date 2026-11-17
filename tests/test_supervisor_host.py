@@ -1,5 +1,5 @@
 import unittest
-from completion_plugin.usage import Supervisor,Ledger
+from kyper_workflow.usage import Supervisor,Ledger
 class SupervisorHostTests(unittest.TestCase):
  def test_absent(self):self.assertEqual(Supervisor().model_check('x')['status'],'blocked')
  def test_cannot_override_pause(self):

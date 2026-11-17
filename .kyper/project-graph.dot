@@ -1,0 +1,170 @@
+digraph "KyperWorkflow" {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10];
+  edge [color="#666666", fontsize=8];
+  subgraph "cluster_.agents" {
+    label=".agents";
+    bgcolor="#fdefe0";
+    ".agents/skills/kyper-workflow/SKILL.md" [fillcolor="#fdefe0", label=".agents/skills/kyper-workflow/SKILL.md\n32 lines"];
+  }
+  subgraph "cluster_adapters" {
+    label="adapters";
+    bgcolor="#fbe7e7";
+    "adapters/dsh/README.md" [fillcolor="#fbe7e7", label="adapters/dsh/README.md\n221 lines"];
+    "adapters/dsh/bridge.js" [fillcolor="#fbe7e7", label="adapters/dsh/bridge.js\n165 lines"];
+    "adapters/dsh/bridge.test.js" [fillcolor="#fbe7e7", label="adapters/dsh/bridge.test.js\n117 lines"];
+    "adapters/dsh/index.js" [fillcolor="#fbe7e7", label="adapters/dsh/index.js\n15 lines"];
+    "adapters/dsh/integration-example.mjs" [fillcolor="#fbe7e7", label="adapters/dsh/integration-example.mjs\n103 lines"];
+    "adapters/dsh/package.json" [fillcolor="#fbe7e7", label="adapters/dsh/package.json\n28 lines"];
+    "adapters/dsh/profiles.js" [fillcolor="#fbe7e7", label="adapters/dsh/profiles.js\n109 lines"];
+  }
+  subgraph "cluster_completion_plugin" {
+    label="completion_plugin";
+    bgcolor="#e6f1f0";
+    "completion_plugin/__init__.py" [fillcolor="#e6f1f0", label="completion_plugin/__init__.py\n14 lines"];
+  }
+  subgraph "cluster_docs" {
+    label="docs";
+    bgcolor="#e7f2e5";
+    "docs/FIRST-RUN-SETUP.md" [fillcolor="#e7f2e5", label="docs/FIRST-RUN-SETUP.md\n50 lines"];
+    "docs/INSTALL-CODEX-WINDOWS.md" [fillcolor="#e7f2e5", label="docs/INSTALL-CODEX-WINDOWS.md\n67 lines"];
+    "docs/MIGRATION-v0.4-to-plugin.md" [fillcolor="#e7f2e5", label="docs/MIGRATION-v0.4-to-plugin.md\n12 lines"];
+    "docs/RENAME-KYPERWORKFLOW.md" [fillcolor="#e7f2e5", label="docs/RENAME-KYPERWORKFLOW.md\n47 lines"];
+    "docs/IMPLEMENTATION-STATUS.md" [fillcolor="#e7f2e5", label="docs/IMPLEMENTATION-STATUS.md\n30 lines"];
+    "docs/PLUGIN-REFACTOR-SPEC.md" [fillcolor="#e7f2e5", label="docs/PLUGIN-REFACTOR-SPEC.md\n234 lines"];
+    "docs/RELEASE-0.1.1.md" [fillcolor="#e7f2e5", label="docs/RELEASE-0.1.1.md\n7 lines"];
+    "docs/RELEASE-0.1.2.md" [fillcolor="#e7f2e5", label="docs/RELEASE-0.1.2.md\n19 lines"];
+    "docs/STAGE-20261019-0300.md" [fillcolor="#e7f2e5", label="docs/STAGE-20261019-0300.md\n9 lines"];
+    "docs/TASK-MATRIX.md" [fillcolor="#e7f2e5", label="docs/TASK-MATRIX.md\n47 lines"];
+    "docs/TEXT-POLISHING.md" [fillcolor="#e7f2e5", label="docs/TEXT-POLISHING.md\n12 lines"];
+    "docs/VALIDATION.md" [fillcolor="#e7f2e5", label="docs/VALIDATION.md\n73 lines"];
+    "docs/WINDOWS-RUNNER.md" [fillcolor="#e7f2e5", label="docs/WINDOWS-RUNNER.md\n60 lines"];
+    "docs/dsh-tests.log" [fillcolor="#e7f2e5", label="docs/dsh-tests.log\n26 lines"];
+    "docs/python-tests.log" [fillcolor="#e7f2e5", label="docs/python-tests.log\n156 lines"];
+  }
+  subgraph "cluster_kyper_workflow" {
+    label="kyper_workflow";
+    bgcolor="#faf3d9";
+    "kyper_workflow/usage.py" [fillcolor="#faf3d9", label="kyper_workflow/usage.py\n126 lines"];
+    "kyper_workflow/workflow.py" [fillcolor="#faf3d9", label="kyper_workflow/workflow.py\n189 lines"];
+    "kyper_workflow/evidence.py" [fillcolor="#faf3d9", label="kyper_workflow/evidence.py\n161 lines"];
+    "kyper_workflow/runtime.py" [fillcolor="#faf3d9", label="kyper_workflow/runtime.py\n104 lines"];
+    "kyper_workflow/cli.py" [fillcolor="#faf3d9", penwidth=2.0, label="kyper_workflow/cli.py\n90 lines"];
+    "kyper_workflow/interactive.py" [fillcolor="#faf3d9", label="kyper_workflow/interactive.py\n92 lines"];
+    "kyper_workflow/editorial.py" [fillcolor="#faf3d9", label="kyper_workflow/editorial.py\n194 lines"];
+    "kyper_workflow/onboarding.py" [fillcolor="#faf3d9", label="kyper_workflow/onboarding.py\n138 lines"];
+    "kyper_workflow/profiles.py" [fillcolor="#faf3d9", label="kyper_workflow/profiles.py\n474 lines"];
+    "kyper_workflow/server.py" [fillcolor="#faf3d9", label="kyper_workflow/server.py\n60 lines"];
+    "kyper_workflow/locking.py" [fillcolor="#faf3d9", label="kyper_workflow/locking.py\n44 lines"];
+    "kyper_workflow/structure.py" [fillcolor="#faf3d9", label="kyper_workflow/structure.py\n737 lines"];
+    "kyper_workflow/windows_process.py" [fillcolor="#faf3d9", label="kyper_workflow/windows_process.py\n240 lines"];
+    "kyper_workflow/__init__.py" [fillcolor="#faf3d9", label="kyper_workflow/__init__.py\n2 lines"];
+    "kyper_workflow/polishing.py" [fillcolor="#faf3d9", label="kyper_workflow/polishing.py\n198 lines"];
+    "kyper_workflow/process.py" [fillcolor="#faf3d9", label="kyper_workflow/process.py\n33 lines"];
+    "kyper_workflow/dsh.py" [fillcolor="#faf3d9", label="kyper_workflow/dsh.py\n251 lines"];
+    "kyper_workflow/test_runner.py" [fillcolor="#faf3d9", label="kyper_workflow/test_runner.py\n32 lines"];
+  }
+  subgraph "cluster_skills" {
+    label="skills";
+    bgcolor="#f0e9f1";
+    "skills/kyper-workflow/SKILL.md" [fillcolor="#f0e9f1", label="skills/kyper-workflow/SKILL.md\n32 lines"];
+  }
+  subgraph "cluster_tests" {
+    label="tests";
+    bgcolor="#fdeef0";
+    "tests/test_dispatch.py" [fillcolor="#fdeef0", label="tests/test_dispatch.py\n22 lines"];
+    "tests/test_host_attestation.py" [fillcolor="#fdeef0", label="tests/test_host_attestation.py\n160 lines"];
+    "tests/test_interactive.py" [fillcolor="#fdeef0", label="tests/test_interactive.py\n57 lines"];
+    "tests/test_acceptance_mode.py" [fillcolor="#fdeef0", label="tests/test_acceptance_mode.py\n24 lines"];
+    "tests/test_independent_workflow.py" [fillcolor="#fdeef0", label="tests/test_independent_workflow.py\n360 lines"];
+    "tests/test_runtime.py" [fillcolor="#fdeef0", label="tests/test_runtime.py\n17 lines"];
+    "tests/test_workflow.py" [fillcolor="#fdeef0", label="tests/test_workflow.py\n37 lines"];
+    "tests/test_unicode_storage.py" [fillcolor="#fdeef0", label="tests/test_unicode_storage.py\n9 lines"];
+    "tests/test_dsh.py" [fillcolor="#fdeef0", label="tests/test_dsh.py\n172 lines"];
+    "tests/test_editorial.py" [fillcolor="#fdeef0", label="tests/test_editorial.py\n162 lines"];
+    "tests/test_locking.py" [fillcolor="#fdeef0", label="tests/test_locking.py\n16 lines"];
+    "tests/test_onboarding.py" [fillcolor="#fdeef0", label="tests/test_onboarding.py\n62 lines"];
+    "tests/test_polishing.py" [fillcolor="#fdeef0", label="tests/test_polishing.py\n157 lines"];
+    "tests/test_profiles.py" [fillcolor="#fdeef0", label="tests/test_profiles.py\n268 lines"];
+    "tests/test_project_execution.py" [fillcolor="#fdeef0", label="tests/test_project_execution.py\n12 lines"];
+    "tests/test_rename_shim.py" [fillcolor="#fdeef0", label="tests/test_rename_shim.py\n24 lines"];
+    "tests/test_structure.py" [fillcolor="#fdeef0", label="tests/test_structure.py\n227 lines"];
+    "tests/test_supervisor_host.py" [fillcolor="#fdeef0", label="tests/test_supervisor_host.py\n11 lines"];
+    "tests/test_usage_persistence.py" [fillcolor="#fdeef0", label="tests/test_usage_persistence.py\n13 lines"];
+    "tests/test_windows_process.py" [fillcolor="#fdeef0", label="tests/test_windows_process.py\n128 lines"];
+    "tests/test_mcp_transport.py" [fillcolor="#fdeef0", label="tests/test_mcp_transport.py\n18 lines"];
+    "tests/test_skill_copies.py" [fillcolor="#fdeef0", label="tests/test_skill_copies.py\n19 lines"];
+    "tests/test_terminal_process.py" [fillcolor="#fdeef0", label="tests/test_terminal_process.py\n29 lines"];
+  }
+  "README.md" [fillcolor="#e8eef6", label="README.md\n76 lines"];
+  ".gitignore" [fillcolor="#e8eef6", label=".gitignore\n10 lines"];
+  "LICENSE" [fillcolor="#e8eef6", label="LICENSE\n10 lines"];
+  "THIRD_PARTY_NOTICES.md" [fillcolor="#e8eef6", label="THIRD_PARTY_NOTICES.md\n10 lines"];
+  "pyproject.toml" [fillcolor="#e8eef6", label="pyproject.toml\n14 lines"];
+  "README.md" -> "docs/FIRST-RUN-SETUP.md" [style=dashed];
+  "README.md" -> "docs/INSTALL-CODEX-WINDOWS.md" [style=dashed];
+  "README.md" -> "docs/MIGRATION-v0.4-to-plugin.md" [style=dashed];
+  "README.md" -> "docs/RENAME-KYPERWORKFLOW.md" [style=dashed];
+  "docs/INSTALL-CODEX-WINDOWS.md" -> "docs/FIRST-RUN-SETUP.md" [style=dashed];
+  "kyper_workflow/cli.py" -> "kyper_workflow/editorial.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/interactive.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/onboarding.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/profiles.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/structure.py" [style=solid];
+  "kyper_workflow/cli.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "kyper_workflow/evidence.py" -> "kyper_workflow/process.py" [style=solid];
+  "kyper_workflow/evidence.py" -> "kyper_workflow/windows_process.py" [style=solid];
+  "kyper_workflow/interactive.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "kyper_workflow/interactive.py" -> "kyper_workflow/usage.py" [style=solid];
+  "kyper_workflow/interactive.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "kyper_workflow/onboarding.py" -> "kyper_workflow/__init__.py" [style=solid];
+  "kyper_workflow/polishing.py" -> "kyper_workflow/editorial.py" [style=solid];
+  "kyper_workflow/process.py" -> "kyper_workflow/windows_process.py" [style=solid];
+  "kyper_workflow/runtime.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "kyper_workflow/runtime.py" -> "kyper_workflow/profiles.py" [style=solid];
+  "kyper_workflow/server.py" -> "kyper_workflow/__init__.py" [style=solid];
+  "kyper_workflow/server.py" -> "kyper_workflow/editorial.py" [style=solid];
+  "kyper_workflow/server.py" -> "kyper_workflow/onboarding.py" [style=solid];
+  "kyper_workflow/server.py" -> "kyper_workflow/structure.py" [style=solid];
+  "kyper_workflow/usage.py" -> "kyper_workflow/locking.py" [style=solid];
+  "kyper_workflow/workflow.py" -> "kyper_workflow/locking.py" [style=solid];
+  "tests/test_acceptance_mode.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "tests/test_acceptance_mode.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_acceptance_mode.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_dispatch.py" -> "kyper_workflow/profiles.py" [style=solid];
+  "tests/test_dispatch.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "tests/test_dispatch.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_dispatch.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_dsh.py" -> "kyper_workflow/dsh.py" [style=solid];
+  "tests/test_editorial.py" -> "kyper_workflow/editorial.py" [style=solid];
+  "tests/test_host_attestation.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "tests/test_host_attestation.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "tests/test_host_attestation.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_host_attestation.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_independent_workflow.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "tests/test_independent_workflow.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_independent_workflow.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_interactive.py" -> "kyper_workflow/interactive.py" [style=solid];
+  "tests/test_interactive.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "tests/test_interactive.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_interactive.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_locking.py" -> "kyper_workflow/locking.py" [style=solid];
+  "tests/test_onboarding.py" -> "kyper_workflow/onboarding.py" [style=solid];
+  "tests/test_polishing.py" -> "kyper_workflow/polishing.py" [style=solid];
+  "tests/test_profiles.py" -> "kyper_workflow/profiles.py" [style=solid];
+  "tests/test_project_execution.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "tests/test_rename_shim.py" -> "completion_plugin/__init__.py" [style=solid];
+  "tests/test_runtime.py" -> "kyper_workflow/runtime.py" [style=solid];
+  "tests/test_runtime.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_runtime.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_structure.py" -> "kyper_workflow/structure.py" [style=solid];
+  "tests/test_supervisor_host.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_unicode_storage.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_unicode_storage.py" -> "kyper_workflow/workflow.py" [style=solid];
+  "tests/test_usage_persistence.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_windows_process.py" -> "kyper_workflow/windows_process.py" [style=solid];
+  "tests/test_workflow.py" -> "kyper_workflow/evidence.py" [style=solid];
+  "tests/test_workflow.py" -> "kyper_workflow/usage.py" [style=solid];
+  "tests/test_workflow.py" -> "kyper_workflow/workflow.py" [style=solid];
+}

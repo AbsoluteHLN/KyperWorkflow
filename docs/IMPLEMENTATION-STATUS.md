@@ -1,16 +1,25 @@
-# Implementation status — 2026-10-19
+# Implementation status — 2026-11-17
+
+Product renamed to KyperWorkflow 0.2.0: package `kyper_workflow`, CLI `kyper-workflow`, MCP server `kyper-workflow`, Skill `kyper-workflow`. `completion_plugin` remains only as a deprecated import shim. See docs/RENAME-KYPERWORKFLOW.md.
 
 Approved design: spec-v002. This is an implementation increment, not certification of every host.
 
 Implemented and locally exercised:
+- Deterministic project relationship graph (`kyper_workflow.structure`): bounded file list, line counts, Python import edges with relative-import resolution, relative Markdown link edges, areas, entry points from `pyproject [project.scripts]`, external imports. One scan feeds four views of the same node/edge graph: map Markdown with an embedded file-level Mermaid graph plus the per-area collapse, JSON, Graphviz DOT, GraphML and a TSV edge list; `--graph --graph-format` prints one view, `--max-nodes` collapses to the highest-degree files, `--check` is the staleness gate for every view, plus a digest and an MCP knowledge-graph entity/relation payload. Generated outputs exclude themselves so regeneration is stable.
+- First-run configuration checklist (`kyper_workflow.onboarding`) exposed as the MCP `setup_checklist` tool, covering project root, out-of-project state directory, dependency/library paths, project-test permission, host check providers, sub-agent model routes, budget, shared-memory target and Skill install location. Undetected items stay `needs_user_input`; nothing is defaulted.
 - Independent stdlib core, version events, structured phase records, complete approval package, task dependencies/write scopes, explicit checks and current completion recheck.
 - Direct byte comparisons with bounded input and invalidated-review latch; syntax and explicit trusted unittest execution.
+- Trusted host attestation for text/model/browser/native checks, bound to the current revision and re-confirmed for content freshness; an unattested check stays blocked. Non-source artifacts report `blocked`, not a syntax failure.
+- Restart recovery through `runtime.recheck`: passed tasks are re-read and re-checked before `complete()`; the operator `resume` path runs remaining approved tasks in dependency order and refuses to replay an interrupted running task.
+- Windows Job Object cleanup tracks member PIDs by synchronize handle before termination, because job accounting and membership clear before the process signals.
 - Persistent unknown/actual/estimated usage ledger with conflict detection and attempt IDs; bounded supervision; profile validation/routing and integrated dispatcher leaving generated output pending QA.
+- Usage ledger is append-only JSONL with one-time legacy array migration; hard budgets accept a caller-declared unaccounted reserve for attempts without measured cost, and stay fail-closed without one.
 - Three-profile writing diagnostics and concrete host-generated candidate workflow, change comparison, independent review seam and revision-bound adoption.
 - Operator CLI path with approval/rejection, Skill, optional real local MCP stdio diagnostics.
 - DSH native-team/config contract and package entry, with separate mock validation.
 
 Blocked or not exercised:
+- The project map links only Python imports and relative Markdown links; other languages are listed with path/line facts but no cross-file edges. It is not a call graph, an ownership map or a correctness proof, and an edit that preserves file size and line count does not change the map.
 - No real host-model generation or billing probe: no configured authorized host provider in this environment. Mock usage does not establish real model availability.
 - DSH official runtime dependency and trusted host integration are absent. Actual plugin panel, native teams, Stop lifecycle and user-install version compatibility are not validated.
 - Browser/native-device validation are not connected; requested checks remain not_run/blocked.

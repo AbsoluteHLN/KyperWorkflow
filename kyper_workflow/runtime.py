@@ -2,27 +2,59 @@
 from .evidence import Review
 
 
-def execute_review(workflow, task, *, root, artifacts, ledger, trusted_tests=False):
+def execute_review(workflow, task, *, root, artifacts, ledger, trusted_tests=False, attest=None):
     if type(trusted_tests) is not bool: raise ValueError('trusted_tests must be a boolean')
     from pathlib import Path
     inputs=workflow.data['tasks'][task].get('inputs')
     if inputs and inputs != {'root':str(Path(root).resolve()),'artifacts':list(artifacts)}: raise ValueError('Execution inputs differ from approved task')
     mode=workflow.data['tasks'][task].get('code_mode')
     if (mode=='project_tests') != (trusted_tests is True): raise ValueError('Execution checker differs from approved code mode')
+    required = list(workflow.data['tasks'][task]['required_checks'])
     workflow.start(task)  # before any execution
     try:
         review = Review(root, artifacts, workflow.data['revision'])
-        if trusted_tests is True: review.project_tests(explicitly_trusted=True)
-        else: review.syntax()
-        required = list(workflow.data['tasks'][task]['required_checks'])
+        if 'code' in required:
+            if trusted_tests is True: review.project_tests(explicitly_trusted=True)
+            else: review.syntax()
+        if attest is not None:
+            attest(review)  # trusted host code records text/model/browser/native results
         workflow._verifiers[task] = lambda: review.gate(required)['allow_completion'] is True
         result = review.gate(required)
-        status = 'pass' if result['allow_completion'] else 'fail'
+        status = 'pass' if result['allow_completion'] else 'blocked' if result['unattested_checks'] else 'fail'
     except Exception as exc:
         status, result = 'blocked', {'reason':type(exc).__name__}
     attempt = ledger.record(task=task,model='local-no-model',status=status)
     workflow.finish(task,status=status,result={'review':result,'usage':attempt})
     return {'status':status,'review':result,'usage':attempt}
+
+
+def recheck(workflow, *, trusted_tests=False, attest=None):
+    """Re-establish current verifiers after a restart, without replaying tasks.
+
+    Passed tasks are re-read and re-checked now; stored results alone never
+    authorize completion. A running or changed task still blocks complete().
+    """
+    if type(trusted_tests) is not bool: raise ValueError('trusted_tests must be a boolean')
+    checked = {}
+    for name, declaration in workflow.data['tasks'].items():
+        if declaration['status'] != 'pass':
+            continue
+        inputs = declaration.get('inputs') or {}
+        root, artifacts = inputs.get('root'), inputs.get('artifacts')
+        if not root or not artifacts:
+            raise ValueError('Task ' + name + ' has no recorded inputs to recheck')
+        required = list(declaration['required_checks'])
+        if 'code' in required and declaration.get('code_mode') == 'project_tests' and trusted_tests is not True:
+            raise ValueError('Task ' + name + ' requires trusted project-test recheck')
+        review = Review(root, artifacts, workflow.data['revision'])
+        if 'code' in required:
+            if declaration.get('code_mode') == 'project_tests': review.project_tests(explicitly_trusted=True)
+            else: review.syntax()
+        if attest is not None:
+            attest(review)
+        workflow.bind_verifier(name, lambda r=review, req=required: r.gate(req)['allow_completion'] is True)
+        checked[name] = review.gate(required)
+    return checked
 
 
 def dispatch_profile(workflow, task, *, profile, validator, context, ledger, supervisor,
@@ -36,7 +68,9 @@ def dispatch_profile(workflow, task, *, profile, validator, context, ledger, sup
         raise ValueError('Task/profile approval is missing or stale')
     if execute is None:
         return {'status':'blocked','reason':'Host execution unavailable','usage':'unknown'}
-    if budget and not ledger.budget_allows(budget['ceiling'],budget['currency'],next_max_cost=budget.get('enforced_next_max_cost')):
+    if budget and not ledger.budget_allows(budget['ceiling'],budget['currency'],
+            next_max_cost=budget.get('enforced_next_max_cost'),
+            unaccounted_reserve=budget.get('unaccounted_reserve')):
         return {'status':'blocked','reason':'Hard budget cannot be guaranteed'}
     role = binding.get('role')
     approved_routes = binding.get('approved_routes',[])

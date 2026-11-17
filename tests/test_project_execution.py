@@ -1,7 +1,7 @@
 import tempfile
 import unittest
 from pathlib import Path
-from completion_plugin.evidence import Review
+from kyper_workflow.evidence import Review
 class ExecutionTests(unittest.TestCase):
  def test_trusted_true_execution(self):
   with tempfile.TemporaryDirectory() as d:

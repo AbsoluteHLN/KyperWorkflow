@@ -1,7 +1,7 @@
 import tempfile,unittest,types
 from pathlib import Path
 from unittest.mock import patch
-from completion_plugin import locking
+from kyper_workflow import locking
 class LockTests(unittest.TestCase):
  def test_posix_exclusion(self):
   with tempfile.TemporaryDirectory() as d:

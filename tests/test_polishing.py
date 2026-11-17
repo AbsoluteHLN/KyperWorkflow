@@ -3,7 +3,7 @@ import json
 import unittest
 from dataclasses import replace
 
-from completion_plugin.polishing import HostBindings, PolishingSession
+from kyper_workflow.polishing import HostBindings, PolishingSession
 
 
 class PolishingTests(unittest.TestCase):

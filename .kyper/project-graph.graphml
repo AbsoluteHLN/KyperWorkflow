@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="name" for="graph" attr.name="name" attr.type="string"/>
+  <key id="label" for="node" attr.name="label" attr.type="string"/>
+  <key id="area" for="node" attr.name="area" attr.type="string"/>
+  <key id="language" for="node" attr.name="language" attr.type="string"/>
+  <key id="lines" for="node" attr.name="lines" attr.type="int"/>
+  <key id="inbound" for="node" attr.name="inbound" attr.type="int"/>
+  <key id="outbound" for="node" attr.name="outbound" attr.type="int"/>
+  <key id="entryPoint" for="node" attr.name="entryPoint" attr.type="boolean"/>
+  <key id="summary" for="node" attr.name="summary" attr.type="string"/>
+  <key id="parseError" for="node" attr.name="parseError" attr.type="string"/>
+  <key id="kind" for="edge" attr.name="kind" attr.type="string"/>
+  <graph id="KyperWorkflow" edgedefault="directed">
+    <data key="name">KyperWorkflow</data>
+    <node id="kyper_workflow/usage.py">
+      <data key="label">kyper_workflow/usage.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">126</data>
+      <data key="inbound">11</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Local attempt accounting and bounded progress supervision.</data>
+    </node>
+    <node id="kyper_workflow/workflow.py">
+      <data key="label">kyper_workflow/workflow.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">189</data>
+      <data key="inbound">10</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Explicit revisions and trusted local approval. No content fingerprints.</data>
+    </node>
+    <node id="kyper_workflow/evidence.py">
+      <data key="label">kyper_workflow/evidence.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">161</data>
+      <data key="inbound">6</data>
+      <data key="outbound">2</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Bounded direct-content checks; trusted local runner, not tamper protection.</data>
+    </node>
+    <node id="kyper_workflow/runtime.py">
+      <data key="label">kyper_workflow/runtime.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">104</data>
+      <data key="inbound">6</data>
+      <data key="outbound">2</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Approved local review execution integrated with task state and usage.</data>
+    </node>
+    <node id="kyper_workflow/cli.py">
+      <data key="label">kyper_workflow/cli.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">90</data>
+      <data key="inbound">0</data>
+      <data key="outbound">7</data>
+      <data key="entryPoint">true</data>
+      <data key="summary">Local explicit actions. No automatic user confirmation through model inputs.</data>
+    </node>
+    <node id="kyper_workflow/interactive.py">
+      <data key="label">kyper_workflow/interactive.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">92</data>
+      <data key="inbound">2</data>
+      <data key="outbound">3</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Operator-facing terminal workflow. Agent/host users should use trusted adapters.</data>
+    </node>
+    <node id="README.md">
+      <data key="label">README.md</data>
+      <data key="area">(root)</data>
+      <data key="language">markdown</data>
+      <data key="lines">76</data>
+      <data key="inbound">0</data>
+      <data key="outbound">4</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">KyperWorkflow 0.2.0</data>
+    </node>
+    <node id="kyper_workflow/editorial.py">
+      <data key="label">kyper_workflow/editorial.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">194</data>
+      <data key="inbound">4</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Deterministic, review-only Chinese/English editorial assistance.</data>
+    </node>
+    <node id="kyper_workflow/onboarding.py">
+      <data key="label">kyper_workflow/onboarding.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">138</data>
+      <data key="inbound">3</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">First-run configuration checklist.</data>
+    </node>
+    <node id="kyper_workflow/profiles.py">
+      <data key="label">kyper_workflow/profiles.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">474</data>
+      <data key="inbound">4</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Versioned, secret-free profile configuration and fail-closed validation.</data>
+    </node>
+    <node id="kyper_workflow/server.py">
+      <data key="label">kyper_workflow/server.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">60</data>
+      <data key="inbound">0</data>
+      <data key="outbound">4</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Optional MCP surface. Approval and file writes stay with trusted host actions.</data>
+    </node>
+    <node id="tests/test_dispatch.py">
+      <data key="label">tests/test_dispatch.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">22</data>
+      <data key="inbound">0</data>
+      <data key="outbound">4</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Synthetic host dispatcher integration; no external model invocation.</data>
+    </node>
+    <node id="tests/test_host_attestation.py">
+      <data key="label">tests/test_host_attestation.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">160</data>
+      <data key="inbound">0</data>
+      <data key="outbound">4</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Trusted host check attestation, restart recheck and ledger append behaviour.</data>
+    </node>
+    <node id="tests/test_interactive.py">
+      <data key="label">tests/test_interactive.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">57</data>
+      <data key="inbound">0</data>
+      <data key="outbound">4</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="kyper_workflow/locking.py">
+      <data key="label">kyper_workflow/locking.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">44</data>
+      <data key="inbound">3</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Local advisory writer lock for POSIX and Windows, with bounded waiting.</data>
+    </node>
+    <node id="kyper_workflow/structure.py">
+      <data key="label">kyper_workflow/structure.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">737</data>
+      <data key="inbound">3</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Deterministic project structure map: files, imports, doc links and areas.</data>
+    </node>
+    <node id="kyper_workflow/windows_process.py">
+      <data key="label">kyper_workflow/windows_process.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">240</data>
+      <data key="inbound">3</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Windows-only bounded runner for trusted, fixed executable/argument lists.</data>
+    </node>
+    <node id="tests/test_acceptance_mode.py">
+      <data key="label">tests/test_acceptance_mode.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">24</data>
+      <data key="inbound">0</data>
+      <data key="outbound">3</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_independent_workflow.py">
+      <data key="label">tests/test_independent_workflow.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">360</data>
+      <data key="inbound">0</data>
+      <data key="outbound">3</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Independent negative-path coverage of the local workflow and evidence APIs.</data>
+    </node>
+    <node id="tests/test_runtime.py">
+      <data key="label">tests/test_runtime.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">17</data>
+      <data key="inbound">0</data>
+      <data key="outbound">3</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_workflow.py">
+      <data key="label">tests/test_workflow.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">37</data>
+      <data key="inbound">0</data>
+      <data key="outbound">3</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="docs/FIRST-RUN-SETUP.md">
+      <data key="label">docs/FIRST-RUN-SETUP.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">50</data>
+      <data key="inbound">2</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">首次接入配置（KyperWorkflow）</data>
+    </node>
+    <node id="docs/INSTALL-CODEX-WINDOWS.md">
+      <data key="label">docs/INSTALL-CODEX-WINDOWS.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">67</data>
+      <data key="inbound">1</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Codex 与 Windows 手动试用（v0.1.2）</data>
+    </node>
+    <node id="kyper_workflow/__init__.py">
+      <data key="label">kyper_workflow/__init__.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">2</data>
+      <data key="inbound">2</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">KyperWorkflow: explicit specification approval, bounded review and project mapping.</data>
+    </node>
+    <node id="kyper_workflow/polishing.py">
+      <data key="label">kyper_workflow/polishing.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">198</data>
+      <data key="inbound">1</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Host-injected candidate generation and review; no network/provider client.</data>
+    </node>
+    <node id="kyper_workflow/process.py">
+      <data key="label">kyper_workflow/process.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">33</data>
+      <data key="inbound">1</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Bounded time/output reads for explicitly trusted POSIX or Windows project commands.</data>
+    </node>
+    <node id="tests/test_unicode_storage.py">
+      <data key="label">tests/test_unicode_storage.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">9</data>
+      <data key="inbound">0</data>
+      <data key="outbound">2</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="completion_plugin/__init__.py">
+      <data key="label">completion_plugin/__init__.py</data>
+      <data key="area">completion_plugin</data>
+      <data key="language">python</data>
+      <data key="lines">14</data>
+      <data key="inbound">1</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Deprecated import path.</data>
+    </node>
+    <node id="docs/MIGRATION-v0.4-to-plugin.md">
+      <data key="label">docs/MIGRATION-v0.4-to-plugin.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">12</data>
+      <data key="inbound">1</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">从旧 MCP v0.4 迁移</data>
+    </node>
+    <node id="docs/RENAME-KYPERWORKFLOW.md">
+      <data key="label">docs/RENAME-KYPERWORKFLOW.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">47</data>
+      <data key="inbound">1</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">改名：CompletionQAMCP → KyperWorkflow</data>
+    </node>
+    <node id="kyper_workflow/dsh.py">
+      <data key="label">kyper_workflow/dsh.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">251</data>
+      <data key="inbound">1</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Stdlib-only DSH bridge contract; not an installed DSH plugin.</data>
+    </node>
+    <node id="tests/test_dsh.py">
+      <data key="label">tests/test_dsh.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">172</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Synthetic host contract tests; these do not load or exercise real DSH.</data>
+    </node>
+    <node id="tests/test_editorial.py">
+      <data key="label">tests/test_editorial.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">162</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_locking.py">
+      <data key="label">tests/test_locking.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">16</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_onboarding.py">
+      <data key="label">tests/test_onboarding.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">62</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">First-run configuration items are explicit, complete and never silently defaulted.</data>
+    </node>
+    <node id="tests/test_polishing.py">
+      <data key="label">tests/test_polishing.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">157</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Synthetic host contract tests; no real model is called.</data>
+    </node>
+    <node id="tests/test_profiles.py">
+      <data key="label">tests/test_profiles.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">268</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_project_execution.py">
+      <data key="label">tests/test_project_execution.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">12</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_rename_shim.py">
+      <data key="label">tests/test_rename_shim.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">24</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">The pre-rename import path keeps working while pointing at the new package.</data>
+    </node>
+    <node id="tests/test_structure.py">
+      <data key="label">tests/test_structure.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">227</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Deterministic project map: files, imports, doc links, areas and memory payload.</data>
+    </node>
+    <node id="tests/test_supervisor_host.py">
+      <data key="label">tests/test_supervisor_host.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">11</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_usage_persistence.py">
+      <data key="label">tests/test_usage_persistence.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">13</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_windows_process.py">
+      <data key="label">tests/test_windows_process.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">128</data>
+      <data key="inbound">0</data>
+      <data key="outbound">1</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Native lifecycle checks are skipped on Linux, never counted as Windows evidence.</data>
+    </node>
+    <node id=".agents/skills/kyper-workflow/SKILL.md">
+      <data key="label">.agents/skills/kyper-workflow/SKILL.md</data>
+      <data key="area">.agents</data>
+      <data key="language">markdown</data>
+      <data key="lines">32</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id=".gitignore">
+      <data key="label">.gitignore</data>
+      <data key="area">(root)</data>
+      <data key="language">other</data>
+      <data key="lines">10</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="LICENSE">
+      <data key="label">LICENSE</data>
+      <data key="area">(root)</data>
+      <data key="language">other</data>
+      <data key="lines">10</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="THIRD_PARTY_NOTICES.md">
+      <data key="label">THIRD_PARTY_NOTICES.md</data>
+      <data key="area">(root)</data>
+      <data key="language">markdown</data>
+      <data key="lines">10</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Sources and licensing</data>
+    </node>
+    <node id="adapters/dsh/README.md">
+      <data key="label">adapters/dsh/README.md</data>
+      <data key="area">adapters</data>
+      <data key="language">markdown</data>
+      <data key="lines">221</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">KyperWorkflow DSH adapter</data>
+    </node>
+    <node id="adapters/dsh/bridge.js">
+      <data key="label">adapters/dsh/bridge.js</data>
+      <data key="area">adapters</data>
+      <data key="language">javascript</data>
+      <data key="lines">165</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="adapters/dsh/bridge.test.js">
+      <data key="label">adapters/dsh/bridge.test.js</data>
+      <data key="area">adapters</data>
+      <data key="language">javascript</data>
+      <data key="lines">117</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="adapters/dsh/index.js">
+      <data key="label">adapters/dsh/index.js</data>
+      <data key="area">adapters</data>
+      <data key="language">javascript</data>
+      <data key="lines">15</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="adapters/dsh/integration-example.mjs">
+      <data key="label">adapters/dsh/integration-example.mjs</data>
+      <data key="area">adapters</data>
+      <data key="language">javascript</data>
+      <data key="lines">103</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="adapters/dsh/package.json">
+      <data key="label">adapters/dsh/package.json</data>
+      <data key="area">adapters</data>
+      <data key="language">json</data>
+      <data key="lines">28</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="adapters/dsh/profiles.js">
+      <data key="label">adapters/dsh/profiles.js</data>
+      <data key="area">adapters</data>
+      <data key="language">javascript</data>
+      <data key="lines">109</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="docs/IMPLEMENTATION-STATUS.md">
+      <data key="label">docs/IMPLEMENTATION-STATUS.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">30</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Implementation status — 2026-11-17</data>
+    </node>
+    <node id="docs/PLUGIN-REFACTOR-SPEC.md">
+      <data key="label">docs/PLUGIN-REFACTOR-SPEC.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">234</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">KyperWorkflow 通用插件重构规格</data>
+    </node>
+    <node id="docs/RELEASE-0.1.1.md">
+      <data key="label">docs/RELEASE-0.1.1.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">7</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">0.1.1 Windows storage compatibility patch</data>
+    </node>
+    <node id="docs/RELEASE-0.1.2.md">
+      <data key="label">docs/RELEASE-0.1.2.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">19</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">0.1.2 Windows runner and Unicode patch</data>
+    </node>
+    <node id="docs/STAGE-20261019-0300.md">
+      <data key="label">docs/STAGE-20261019-0300.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">9</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">QA 插件阶段记录</data>
+    </node>
+    <node id="docs/TASK-MATRIX.md">
+      <data key="label">docs/TASK-MATRIX.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">47</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">spec-v002 implementation matrix</data>
+    </node>
+    <node id="docs/TEXT-POLISHING.md">
+      <data key="label">docs/TEXT-POLISHING.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">12</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Using the writing workflow</data>
+    </node>
+    <node id="docs/VALIDATION.md">
+      <data key="label">docs/VALIDATION.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">73</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Current validation</data>
+    </node>
+    <node id="docs/WINDOWS-RUNNER.md">
+      <data key="label">docs/WINDOWS-RUNNER.md</data>
+      <data key="area">docs</data>
+      <data key="language">markdown</data>
+      <data key="lines">60</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Windows contained process runner</data>
+    </node>
+    <node id="docs/dsh-tests.log">
+      <data key="label">docs/dsh-tests.log</data>
+      <data key="area">docs</data>
+      <data key="language">other</data>
+      <data key="lines">26</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="docs/python-tests.log">
+      <data key="label">docs/python-tests.log</data>
+      <data key="area">docs</data>
+      <data key="language">other</data>
+      <data key="lines">156</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="kyper_workflow/test_runner.py">
+      <data key="label">kyper_workflow/test_runner.py</data>
+      <data key="area">kyper_workflow</data>
+      <data key="language">python</data>
+      <data key="lines">32</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Explicitly trusted project tests, not a security sandbox.</data>
+    </node>
+    <node id="pyproject.toml">
+      <data key="label">pyproject.toml</data>
+      <data key="area">(root)</data>
+      <data key="language">toml</data>
+      <data key="lines">14</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="skills/kyper-workflow/SKILL.md">
+      <data key="label">skills/kyper-workflow/SKILL.md</data>
+      <data key="area">skills</data>
+      <data key="language">markdown</data>
+      <data key="lines">32</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_mcp_transport.py">
+      <data key="label">tests/test_mcp_transport.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">18</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+    </node>
+    <node id="tests/test_skill_copies.py">
+      <data key="label">tests/test_skill_copies.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">19</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">The distributable Skill and the project copy must not drift apart.</data>
+    </node>
+    <node id="tests/test_terminal_process.py">
+      <data key="label">tests/test_terminal_process.py</data>
+      <data key="area">tests</data>
+      <data key="language">python</data>
+      <data key="lines">29</data>
+      <data key="inbound">0</data>
+      <data key="outbound">0</data>
+      <data key="entryPoint">false</data>
+      <data key="summary">Synthetic operator input over real PTY; not real user authorization evidence.</data>
+    </node>
+    <edge id="e0" source="README.md" target="docs/FIRST-RUN-SETUP.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e1" source="README.md" target="docs/INSTALL-CODEX-WINDOWS.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e2" source="README.md" target="docs/MIGRATION-v0.4-to-plugin.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e3" source="README.md" target="docs/RENAME-KYPERWORKFLOW.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e4" source="docs/INSTALL-CODEX-WINDOWS.md" target="docs/FIRST-RUN-SETUP.md">
+      <data key="kind">doc_link</data>
+    </edge>
+    <edge id="e5" source="kyper_workflow/cli.py" target="kyper_workflow/editorial.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e6" source="kyper_workflow/cli.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e7" source="kyper_workflow/cli.py" target="kyper_workflow/interactive.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e8" source="kyper_workflow/cli.py" target="kyper_workflow/onboarding.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e9" source="kyper_workflow/cli.py" target="kyper_workflow/profiles.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e10" source="kyper_workflow/cli.py" target="kyper_workflow/structure.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e11" source="kyper_workflow/cli.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e12" source="kyper_workflow/evidence.py" target="kyper_workflow/process.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e13" source="kyper_workflow/evidence.py" target="kyper_workflow/windows_process.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e14" source="kyper_workflow/interactive.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e15" source="kyper_workflow/interactive.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e16" source="kyper_workflow/interactive.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e17" source="kyper_workflow/onboarding.py" target="kyper_workflow/__init__.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e18" source="kyper_workflow/polishing.py" target="kyper_workflow/editorial.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e19" source="kyper_workflow/process.py" target="kyper_workflow/windows_process.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e20" source="kyper_workflow/runtime.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e21" source="kyper_workflow/runtime.py" target="kyper_workflow/profiles.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e22" source="kyper_workflow/server.py" target="kyper_workflow/__init__.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e23" source="kyper_workflow/server.py" target="kyper_workflow/editorial.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e24" source="kyper_workflow/server.py" target="kyper_workflow/onboarding.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e25" source="kyper_workflow/server.py" target="kyper_workflow/structure.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e26" source="kyper_workflow/usage.py" target="kyper_workflow/locking.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e27" source="kyper_workflow/workflow.py" target="kyper_workflow/locking.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e28" source="tests/test_acceptance_mode.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e29" source="tests/test_acceptance_mode.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e30" source="tests/test_acceptance_mode.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e31" source="tests/test_dispatch.py" target="kyper_workflow/profiles.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e32" source="tests/test_dispatch.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e33" source="tests/test_dispatch.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e34" source="tests/test_dispatch.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e35" source="tests/test_dsh.py" target="kyper_workflow/dsh.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e36" source="tests/test_editorial.py" target="kyper_workflow/editorial.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e37" source="tests/test_host_attestation.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e38" source="tests/test_host_attestation.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e39" source="tests/test_host_attestation.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e40" source="tests/test_host_attestation.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e41" source="tests/test_independent_workflow.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e42" source="tests/test_independent_workflow.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e43" source="tests/test_independent_workflow.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e44" source="tests/test_interactive.py" target="kyper_workflow/interactive.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e45" source="tests/test_interactive.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e46" source="tests/test_interactive.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e47" source="tests/test_interactive.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e48" source="tests/test_locking.py" target="kyper_workflow/locking.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e49" source="tests/test_onboarding.py" target="kyper_workflow/onboarding.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e50" source="tests/test_polishing.py" target="kyper_workflow/polishing.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e51" source="tests/test_profiles.py" target="kyper_workflow/profiles.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e52" source="tests/test_project_execution.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e53" source="tests/test_rename_shim.py" target="completion_plugin/__init__.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e54" source="tests/test_runtime.py" target="kyper_workflow/runtime.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e55" source="tests/test_runtime.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e56" source="tests/test_runtime.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e57" source="tests/test_structure.py" target="kyper_workflow/structure.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e58" source="tests/test_supervisor_host.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e59" source="tests/test_unicode_storage.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e60" source="tests/test_unicode_storage.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e61" source="tests/test_usage_persistence.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e62" source="tests/test_windows_process.py" target="kyper_workflow/windows_process.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e63" source="tests/test_workflow.py" target="kyper_workflow/evidence.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e64" source="tests/test_workflow.py" target="kyper_workflow/usage.py">
+      <data key="kind">import</data>
+    </edge>
+    <edge id="e65" source="tests/test_workflow.py" target="kyper_workflow/workflow.py">
+      <data key="kind">import</data>
+    </edge>
+  </graph>
+</graphml>

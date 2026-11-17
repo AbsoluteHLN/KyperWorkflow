@@ -8,9 +8,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from completion_plugin.evidence import Review, snapshot
-from completion_plugin.usage import Ledger
-from completion_plugin.workflow import Workflow
+from kyper_workflow.evidence import Review, snapshot
+from kyper_workflow.usage import Ledger
+from kyper_workflow.workflow import Workflow
 
 
 class IndependentWorkflowTests(unittest.TestCase):
@@ -306,7 +306,10 @@ class IndependentEvidenceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as external:
             outside = Path(external) / 'secret.py'
             outside.write_text('secret = 1')
-            (self.root / 'link').symlink_to(external, target_is_directory=True)
+            try:
+                (self.root / 'link').symlink_to(external, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest('symbolic links require a privilege this account lacks')
             with self.assertRaises(ValueError):
                 snapshot(self.root, ['link/secret.py'])
 

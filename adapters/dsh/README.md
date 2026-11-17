@@ -1,4 +1,4 @@
-# CompletionQA DSH adapter
+# KyperWorkflow DSH adapter
 
 Packable ESM plugin source. Real DSH loading, official dependency resolution,
 UI rendering and native lifecycle/stop smoke tests are **not run**.
@@ -164,7 +164,7 @@ Required observations, saved with installed versions and timestamps:
 
 `integration-example.mjs` contains executable local building blocks, not a mock
 DSH installer. It provides an exclusive-writer, atomic-replacement `FileActions`
-store and `createCompletionQAHost(...)`. The store's restart, writer exclusion and
+store and `createKyperWorkflowHost(...)`. The store's restart, writer exclusion and
 return-value isolation were exercised with temporary synthetic records. Syntax
 was checked. No real host registration or authenticated UI was exercised.
 

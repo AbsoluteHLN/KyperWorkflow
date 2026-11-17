@@ -8,10 +8,24 @@ from uuid import uuid4
 from datetime import datetime, timezone
 
 
+def _parse_attempts(text):
+    """Parse append-only JSONL, still accepting one legacy JSON array file."""
+    if not text.strip():
+        return []
+    if text.lstrip().startswith('['):
+        rows = json.loads(text)
+        return rows if isinstance(rows, list) else None
+    return [json.loads(line) for line in text.splitlines() if line.strip()]
+
+
+def _read_attempts(path):
+    return _parse_attempts(path.read_text(encoding="utf-8"))
+
+
 class Ledger:
     def __init__(self, path=None):
         self.path = Path(path) if path is not None else None
-        self.attempts = json.loads(self.path.read_text(encoding="utf-8")) if self.path and self.path.exists() else []
+        self.attempts = _read_attempts(self.path) if self.path and self.path.exists() else []
         if not isinstance(self.attempts,list) or any(not isinstance(r,dict) or not r.get('attempt_id') or r.get('source') not in ('actual','estimated','unknown') for r in self.attempts):
             raise ValueError('Damaged usage ledger')
         self._loaded=copy.deepcopy(self.attempts)
@@ -32,22 +46,41 @@ class Ledger:
             from .locking import writer_lock
             self.path.parent.mkdir(parents=True,exist_ok=True)
             with writer_lock(self.path.with_name(self.path.name+'.lock')):
-                current=json.loads(self.path.read_text(encoding="utf-8")) if self.path.exists() else []
+                existing=self.path.read_text(encoding='utf-8') if self.path.exists() else ''
+                current=_parse_attempts(existing) if existing else []
+                if not isinstance(current,list): raise ValueError('Damaged usage ledger')
                 if current != self._loaded: raise ValueError('Usage ledger changed; reload')
-                temp=self.path.with_name(self.path.name+'.'+uuid4().hex+'.tmp')
-                temp.write_text(json.dumps(self.attempts+[row],ensure_ascii=False), encoding="utf-8")
-                os.replace(temp,self.path)
+                line=json.dumps(row,ensure_ascii=False)+'\n'
+                if existing.lstrip().startswith('['):
+                    # One-time rewrite; appending would corrupt the old array file.
+                    temp=self.path.with_name(self.path.name+'.'+uuid4().hex+'.tmp')
+                    temp.write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in self.attempts+[row]), encoding='utf-8')
+                    os.replace(temp,self.path)
+                else:
+                    with self.path.open('a',encoding='utf-8') as handle:handle.write(line)
         self.attempts.append(row)
         self._loaded=copy.deepcopy(self.attempts)
         return dict(row)
 
-    def budget_allows(self, ceiling, currency, *, next_max_cost=None):
+    def budget_allows(self, ceiling, currency, *, next_max_cost=None, unaccounted_reserve=None):
+        """Fail closed unless every non-measured attempt is covered by a reserve.
+
+        unaccounted_reserve is caller-declared money for attempts whose cost is
+        unknown; without it an unknown or estimated row blocks the hard budget.
+        """
         if type(ceiling) not in (int,float) or not math.isfinite(ceiling) or ceiling < 0: return False
         if type(next_max_cost) not in (int,float) or not math.isfinite(next_max_cost) or next_max_cost < 0: return False
+        if unaccounted_reserve is not None and (type(unaccounted_reserve) not in (int,float) or not math.isfinite(unaccounted_reserve) or unaccounted_reserve < 0): return False
         if not self.attempts: return False
-        if any(r['source'] != 'actual' or r['cost'] is None or r['currency'] != currency for r in self.attempts):
-            return False
-        return sum(r['cost'] for r in self.attempts) + next_max_cost <= ceiling
+        accounted = 0.0
+        for row in self.attempts:
+            if row['source'] == 'actual' and row['cost'] is not None and row['currency'] == currency:
+                accounted += row['cost']
+            elif unaccounted_reserve is not None and row['currency'] in (None, currency):
+                continue
+            else:
+                return False
+        return accounted + (unaccounted_reserve or 0) + next_max_cost <= ceiling
 
 
 class Supervisor:

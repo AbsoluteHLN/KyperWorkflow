@@ -2,7 +2,7 @@ import z from '@deepseek-ai/schemastery';
 import { install } from './bridge.js';
 import { EMPTY_PROFILES, parseProfiles } from './profiles.js';
 
-export const name = 'completionqa';
+export const name = 'kyperworkflow';
 // completionQAHost is this package's required trusted integration seam, not a
 // built-in DSH service. Missing integration must block activation.
 export const inject = ['agentTeams', 'tools', 'completionQAHost'];

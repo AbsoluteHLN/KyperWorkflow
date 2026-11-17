@@ -40,5 +40,8 @@
 | T34 | implemented/tested mock | Local scope reservations; native model selection explicitly unsupported |
 | T35 | partial/blocked actual | Native tools guard retains host deny/ask; real lifecycle/Stop integration not installed or validated |
 | T36 | implemented/tested mock; real not_run | Missing usage unknown; real DSH meter/smoke requires verified host integration |
+| T37 | implemented/tested | `structure.py`: bounded file list, Python import edges with relative-import resolution, relative Markdown link edges, areas, entry points, external imports, `--check` staleness, digest and knowledge-graph payload; generated output self-excluded. Node/edge graph views over one scan: file-level Mermaid grouped by area, DOT, GraphML, TSV edge list and JSON, `--graph --graph-format` and `--max-nodes` collapse. Static analysis only; no call graph or semantic claim |
+| T38 | implemented/tested | `onboarding.py` + MCP `setup_checklist`: project root, out-of-project state dir, dependency paths, test permission, host check providers, sub-agent routes, budget, shared memory, Skill install. Undetected items stay `needs_user_input`; nothing defaulted |
+| T39 | implemented/tested | Rename to KyperWorkflow 0.2.0: package `kyper_workflow`, CLI `kyper-workflow`, MCP server `kyper-workflow`, Skill `kyper-workflow`, GitHub repository `AbsoluteHLN/KyperWorkflow` with `origin` repointed, deprecated `completion_plugin` shim covered by tests |
 
-Private GitHub repository remains the earlier v0.4 publication; the new source artifact is not pushed. Copying that old GitHub URL does not fetch this implementation.
+The GitHub repository is renamed, but the private repository still publishes only the earlier v0.4 content: this implementation is not committed, pushed, tagged or released, so cloning either URL does not fetch it.

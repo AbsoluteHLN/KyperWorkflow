@@ -153,6 +153,16 @@ class Workflow:
         self.data['state'] = 'executing'
         self._save('task_started')
 
+    def bind_verifier(self, name, verifier):
+        """Install a trusted current recheck for one declared task.
+
+        Approval is not re-argued here; the verifier must itself re-read current
+        content. Callers re-establish these after a restart before completing.
+        """
+        if name not in self.data['tasks'] or not callable(verifier):
+            raise ValueError('Unknown task or verifier')
+        self._verifiers[name] = verifier
+
     def finish(self, name, *, status, result):
         task = self.data['tasks'][name]
         if task['status'] != 'running' or status not in ('pass', 'fail', 'blocked') or not result:

@@ -10,7 +10,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from completion_plugin.windows_process import run_windows, _excerpt, OutputLimitExceeded
+from kyper_workflow.windows_process import run_windows, _excerpt, OutputLimitExceeded
 
 
 class WindowsRunnerContractTests(unittest.TestCase):
@@ -30,7 +30,7 @@ class WindowsRunnerContractTests(unittest.TestCase):
         self.assertIn('[output truncated]', result)
 
     def test_argv_and_timeout_validation_without_native_execution(self):
-        with patch('completion_plugin.windows_process.os.name', 'nt'):
+        with patch('kyper_workflow.windows_process.os.name', 'nt'):
             with self.assertRaises(ValueError):
                 run_windows('python -c print(1)', '.')
             with self.assertRaises(ValueError):

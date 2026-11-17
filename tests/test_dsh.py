@@ -1,6 +1,6 @@
 """Synthetic host contract tests; these do not load or exercise real DSH."""
 import unittest
-from completion_plugin.dsh import DSHAdapter, DSHBlocked
+from kyper_workflow.dsh import DSHAdapter, DSHBlocked
 
 
 class SyntheticHost:

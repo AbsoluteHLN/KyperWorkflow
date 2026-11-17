@@ -347,20 +347,31 @@ class ProfileValidator:
         self.backend, self.authorize, self.ttl_seconds = backend, authorize, ttl_seconds
         self._records = []
         self._snapshots = {}
+        self._positions = {}
+        self._latest = {}
 
     @property
     def records(self):
         return tuple(self._records)
 
+    def _index(self, record, position):
+        key = (record.profile_id, record.profile_revision, record.route, record.context, record.scope, record.stage)
+        self._positions.setdefault(key, []).append(position)
+        scope_key = (record.profile_id, record.profile_revision, record.route, record.context, record.scope)
+        self._latest.setdefault(scope_key, {})[record.stage] = position
+
     def _current(self, profile, route, context, scope, now, stage):
-        candidates = [r for r in self._records if (r.profile_id, r.profile_revision, r.route, r.context, r.scope, r.stage) == (profile.profile_id, profile.profile_revision, route, context, scope, stage)]
-        if self._snapshots.get((profile.profile_id, profile.profile_revision)) != profile or not candidates:
+        if self._snapshots.get((profile.profile_id, profile.profile_revision)) != profile:
             return None
-        result = candidates[-1]
-        position = next(i for i in range(len(self._records) - 1, -1, -1) if self._records[i] is result)
-        for newer in self._records[position + 1:]:
-            if (newer.profile_id, newer.profile_revision, newer.route, newer.context, newer.scope) == (profile.profile_id, profile.profile_revision, route, context, scope) and STAGES.index(newer.stage) < STAGES.index(stage):
-                return None
+        positions = self._positions.get((profile.profile_id, profile.profile_revision, route, context, scope, stage))
+        if not positions:
+            return None
+        position = positions[-1]
+        result = self._records[position]
+        index = STAGES.index(stage)
+        latest = self._latest.get((profile.profile_id, profile.profile_revision, route, context, scope), {})
+        if any(index_of > position for newer_stage, index_of in latest.items() if STAGES.index(newer_stage) < index):
+            return None
         return result if result.checked_at <= now < result.expires_at else None
 
     def status(self, profile, route_id, stage, context, *, scope="model_call", now=None):
@@ -428,6 +439,7 @@ class ProfileValidator:
                     status = "failed"
         record = ValidationRecord(stage, status, profile.profile_id, profile.profile_revision, route, context, now, now + timedelta(seconds=self.ttl_seconds), scope, result.reason, result.tokens, result.cost, result.currency, "reported" if result.tokens is not None or result.cost is not None else "unknown", result.concurrency)
         self._records.append(record)
+        self._index(record, len(self._records) - 1)
         return record
 
     def select_route(self, profile, role_name, context, *, approved_revision, approved_routes, host_concurrency, scope="model_call", now=None):

@@ -7,7 +7,7 @@ class TerminalTests(unittest.TestCase):
  def exercise(self, approval):
   with tempfile.TemporaryDirectory() as d:
    root=Path(d);(root/'a.py').write_text('x=1');master,slave=pty.openpty()
-   process=subprocess.Popen([sys.executable,'-m','completion_plugin.cli','wizard','--root',d,'--state',str(root/'state'),'--artifact','a.py'],stdin=slave,stdout=slave,stderr=slave)
+   process=subprocess.Popen([sys.executable,'-m','kyper_workflow.cli','wizard','--root',d,'--state',str(root/'state'),'--artifact','a.py'],stdin=slave,stdout=slave,stderr=slave)
    os.close(slave);data=b''
    try:
     os.write(master,('Check syntax\nyes\nhttps://docs.python.org\nacknowledge\nlocal\n'+approval+'\n').encode())

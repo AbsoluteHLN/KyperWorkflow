@@ -1,9 +1,9 @@
 import tempfile
 import unittest
 from pathlib import Path
-from completion_plugin.workflow import Workflow
-from completion_plugin.runtime import execute_review
-from completion_plugin.usage import Ledger
+from kyper_workflow.workflow import Workflow
+from kyper_workflow.runtime import execute_review
+from kyper_workflow.usage import Ledger
 class RuntimeTests(unittest.TestCase):
  def test_confirm_then_execute_and_account(self):
   with tempfile.TemporaryDirectory() as d:

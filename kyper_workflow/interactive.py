@@ -2,7 +2,7 @@
 import json
 import sys
 from .workflow import Workflow
-from .runtime import execute_review
+from .runtime import execute_review, recheck
 from .usage import Ledger
 
 
@@ -52,17 +52,41 @@ def resume(state, *, read=input, write=print, terminal=None):
     if terminal is None:terminal=sys.stdin.isatty()
     if terminal is not True:raise ValueError('Operator terminal required')
     w=Workflow(state)
-    if w.data['state'] not in ('awaiting_confirmation','approved'):
-        raise ValueError('Only a saved, unexecuted final proposal can resume safely')
-    task=w.data['tasks'].get('review')
-    if not task or task['status']!='not_run' or task.get('code_mode')!='syntax':
-        raise ValueError('Saved task needs host recovery; not automatically replayed')
+    if w.data['state'] not in ('awaiting_confirmation','approved','executing'):
+        raise ValueError('Only a saved, unexecuted or interrupted proposal can resume safely')
+    interrupted=sorted(name for name,task in w.data['tasks'].items() if task['status']=='running')
+    if interrupted:
+        raise ValueError('Interrupted running tasks are not replayed: '+', '.join(interrupted))
     shown=w._proposal();write(json.dumps(shown,ensure_ascii=False,indent=2))
     if read('Resume exact proposal? Type APPROVE '+str(shown['revision'])+': ').strip()!='APPROVE '+str(shown['revision']):return {'status':'cancelled'}
     if w.data['state']=='awaiting_confirmation':
         w.confirm=lambda proposal:shown if proposal==shown else None
         w.approve()
-    inputs=task['inputs']
-    result=execute_review(w,'review',root=inputs['root'],artifacts=inputs['artifacts'],ledger=Ledger(str(state)+'.usage.json'))
-    if result['status']=='pass':w.complete()
-    return result
+    recheck(w,trusted_tests=any(task.get('code_mode')=='project_tests'
+                                for task in w.data['tasks'].values() if task['status']=='pass'))
+    pending=[name for name,task in w.data['tasks'].items() if task['status']!='pass']
+    ledger=Ledger(str(state)+'.usage.json')
+    results={}
+    ordered=_order(w,pending)
+    for name in ordered:
+        task=w.data['tasks'][name]
+        inputs=task.get('inputs') or {}
+        if not inputs.get('root') or not inputs.get('artifacts'):
+            return {'status':'blocked','task':name,'reason':'Task has no recorded inputs'}
+        result=execute_review(w,name,root=inputs['root'],artifacts=inputs['artifacts'],ledger=ledger,
+                              trusted_tests=task.get('code_mode')=='project_tests')
+        results[name]=result
+        if result['status']!='pass':return result
+    w.complete()
+    return dict(results[ordered[-1]] if ordered else {'status':'complete'}, completed=True, tasks=results)
+
+
+def _order(workflow,names):
+    """Dependency order for the named tasks; declarations are acyclic by construction."""
+    remaining=list(names);ordered=[]
+    while remaining:
+        ready=[name for name in remaining
+               if all(dep in ordered or dep not in names for dep in workflow.data['tasks'][name]['depends'])]
+        if not ready:raise ValueError('Task dependencies cannot be ordered')
+        ordered.append(ready[0]);remaining.remove(ready[0])
+    return ordered

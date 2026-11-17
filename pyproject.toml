@@ -2,13 +2,13 @@
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 [project]
-name = "completion-review-plugin"
-version = "0.1.2"
+name = "kyper-workflow"
+version = "0.2.0"
 requires-python = ">=3.11"
-description = "Explicit specification approval and bounded review plugin"
+description = "KyperWorkflow: explicit specification approval, bounded review and project mapping"
 [project.scripts]
-completion-review = "completion_plugin.cli:main"
+kyper-workflow = "kyper_workflow.cli:main"
 [tool.setuptools.packages.find]
-include = ["completion_plugin*"]
+include = ["kyper_workflow*", "completion_plugin*"]
 [project.optional-dependencies]
 mcp = ["mcp>=1.29,<2"]

@@ -1,8 +1,8 @@
 import unittest,tempfile
 from pathlib import Path
-from completion_plugin.workflow import Workflow
-from completion_plugin.runtime import execute_review
-from completion_plugin.usage import Ledger
+from kyper_workflow.workflow import Workflow
+from kyper_workflow.runtime import execute_review
+from kyper_workflow.usage import Ledger
 class ModeTests(unittest.TestCase):
  def test_project_tests_cannot_downgrade(self):
   with tempfile.TemporaryDirectory() as d:

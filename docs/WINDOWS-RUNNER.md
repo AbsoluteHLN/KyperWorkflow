@@ -1,6 +1,6 @@
 # Windows contained process runner
 
-`completion_plugin.windows_process.run_windows(command, root, timeout=20)`
+`kyper_workflow.windows_process.run_windows(command, root, timeout=20)`
 accepts a fixed argument list whose first element is an absolute executable path.
 It returns a `subprocess.CompletedProcess` with text stdout/stderr excerpts.
 The caller must supply only the approved project-check command; this module does
@@ -23,11 +23,15 @@ not decide whether an arbitrary executable or project is trustworthy.
   raises `OutputLimitExceeded`. This is a watchdog threshold, not an exact disk
   quota: output can overshoot between polls. Returned excerpts are at most 19,000
   source bytes per stream, or 9,000-byte head/tail with a truncation marker.
-- On success, nonzero exit, timeout, or error, terminates the contained job,
-  waits up to five additional seconds for active descendants to disappear, and
-  closes process, thread, job, attribute-list, and file resources. Failure before
-  assignment terminates the suspended process directly. Job close is an extra
-  kill backstop if explicit cleanup fails. Cleanup failure is reported.
+- On success, nonzero exit, timeout, or error, records the job's member PIDs and
+  opens a synchronize handle on each *before* `TerminateJobObject`. Job
+  accounting and the member list clear as soon as termination is requested, well
+  before the process objects signal, so counters cannot prove exit. Cleanup then
+  waits up to five additional seconds for every recorded handle, re-recording
+  members created during the kill, and closes process, thread, job,
+  attribute-list, and file resources. Failure before assignment terminates the
+  suspended process directly. Job close is an extra kill backstop if explicit
+  cleanup fails. Cleanup failure is reported.
 
 The Job Object is process containment/cleanup for trusted checks, not a security
 sandbox. It does not restrict network/file access, prevent all OS-service-mediated

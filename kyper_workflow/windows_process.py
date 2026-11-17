@@ -71,11 +71,6 @@ def _run_native(command, root, timeout):
         _fields_ = [('BasicLimitInformation', BASIC_LIMIT), ('IoInfo', IO_COUNTERS),
                     ('ProcessMemoryLimit', SIZE_T), ('JobMemoryLimit', SIZE_T),
                     ('PeakProcessMemoryUsed', SIZE_T), ('PeakJobMemoryUsed', SIZE_T)]
-    class ACCOUNTING(c.Structure):
-        _fields_ = [('TotalUserTime', c.c_longlong), ('TotalKernelTime', c.c_longlong),
-                    ('ThisPeriodTotalUserTime', c.c_longlong), ('ThisPeriodTotalKernelTime', c.c_longlong),
-                    ('TotalPageFaultCount', w.DWORD), ('TotalProcesses', w.DWORD),
-                    ('ActiveProcesses', w.DWORD), ('TotalTerminatedProcesses', w.DWORD)]
     class STARTUPINFO(c.Structure):
         _fields_ = [('cb', w.DWORD), ('lpReserved', w.LPWSTR), ('lpDesktop', w.LPWSTR),
                     ('lpTitle', w.LPWSTR), ('dwX', w.DWORD), ('dwY', w.DWORD),
@@ -108,10 +103,30 @@ def _run_native(command, root, timeout):
     wait = bind('WaitForSingleObject', [w.HANDLE, w.DWORD], w.DWORD)
     exit_code = bind('GetExitCodeProcess', [w.HANDLE, c.POINTER(w.DWORD)])
     terminate_process = bind('TerminateProcess', [w.HANDLE, w.UINT])
+    open_process = bind('OpenProcess', [w.DWORD, w.BOOL, w.DWORD], w.HANDLE)
     def check(ok):
         if not ok:
             raise c.WinError(c.get_last_error())
         return ok
+
+    def job_pids():
+        """Current job members.
+
+        Job accounting and the member list can both clear before the process
+        object is signalled, so membership alone cannot confirm exit.
+        """
+        size = c.sizeof(SIZE_T) * 64
+        while True:
+            buffer = c.create_string_buffer(size)
+            if not query_job(job, 3, buffer, size, None):
+                error = c.get_last_error()
+                if error != 234 or size >= c.sizeof(SIZE_T) * 65536:
+                    raise c.WinError(error)
+                size *= 2
+                continue
+            count = c.cast(buffer, c.POINTER(w.DWORD))[1]
+            ids = c.cast(c.byref(buffer, c.sizeof(w.DWORD) * 2), c.POINTER(SIZE_T))
+            return [ids[index] for index in range(count)]
 
     with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err, open(os.devnull, 'rb') as inp:
         job = check(create_job(None, None))
@@ -173,21 +188,42 @@ def _run_native(command, root, timeout):
         finally:
             try:
                 if pi.hProcess:
-                    if assigned:
-                        check(terminate_job(job, 1))
-                    else:
-                        check(terminate_process(pi.hProcess, 1))
-                    # Wait for descendants too, so they cannot retain capture files.
-                    cleanup_deadline = time.monotonic() + 5
-                    while True:
-                        accounting = ACCOUNTING()
+                    # Job membership and accounting clear as soon as termination is
+                    # requested, so members must be tracked before the kill and by
+                    # synchronize handle afterwards, not by job counters.
+                    members = {}
+
+                    def track_members():
+                        if not assigned:
+                            return
+                        for pid in job_pids():
+                            if pid not in members:
+                                handle = open_process(0x00100000, False, pid)
+                                if not handle and c.get_last_error() != 87:
+                                    raise c.WinError(c.get_last_error())
+                                members[pid] = handle
+
+                    try:
+                        track_members()
                         if assigned:
-                            check(query_job(job, 1, c.byref(accounting), c.sizeof(accounting), None))
-                        if wait(pi.hProcess, 0) == 0 and (not assigned or accounting.ActiveProcesses == 0):
-                            break
-                        if time.monotonic() >= cleanup_deadline:
-                            raise OSError('Windows process-tree cleanup did not finish within 5 seconds')
-                        time.sleep(POLL_SECONDS)
+                            check(terminate_job(job, 1))
+                        else:
+                            check(terminate_process(pi.hProcess, 1))
+                        # Wait for descendants too, so they cannot retain capture files.
+                        track_members()
+                        cleanup_deadline = time.monotonic() + 5
+                        while True:
+                            track_members()
+                            exited = all(handle == 0 or wait(handle, 0) == 0 for handle in members.values())
+                            if wait(pi.hProcess, 0) == 0 and exited:
+                                break
+                            if time.monotonic() >= cleanup_deadline:
+                                raise OSError('Windows process-tree cleanup did not finish within 5 seconds')
+                            time.sleep(POLL_SECONDS)
+                    finally:
+                        for handle in members.values():
+                            if handle:
+                                close(handle)
             finally:
                 if pi.hThread:
                     close(pi.hThread)

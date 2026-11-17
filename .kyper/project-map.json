@@ -1,0 +1,1425 @@
+{
+  "area_edges": [
+    {
+      "count": 4,
+      "from": "(root)",
+      "to": "docs"
+    },
+    {
+      "count": 1,
+      "from": "tests",
+      "to": "completion_plugin"
+    },
+    {
+      "count": 37,
+      "from": "tests",
+      "to": "kyper_workflow"
+    }
+  ],
+  "areas": {
+    "(root)": {
+      "bytes": 10497,
+      "files": 5,
+      "lines": 120
+    },
+    ".agents": {
+      "bytes": 5099,
+      "files": 1,
+      "lines": 32
+    },
+    "adapters": {
+      "bytes": 44232,
+      "files": 7,
+      "lines": 758
+    },
+    "completion_plugin": {
+      "bytes": 540,
+      "files": 1,
+      "lines": 14
+    },
+    "docs": {
+      "bytes": 87379,
+      "files": 15,
+      "lines": 849
+    },
+    "kyper_workflow": {
+      "bytes": 168133,
+      "files": 18,
+      "lines": 3165
+    },
+    "skills": {
+      "bytes": 5099,
+      "files": 1,
+      "lines": 32
+    },
+    "tests": {
+      "bytes": 103516,
+      "files": 23,
+      "lines": 2004
+    }
+  },
+  "edges": [
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/FIRST-RUN-SETUP.md"
+    },
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/INSTALL-CODEX-WINDOWS.md"
+    },
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/MIGRATION-v0.4-to-plugin.md"
+    },
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/RENAME-KYPERWORKFLOW.md"
+    },
+    {
+      "from": "docs/INSTALL-CODEX-WINDOWS.md",
+      "kind": "doc_link",
+      "to": "docs/FIRST-RUN-SETUP.md"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/editorial.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/interactive.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/onboarding.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/profiles.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/structure.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "kyper_workflow/evidence.py",
+      "kind": "import",
+      "to": "kyper_workflow/process.py"
+    },
+    {
+      "from": "kyper_workflow/evidence.py",
+      "kind": "import",
+      "to": "kyper_workflow/windows_process.py"
+    },
+    {
+      "from": "kyper_workflow/interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "kyper_workflow/interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "kyper_workflow/interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "kyper_workflow/onboarding.py",
+      "kind": "import",
+      "to": "kyper_workflow/__init__.py"
+    },
+    {
+      "from": "kyper_workflow/polishing.py",
+      "kind": "import",
+      "to": "kyper_workflow/editorial.py"
+    },
+    {
+      "from": "kyper_workflow/process.py",
+      "kind": "import",
+      "to": "kyper_workflow/windows_process.py"
+    },
+    {
+      "from": "kyper_workflow/runtime.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "kyper_workflow/runtime.py",
+      "kind": "import",
+      "to": "kyper_workflow/profiles.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/__init__.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/editorial.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/onboarding.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/structure.py"
+    },
+    {
+      "from": "kyper_workflow/usage.py",
+      "kind": "import",
+      "to": "kyper_workflow/locking.py"
+    },
+    {
+      "from": "kyper_workflow/workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/locking.py"
+    },
+    {
+      "from": "tests/test_acceptance_mode.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "tests/test_acceptance_mode.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_acceptance_mode.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_dispatch.py",
+      "kind": "import",
+      "to": "kyper_workflow/profiles.py"
+    },
+    {
+      "from": "tests/test_dispatch.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "tests/test_dispatch.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_dispatch.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_dsh.py",
+      "kind": "import",
+      "to": "kyper_workflow/dsh.py"
+    },
+    {
+      "from": "tests/test_editorial.py",
+      "kind": "import",
+      "to": "kyper_workflow/editorial.py"
+    },
+    {
+      "from": "tests/test_host_attestation.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "tests/test_host_attestation.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "tests/test_host_attestation.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_host_attestation.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_independent_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "tests/test_independent_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_independent_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/interactive.py"
+    },
+    {
+      "from": "tests/test_interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "tests/test_interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_interactive.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_locking.py",
+      "kind": "import",
+      "to": "kyper_workflow/locking.py"
+    },
+    {
+      "from": "tests/test_onboarding.py",
+      "kind": "import",
+      "to": "kyper_workflow/onboarding.py"
+    },
+    {
+      "from": "tests/test_polishing.py",
+      "kind": "import",
+      "to": "kyper_workflow/polishing.py"
+    },
+    {
+      "from": "tests/test_profiles.py",
+      "kind": "import",
+      "to": "kyper_workflow/profiles.py"
+    },
+    {
+      "from": "tests/test_project_execution.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "tests/test_rename_shim.py",
+      "kind": "import",
+      "to": "completion_plugin/__init__.py"
+    },
+    {
+      "from": "tests/test_runtime.py",
+      "kind": "import",
+      "to": "kyper_workflow/runtime.py"
+    },
+    {
+      "from": "tests/test_runtime.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_runtime.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_structure.py",
+      "kind": "import",
+      "to": "kyper_workflow/structure.py"
+    },
+    {
+      "from": "tests/test_supervisor_host.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_unicode_storage.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_unicode_storage.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_usage_persistence.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_windows_process.py",
+      "kind": "import",
+      "to": "kyper_workflow/windows_process.py"
+    },
+    {
+      "from": "tests/test_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/evidence.py"
+    },
+    {
+      "from": "tests/test_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/usage.py"
+    },
+    {
+      "from": "tests/test_workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
+    }
+  ],
+  "entry_points": [
+    "kyper_workflow/cli.py"
+  ],
+  "external_imports": {
+    "__future__": 4,
+    "argparse": 1,
+    "ast": 2,
+    "collections": 1,
+    "contextlib": 1,
+    "copy": 5,
+    "ctypes": 4,
+    "dataclasses": 6,
+    "datetime": 10,
+    "difflib": 1,
+    "fcntl": 1,
+    "io": 1,
+    "json": 14,
+    "math": 5,
+    "mcp": 4,
+    "msvcrt": 2,
+    "os": 14,
+    "pathlib": 30,
+    "pty": 1,
+    "re": 3,
+    "resource": 1,
+    "select": 1,
+    "signal": 1,
+    "stat": 1,
+    "subprocess": 6,
+    "sys": 10,
+    "tempfile": 19,
+    "threading": 2,
+    "time": 5,
+    "tomllib": 1,
+    "types": 1,
+    "typing": 3,
+    "unittest": 27,
+    "uuid": 6,
+    "warnings": 2,
+    "xml": 1
+  },
+  "files": [
+    {
+      "bytes": 99,
+      "language": "other",
+      "lines": 10,
+      "path": ".gitignore"
+    },
+    {
+      "bytes": 519,
+      "language": "other",
+      "lines": 10,
+      "path": "LICENSE"
+    },
+    {
+      "bytes": 7632,
+      "doc": "KyperWorkflow 0.2.0",
+      "language": "markdown",
+      "lines": 76,
+      "path": "README.md"
+    },
+    {
+      "bytes": 1770,
+      "doc": "Sources and licensing",
+      "language": "markdown",
+      "lines": 10,
+      "path": "THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "bytes": 477,
+      "language": "toml",
+      "lines": 14,
+      "path": "pyproject.toml"
+    },
+    {
+      "bytes": 5099,
+      "doc": "",
+      "language": "markdown",
+      "lines": 32,
+      "path": ".agents/skills/kyper-workflow/SKILL.md"
+    },
+    {
+      "bytes": 14345,
+      "doc": "KyperWorkflow DSH adapter",
+      "language": "markdown",
+      "lines": 221,
+      "path": "adapters/dsh/README.md"
+    },
+    {
+      "bytes": 8767,
+      "language": "javascript",
+      "lines": 165,
+      "path": "adapters/dsh/bridge.js"
+    },
+    {
+      "bytes": 8449,
+      "language": "javascript",
+      "lines": 117,
+      "path": "adapters/dsh/bridge.test.js"
+    },
+    {
+      "bytes": 876,
+      "language": "javascript",
+      "lines": 15,
+      "path": "adapters/dsh/index.js"
+    },
+    {
+      "bytes": 5080,
+      "language": "javascript",
+      "lines": 103,
+      "path": "adapters/dsh/integration-example.mjs"
+    },
+    {
+      "bytes": 692,
+      "language": "json",
+      "lines": 28,
+      "path": "adapters/dsh/package.json"
+    },
+    {
+      "bytes": 6023,
+      "language": "javascript",
+      "lines": 109,
+      "path": "adapters/dsh/profiles.js"
+    },
+    {
+      "bytes": 540,
+      "doc": "Deprecated import path.",
+      "language": "python",
+      "lines": 14,
+      "names": [],
+      "parse_error": null,
+      "path": "completion_plugin/__init__.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 0
+      }
+    },
+    {
+      "bytes": 4499,
+      "doc": "首次接入配置（KyperWorkflow）",
+      "language": "markdown",
+      "lines": 50,
+      "path": "docs/FIRST-RUN-SETUP.md"
+    },
+    {
+      "bytes": 4697,
+      "doc": "Implementation status — 2026-11-17",
+      "language": "markdown",
+      "lines": 30,
+      "path": "docs/IMPLEMENTATION-STATUS.md"
+    },
+    {
+      "bytes": 4191,
+      "doc": "Codex 与 Windows 手动试用（v0.1.2）",
+      "language": "markdown",
+      "lines": 67,
+      "path": "docs/INSTALL-CODEX-WINDOWS.md"
+    },
+    {
+      "bytes": 1114,
+      "doc": "从旧 MCP v0.4 迁移",
+      "language": "markdown",
+      "lines": 12,
+      "path": "docs/MIGRATION-v0.4-to-plugin.md"
+    },
+    {
+      "bytes": 29419,
+      "doc": "KyperWorkflow 通用插件重构规格",
+      "language": "markdown",
+      "lines": 234,
+      "path": "docs/PLUGIN-REFACTOR-SPEC.md"
+    },
+    {
+      "bytes": 733,
+      "doc": "0.1.1 Windows storage compatibility patch",
+      "language": "markdown",
+      "lines": 7,
+      "path": "docs/RELEASE-0.1.1.md"
+    },
+    {
+      "bytes": 1910,
+      "doc": "0.1.2 Windows runner and Unicode patch",
+      "language": "markdown",
+      "lines": 19,
+      "path": "docs/RELEASE-0.1.2.md"
+    },
+    {
+      "bytes": 3112,
+      "doc": "改名：CompletionQAMCP → KyperWorkflow",
+      "language": "markdown",
+      "lines": 47,
+      "path": "docs/RENAME-KYPERWORKFLOW.md"
+    },
+    {
+      "bytes": 593,
+      "doc": "QA 插件阶段记录",
+      "language": "markdown",
+      "lines": 9,
+      "path": "docs/STAGE-20261019-0300.md"
+    },
+    {
+      "bytes": 5820,
+      "doc": "spec-v002 implementation matrix",
+      "language": "markdown",
+      "lines": 47,
+      "path": "docs/TASK-MATRIX.md"
+    },
+    {
+      "bytes": 2069,
+      "doc": "Using the writing workflow",
+      "language": "markdown",
+      "lines": 12,
+      "path": "docs/TEXT-POLISHING.md"
+    },
+    {
+      "bytes": 5547,
+      "doc": "Current validation",
+      "language": "markdown",
+      "lines": 73,
+      "path": "docs/VALIDATION.md"
+    },
+    {
+      "bytes": 3896,
+      "doc": "Windows contained process runner",
+      "language": "markdown",
+      "lines": 60,
+      "path": "docs/WINDOWS-RUNNER.md"
+    },
+    {
+      "bytes": 1315,
+      "language": "other",
+      "lines": 26,
+      "path": "docs/dsh-tests.log"
+    },
+    {
+      "bytes": 18464,
+      "language": "other",
+      "lines": 156,
+      "path": "docs/python-tests.log"
+    },
+    {
+      "bytes": 114,
+      "doc": "KyperWorkflow: explicit specification approval, bounded review and project mapping.",
+      "language": "python",
+      "lines": 2,
+      "names": [],
+      "parse_error": null,
+      "path": "kyper_workflow/__init__.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 0
+      }
+    },
+    {
+      "bytes": 5720,
+      "doc": "Local explicit actions. No automatic user confirmation through model inputs.",
+      "language": "python",
+      "lines": 90,
+      "names": [
+        "main()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/cli.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 13012,
+      "doc": "Stdlib-only DSH bridge contract; not an installed DSH plugin.",
+      "language": "python",
+      "lines": 251,
+      "names": [
+        "DSHAdapter",
+        "DSHBlocked",
+        "capabilities()",
+        "ensure_member()",
+        "guard()",
+        "import_preview()",
+        "interrupt()",
+        "mutate_config()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/dsh.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 15
+      }
+    },
+    {
+      "bytes": 13174,
+      "doc": "Deterministic, review-only Chinese/English editorial assistance.",
+      "language": "python",
+      "lines": 194,
+      "names": [
+        "review()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/editorial.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 6
+      }
+    },
+    {
+      "bytes": 7989,
+      "doc": "Bounded direct-content checks; trusted local runner, not tamper protection.",
+      "language": "python",
+      "lines": 161,
+      "names": [
+        "Review",
+        "attest()",
+        "current()",
+        "gate()",
+        "project_tests()",
+        "repository_snapshot()",
+        "snapshot()",
+        "syntax()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/evidence.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 11
+      }
+    },
+    {
+      "bytes": 5556,
+      "doc": "Operator-facing terminal workflow. Agent/host users should use trusted adapters.",
+      "language": "python",
+      "lines": 92,
+      "names": [
+        "confirm()",
+        "resume()",
+        "run()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/interactive.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 4
+      }
+    },
+    {
+      "bytes": 1782,
+      "doc": "Local advisory writer lock for POSIX and Windows, with bounded waiting.",
+      "language": "python",
+      "lines": 44,
+      "names": [
+        "writer_lock()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/locking.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 8392,
+      "doc": "First-run configuration checklist.",
+      "language": "python",
+      "lines": 138,
+      "names": [
+        "checklist()",
+        "markdown()",
+        "session_prompt()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/onboarding.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 4
+      }
+    },
+    {
+      "bytes": 11095,
+      "doc": "Host-injected candidate generation and review; no network/provider client.",
+      "language": "python",
+      "lines": 198,
+      "names": [
+        "HostBindings",
+        "PolishingSession",
+        "Request",
+        "adopt()",
+        "run()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/polishing.py",
+      "symbols": {
+        "classes": 3,
+        "functions": 6
+      }
+    },
+    {
+      "bytes": 1714,
+      "doc": "Bounded time/output reads for explicitly trusted POSIX or Windows project commands.",
+      "language": "python",
+      "lines": 33,
+      "names": [
+        "excerpt()",
+        "run_project()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/process.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 2
+      }
+    },
+    {
+      "bytes": 23093,
+      "doc": "Versioned, secret-free profile configuration and fail-closed validation.",
+      "language": "python",
+      "lines": 474,
+      "names": [
+        "HostContext",
+        "ProbeResult",
+        "Profile",
+        "ProfileError",
+        "ProfileValidator",
+        "Role",
+        "Route",
+        "ValidationRecord"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/profiles.py",
+      "symbols": {
+        "classes": 8,
+        "functions": 24
+      }
+    },
+    {
+      "bytes": 6388,
+      "doc": "Approved local review execution integrated with task state and usage.",
+      "language": "python",
+      "lines": 104,
+      "names": [
+        "dispatch_profile()",
+        "execute_review()",
+        "recheck()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/runtime.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 3
+      }
+    },
+    {
+      "bytes": 2928,
+      "doc": "Optional MCP surface. Approval and file writes stay with trusted host actions.",
+      "language": "python",
+      "lines": 60,
+      "names": [
+        "capabilities()",
+        "project_map()",
+        "project_memory()",
+        "review_text()",
+        "setup_checklist()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/server.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 5
+      }
+    },
+    {
+      "bytes": 34254,
+      "doc": "Deterministic project structure map: files, imports, doc links and areas.",
+      "language": "python",
+      "lines": 737,
+      "names": [
+        "digest()",
+        "graph()",
+        "isolated()",
+        "memory_payload()",
+        "render_graph_dot()",
+        "render_graph_exports()",
+        "render_graph_graphml()",
+        "render_graph_mermaid()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/structure.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 30
+      }
+    },
+    {
+      "bytes": 1247,
+      "doc": "Explicitly trusted project tests, not a security sandbox.",
+      "language": "python",
+      "lines": 32,
+      "names": [
+        "main()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/test_runner.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 7539,
+      "doc": "Local attempt accounting and bounded progress supervision.",
+      "language": "python",
+      "lines": 126,
+      "names": [
+        "Ledger",
+        "Supervisor",
+        "budget_allows()",
+        "model_check()",
+        "observe()",
+        "record()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/usage.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 8
+      }
+    },
+    {
+      "bytes": 12632,
+      "doc": "Windows-only bounded runner for trusted, fixed executable/argument lists.",
+      "language": "python",
+      "lines": 240,
+      "names": [
+        "BASIC_LIMIT",
+        "EXTENDED_LIMIT",
+        "IO_COUNTERS",
+        "OutputLimitExceeded",
+        "PROCESS_INFORMATION",
+        "STARTUPINFO",
+        "STARTUPINFOEX",
+        "bind()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/windows_process.py",
+      "symbols": {
+        "classes": 7,
+        "functions": 7
+      }
+    },
+    {
+      "bytes": 11504,
+      "doc": "Explicit revisions and trusted local approval. No content fingerprints.",
+      "language": "python",
+      "lines": 189,
+      "names": [
+        "Workflow",
+        "add_task()",
+        "approve()",
+        "bind_verifier()",
+        "complete()",
+        "finish()",
+        "now()",
+        "overlap()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/workflow.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 14
+      }
+    },
+    {
+      "bytes": 5099,
+      "doc": "",
+      "language": "markdown",
+      "lines": 32,
+      "path": "skills/kyper-workflow/SKILL.md"
+    },
+    {
+      "bytes": 1441,
+      "doc": "",
+      "language": "python",
+      "lines": 24,
+      "names": [
+        "ModeTests",
+        "test_mode_must_be_explicit()",
+        "test_non_boolean_execution_optin_rejected()",
+        "test_project_tests_cannot_downgrade()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_acceptance_mode.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 3
+      }
+    },
+    {
+      "bytes": 1807,
+      "doc": "Synthetic host dispatcher integration; no external model invocation.",
+      "language": "python",
+      "lines": 22,
+      "names": [
+        "DispatchTests",
+        "test_approved_route_to_pending_qa()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_dispatch.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 7819,
+      "doc": "Synthetic host contract tests; these do not load or exercise real DSH.",
+      "language": "python",
+      "lines": 172,
+      "names": [
+        "DSHContractTests",
+        "SyntheticHost",
+        "get_config()",
+        "interrupt()",
+        "list_members()",
+        "member()",
+        "mutate_config()",
+        "probe()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_dsh.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 24
+      }
+    },
+    {
+      "bytes": 8912,
+      "doc": "",
+      "language": "python",
+      "lines": 162,
+      "names": [
+        "EditorialTests",
+        "test_changes_reconstruct_candidate()",
+        "test_code_and_citation_not_polished()",
+        "test_complete_summary_has_no_missing_structure()",
+        "test_dense_paragraph()",
+        "test_empty_candidate_is_actual_deletion()",
+        "test_english_qualifiers_and_author_year()",
+        "test_input_validation()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_editorial.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 24
+      }
+    },
+    {
+      "bytes": 8049,
+      "doc": "Trusted host check attestation, restart recheck and ledger append behaviour.",
+      "language": "python",
+      "lines": 160,
+      "names": [
+        "HostAttestationTests",
+        "LedgerFormatTests",
+        "approved()",
+        "attested()",
+        "reviewed()",
+        "setUp()",
+        "stale()",
+        "tearDown()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_host_attestation.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 18
+      }
+    },
+    {
+      "bytes": 16258,
+      "doc": "Independent negative-path coverage of the local workflow and evidence APIs.",
+      "language": "python",
+      "lines": 360,
+      "names": [
+        "IndependentEvidenceTests",
+        "IndependentUsageTests",
+        "IndependentWorkflowTests",
+        "create_project_test()",
+        "delayed_read()",
+        "ready()",
+        "review_and_approve()",
+        "setUp()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_independent_workflow.py",
+      "symbols": {
+        "classes": 3,
+        "functions": 46
+      }
+    },
+    {
+      "bytes": 3367,
+      "doc": "",
+      "language": "python",
+      "lines": 57,
+      "names": [
+        "InteractiveTests",
+        "plan()",
+        "test_cancel_and_resume()",
+        "test_no_pipe_approval()",
+        "test_operator_fixture_accept()",
+        "test_operator_fixture_reject()",
+        "test_resume_refuses_interrupted_running_task()",
+        "test_resume_runs_remaining_approved_tasks()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_interactive.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 7
+      }
+    },
+    {
+      "bytes": 794,
+      "doc": "",
+      "language": "python",
+      "lines": 16,
+      "names": [
+        "LockTests",
+        "test_posix_exclusion()",
+        "test_windows_api_contract_simulated()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_locking.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 2
+      }
+    },
+    {
+      "bytes": 997,
+      "doc": "",
+      "language": "python",
+      "lines": 18,
+      "names": [
+        "TransportTests",
+        "test_real_local_stdio()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_mcp_transport.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 2773,
+      "doc": "First-run configuration items are explicit, complete and never silently defaulted.",
+      "language": "python",
+      "lines": 62,
+      "names": [
+        "OnboardingTests",
+        "test_detected_items_flip_to_ok_only_with_real_evidence()",
+        "test_every_item_has_the_fields_a_session_needs()",
+        "test_nothing_is_reported_ready_without_user_input()",
+        "test_project_tests_are_platform_reported()",
+        "test_prompt_lists_required_items_first_and_blocks_planning()",
+        "test_subagents_and_dependency_paths_are_covered()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_onboarding.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 6
+      }
+    },
+    {
+      "bytes": 9013,
+      "doc": "Synthetic host contract tests; no real model is called.",
+      "language": "python",
+      "lines": 157,
+      "names": [
+        "PolishingTests",
+        "binding()",
+        "fail()",
+        "run_session()",
+        "test_accept_requires_matching_trusted_callback()",
+        "test_bare_boolean_cannot_authorize()",
+        "test_candidate_generated_and_audited_without_reviewer()",
+        "test_different_request_cannot_authorize()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_polishing.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 22
+      }
+    },
+    {
+      "bytes": 13925,
+      "doc": "",
+      "language": "python",
+      "lines": 268,
+      "names": [
+        "ProfileTests",
+        "backend()",
+        "select()",
+        "setUp()",
+        "test_absent_backend_and_out_of_order_fail_closed()",
+        "test_actual_model_mismatch_fails()",
+        "test_atomic_storage_revision_conflicts_and_roundtrip()",
+        "test_context_changes_invalidate()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_profiles.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 32
+      }
+    },
+    {
+      "bytes": 828,
+      "doc": "",
+      "language": "python",
+      "lines": 12,
+      "names": [
+        "ExecutionTests",
+        "test_empty_fails()",
+        "test_trusted_true_execution()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_project_execution.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 2
+      }
+    },
+    {
+      "bytes": 902,
+      "doc": "The pre-rename import path keeps working while pointing at the new package.",
+      "language": "python",
+      "lines": 24,
+      "names": [
+        "RenameShimTests",
+        "test_deprecated_package_forwards_to_kyper_workflow()",
+        "test_deprecated_submodule_import_still_works()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_rename_shim.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 2
+      }
+    },
+    {
+      "bytes": 1175,
+      "doc": "",
+      "language": "python",
+      "lines": 17,
+      "names": [
+        "RuntimeTests",
+        "test_confirm_then_execute_and_account()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_runtime.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 767,
+      "doc": "The distributable Skill and the project copy must not drift apart.",
+      "language": "python",
+      "lines": 19,
+      "names": [
+        "SkillCopyTests",
+        "test_project_copy_matches_distributable_skill()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_skill_copies.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 11965,
+      "doc": "Deterministic project map: files, imports, doc links, areas and memory payload.",
+      "language": "python",
+      "lines": 227,
+      "names": [
+        "GraphTests",
+        "StructureTests",
+        "build()",
+        "setUp()",
+        "tearDown()",
+        "test_areas_and_entry_points()",
+        "test_cli_graph_formats_and_staleness_covers_exports()",
+        "test_cli_writes_then_detects_staleness()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_structure.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 24
+      }
+    },
+    {
+      "bytes": 728,
+      "doc": "",
+      "language": "python",
+      "lines": 11,
+      "names": [
+        "SupervisorHostTests",
+        "test_absent()",
+        "test_cannot_override_pause()",
+        "test_recursive()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_supervisor_host.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 3
+      }
+    },
+    {
+      "bytes": 1545,
+      "doc": "Synthetic operator input over real PTY; not real user authorization evidence.",
+      "language": "python",
+      "lines": 29,
+      "names": [
+        "TerminalTests",
+        "exercise()",
+        "test_real_terminal_denial_fixture()",
+        "test_real_terminal_success_fixture()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_terminal_process.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 3
+      }
+    },
+    {
+      "bytes": 658,
+      "doc": "",
+      "language": "python",
+      "lines": 9,
+      "names": [
+        "UnicodeTests",
+        "test_utf8_state_and_usage()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_unicode_storage.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 1
+      }
+    },
+    {
+      "bytes": 817,
+      "doc": "",
+      "language": "python",
+      "lines": 13,
+      "names": [
+        "LedgerTests",
+        "test_recover_unknown_and_duplicate()",
+        "test_stale_writer()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_usage_persistence.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 2
+      }
+    },
+    {
+      "bytes": 5967,
+      "doc": "Native lifecycle checks are skipped on Linux, never counted as Windows evidence.",
+      "language": "python",
+      "lines": 128,
+      "names": [
+        "NativeWindowsRunnerTests",
+        "WindowsRunnerContractTests",
+        "assert_child_dead()",
+        "exercise_child_cleanup()",
+        "run_code()",
+        "test_argv_and_timeout_validation_without_native_execution()",
+        "test_child_cleanup_after_output_error()",
+        "test_child_cleanup_after_success()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_windows_process.py",
+      "symbols": {
+        "classes": 2,
+        "functions": 15
+      }
+    },
+    {
+      "bytes": 3009,
+      "doc": "",
+      "language": "python",
+      "lines": 37,
+      "names": [
+        "WorkflowTests",
+        "ready()",
+        "setUp()",
+        "test_boolean()",
+        "test_conflict()",
+        "test_content()",
+        "test_failed()",
+        "test_full_restart()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_workflow.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 12
+      }
+    }
+  ],
+  "limits": {
+    "file_bytes": 1000000,
+    "files": 2000,
+    "total_bytes": 20000000
+  },
+  "name": "KyperWorkflow",
+  "root": "E:\\dependency-cache\\mcp-sources\\CompletionQAMCP",
+  "schema": 1,
+  "scripts": [
+    "kyper_workflow.cli"
+  ]
+}

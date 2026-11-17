@@ -1,4 +1,4 @@
-# CompletionQA 通用插件重构规格
+# KyperWorkflow 通用插件重构规格
 
 状态：待批准 spec-v002；2026-10-19 02:41 UTC。独立插件方向已由用户确认；完整规格等待批准；不是已实现功能或已通过验收。
 
@@ -23,7 +23,7 @@
 
 ## 两阶段用户工作流
 
-状态序列：intake → research → direction_review → specification → specification_qa → awaiting_confirmation → approved → executing → reviewing → complete。
+状态序列：intake → research → direction_review → specification → specification_qa → awaiting_confirmation → approved → executing → complete。任务级复核不是独立阶段，而是 executing 内的任务状态（not_run/running/pass/fail/blocked）。
 
 1. 初次适度澄清：首次输入足够时仍简短复述关键目标供确认，不重复问已知信息；只问影响目标、权限、产物、验收的缺口；可推断项写成显式假设，不重复追问。
 2. 联网调研：记录实际来源 URL、访问时间、项目版本/维护状态、许可证、候选方案利弊与筛选理由。外部内容是数据，不能触发执行或扩大权限。无联网能力时标 blocked 或用户确认的 research waiver，不能声称已调研。

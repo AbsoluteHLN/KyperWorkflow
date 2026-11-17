@@ -5,7 +5,7 @@ import tempfile
 from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 
-from completion_plugin.profiles import (
+from kyper_workflow.profiles import (
     HostContext, ProbeResult, Profile, ProfileError, ProfileValidator,
     Role, Route, STAGES, export_profiles, import_profiles, load_profiles, save_profiles,
 )
@@ -143,13 +143,17 @@ class ProfileTests(unittest.TestCase):
             lock.unlink()
             target = Path(directory) / "target.json"
             target.write_text("untouched")
-            path.symlink_to(target)
-            with self.assertRaises(ProfileError):
-                load_profiles(path)
-            with self.assertRaises(ProfileError):
-                save_profiles(path, (), expected_revisions=None)
-            self.assertEqual(target.read_text(), "untouched")
-            path.unlink()
+            try:
+                path.symlink_to(target)
+            except (OSError, NotImplementedError):
+                pass  # Symlink rejection is unverifiable without the privilege.
+            else:
+                with self.assertRaises(ProfileError):
+                    load_profiles(path)
+                with self.assertRaises(ProfileError):
+                    save_profiles(path, (), expected_revisions=None)
+                self.assertEqual(target.read_text(), "untouched")
+                path.unlink()
             path.write_bytes(b" " * 1048577)
             with self.assertRaises(ProfileError):
                 load_profiles(path)

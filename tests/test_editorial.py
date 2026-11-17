@@ -1,6 +1,6 @@
 import unittest
 
-from completion_plugin.editorial import MAX_TEXT_LENGTH, PROFILES, review
+from kyper_workflow.editorial import MAX_TEXT_LENGTH, PROFILES, review
 
 
 class EditorialTests(unittest.TestCase):
