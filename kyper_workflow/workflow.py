@@ -9,15 +9,19 @@ from pathlib import Path
 from datetime import datetime, timezone
 from uuid import uuid4
 
+from . import catalog as _catalog
+from . import plan as _plan
+
 
 def now():
     return datetime.now(timezone.utc).isoformat()
 
 
 class Workflow:
-    def __init__(self, path, *, confirm=None):
+    def __init__(self, path, *, confirm=None, catalog=None):
         self.path = Path(path)
         self.confirm = confirm
+        self.catalog = catalog if catalog is not None else _catalog.builtin()
         self._verifiers = {}
         self._existed = self.path.exists()
         if self.path.exists():
@@ -48,6 +52,8 @@ class Workflow:
         for t in d['tasks'].values():
             if t.get('status') not in {'not_run','running','pass','fail','blocked'} or not isinstance(t.get('depends'),list) or not isinstance(t.get('writes'),list) or not t.get('acceptance'):
                 raise ValueError('Damaged task')
+            if t.get('role') is not None and not isinstance(t.get('role'), str):
+                raise ValueError('Damaged task role')
             if t['status'] in ('pass','fail') and not t.get('result'): raise ValueError('Missing result')
             if t['status'] == 'pass':
                 evidence=t['result'].get('review',{})
@@ -117,7 +123,7 @@ class Workflow:
         self.data['state'] = 'approved'
         self._save('user_confirmed')
 
-    def add_task(self, name, *, depends=(), writes=(), acceptance='', required_checks=('code',), profile_binding=None, complexity='standard', inputs=None, code_mode=None):
+    def add_task(self, name, *, depends=(), writes=(), acceptance='', required_checks=('code',), profile_binding=None, complexity='standard', inputs=None, code_mode=None, role=None, component=None, component_version=None):
         depends, writes, required_checks = list(depends), list(writes), list(required_checks)
         if 'code' in required_checks and code_mode not in ('syntax','project_tests'): raise ValueError('Explicit code checker mode required')
         if not required_checks or set(required_checks) - {'code','text','model','browser','native'}: raise ValueError('Required checks invalid')
@@ -125,17 +131,34 @@ class Workflow:
             raise ValueError('Invalid task or dependencies')
         if self.data['state'] not in ('specification', 'specification_qa'):
             raise ValueError('Task edits require specification stage')
+        role_entry = None
+        if role is not None:
+            role_entry = _catalog.role(self.catalog, role)
         normalized = []
         for scope in writes:
             path = Path(scope)
             if path.is_absolute() or '..' in path.parts or not path.parts:
                 raise ValueError('Unsafe write scope')
             normalized.append(path.as_posix())
-        self.data['tasks'][name] = {'depends': list(depends), 'writes': normalized,
-                                    'acceptance': acceptance, 'code_mode':code_mode, 'inputs':copy.deepcopy(inputs), 'profile_binding':copy.deepcopy(profile_binding), 'complexity':complexity, 'required_checks': required_checks, 'status': 'not_run', 'result': None}
+        task = {'depends': list(depends), 'writes': normalized,
+                'acceptance': acceptance, 'code_mode':code_mode, 'inputs':copy.deepcopy(inputs), 'profile_binding':copy.deepcopy(profile_binding), 'complexity':complexity, 'required_checks': required_checks, 'status': 'not_run', 'result': None}
+        if role is not None:
+            _catalog.bind(task, role_entry)
+            task['role'] = role
+        if component is not None:
+            task['component'] = component
+        if component_version is not None:
+            task['component_version'] = component_version
+        self.data['tasks'][name] = task
         self.data['revision'] += 1
         self.data['approval'] = None
         self._save('task_added')
+
+    def plan(self):
+        """Deterministic wave/batch plan for the current tasks."""
+        if not self.data['tasks']:
+            raise ValueError('No tasks to plan')
+        return _plan.analyze(self.data['tasks'], roles=self.catalog['roles'])
 
     def start(self, name):
         approval = self.data['approval']
@@ -144,6 +167,12 @@ class Workflow:
         task = self.data['tasks'][name]
         if task['status'] not in ('not_run', 'fail', 'blocked') or any(self.data['tasks'][d]['status'] != 'pass' for d in task['depends']):
             raise ValueError('Task unavailable')
+        if task.get('role'):
+            entry = _catalog.role(self.catalog, task['role'])
+            running = sum(1 for other in self.data['tasks'].values()
+                          if other.get('role') == task['role'] and other['status'] == 'running')
+            if running >= entry['max_parallel']:
+                raise ValueError('Role %r already at its parallel limit' % task['role'])
         def overlap(a,b):
             return a == b or a.startswith(b.rstrip('/') + '/') or b.startswith(a.rstrip('/') + '/')
         for other in self.data['tasks'].values():
@@ -173,6 +202,13 @@ class Workflow:
             evidence = result.get('review',{}) if isinstance(result,dict) else {}
             if ('code' in task['required_checks'] and evidence.get('code_mode') != task['code_mode']) or evidence.get('revision') != self.data['revision'] or evidence.get('allow_completion') is not True or any(evidence.get('checks',{}).get(c) != 'pass' for c in task.get('required_checks',[])):
                 raise ValueError('Required acceptance evidence missing')
+            if task.get('role'):
+                entry = _catalog.role(self.catalog, task['role'])
+                handoff = result.get('handoff') if isinstance(result, dict) else None
+                if not isinstance(handoff, dict) or any(
+                        not handoff.get(key) for key in entry['required_outputs']):
+                    raise ValueError('Role handoff missing for %r: %s'
+                                     % (task['role'], ', '.join(entry['required_outputs'])))
         task.update(status=status, result=copy.deepcopy(result))
         self._save('task_result')
 

@@ -1,7 +1,7 @@
 {
   "area_edges": [
     {
-      "count": 4,
+      "count": 5,
       "from": "(root)",
       "to": "docs"
     },
@@ -16,21 +16,21 @@
       "to": "completion_plugin"
     },
     {
-      "count": 39,
+      "count": 44,
       "from": "tests",
       "to": "kyper_workflow"
     }
   ],
   "areas": {
     "(root)": {
-      "bytes": 10625,
+      "bytes": 11940,
       "files": 5,
-      "lines": 124
+      "lines": 132
     },
     ".agents": {
-      "bytes": 5099,
+      "bytes": 6049,
       "files": 1,
-      "lines": 32
+      "lines": 34
     },
     "adapters": {
       "bytes": 44232,
@@ -43,27 +43,32 @@
       "lines": 19
     },
     "docs": {
-      "bytes": 92827,
-      "files": 16,
-      "lines": 918
+      "bytes": 100713,
+      "files": 17,
+      "lines": 1027
     },
     "kyper_workflow": {
-      "bytes": 170950,
-      "files": 18,
-      "lines": 3222
+      "bytes": 205794,
+      "files": 20,
+      "lines": 3941
     },
     "skills": {
-      "bytes": 5099,
+      "bytes": 6049,
       "files": 1,
-      "lines": 32
+      "lines": 34
     },
     "tests": {
-      "bytes": 110600,
-      "files": 24,
-      "lines": 2160
+      "bytes": 130108,
+      "files": 27,
+      "lines": 2564
     }
   },
   "edges": [
+    {
+      "from": "README.md",
+      "kind": "doc_link",
+      "to": "docs/AGENT-TEAMS.md"
+    },
     {
       "from": "README.md",
       "kind": "doc_link",
@@ -95,6 +100,16 @@
       "to": "docs/FIRST-RUN-SETUP.md"
     },
     {
+      "from": "kyper_workflow/catalog.py",
+      "kind": "import",
+      "to": "kyper_workflow/__init__.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
       "from": "kyper_workflow/cli.py",
       "kind": "import",
       "to": "kyper_workflow/editorial.py"
@@ -113,6 +128,11 @@
       "from": "kyper_workflow/cli.py",
       "kind": "import",
       "to": "kyper_workflow/onboarding.py"
+    },
+    {
+      "from": "kyper_workflow/cli.py",
+      "kind": "import",
+      "to": "kyper_workflow/plan.py"
     },
     {
       "from": "kyper_workflow/cli.py",
@@ -187,6 +207,11 @@
     {
       "from": "kyper_workflow/server.py",
       "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
       "to": "kyper_workflow/editorial.py"
     },
     {
@@ -197,7 +222,17 @@
     {
       "from": "kyper_workflow/server.py",
       "kind": "import",
+      "to": "kyper_workflow/plan.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
       "to": "kyper_workflow/structure.py"
+    },
+    {
+      "from": "kyper_workflow/server.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
     },
     {
       "from": "kyper_workflow/usage.py",
@@ -207,7 +242,17 @@
     {
       "from": "kyper_workflow/workflow.py",
       "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
+      "from": "kyper_workflow/workflow.py",
+      "kind": "import",
       "to": "kyper_workflow/locking.py"
+    },
+    {
+      "from": "kyper_workflow/workflow.py",
+      "kind": "import",
+      "to": "kyper_workflow/plan.py"
     },
     {
       "from": "tests/test_acceptance_mode.py",
@@ -223,6 +268,11 @@
       "from": "tests/test_acceptance_mode.py",
       "kind": "import",
       "to": "kyper_workflow/workflow.py"
+    },
+    {
+      "from": "tests/test_catalog.py",
+      "kind": "import",
+      "to": "kyper_workflow/catalog.py"
     },
     {
       "from": "tests/test_dispatch.py",
@@ -320,6 +370,16 @@
       "to": "kyper_workflow/onboarding.py"
     },
     {
+      "from": "tests/test_plan.py",
+      "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
+      "from": "tests/test_plan.py",
+      "kind": "import",
+      "to": "kyper_workflow/plan.py"
+    },
+    {
       "from": "tests/test_polishing.py",
       "kind": "import",
       "to": "kyper_workflow/polishing.py"
@@ -348,6 +408,16 @@
       "from": "tests/test_repo_hygiene.py",
       "kind": "import",
       "to": "kyper_workflow/structure.py"
+    },
+    {
+      "from": "tests/test_roles.py",
+      "kind": "import",
+      "to": "kyper_workflow/catalog.py"
+    },
+    {
+      "from": "tests/test_roles.py",
+      "kind": "import",
+      "to": "kyper_workflow/workflow.py"
     },
     {
       "from": "tests/test_runtime.py",
@@ -414,10 +484,10 @@
     "kyper_workflow/cli.py"
   ],
   "external_imports": {
-    "__future__": 4,
+    "__future__": 6,
     "argparse": 1,
     "ast": 2,
-    "collections": 1,
+    "collections": 2,
     "contextlib": 1,
     "copy": 5,
     "ctypes": 4,
@@ -426,27 +496,27 @@
     "difflib": 1,
     "fcntl": 1,
     "io": 1,
-    "json": 17,
+    "json": 19,
     "math": 5,
     "mcp": 5,
     "msvcrt": 2,
     "os": 14,
-    "pathlib": 31,
+    "pathlib": 35,
     "pty": 1,
-    "re": 4,
+    "re": 5,
     "resource": 1,
     "select": 1,
     "signal": 1,
     "stat": 1,
     "subprocess": 7,
     "sys": 11,
-    "tempfile": 19,
+    "tempfile": 21,
     "threading": 2,
     "time": 5,
     "tomllib": 1,
     "types": 1,
     "typing": 3,
-    "unittest": 29,
+    "unittest": 32,
     "uuid": 6,
     "warnings": 2,
     "xml": 1
@@ -465,10 +535,10 @@
       "path": "LICENSE"
     },
     {
-      "bytes": 7632,
+      "bytes": 8947,
       "doc": "KyperWorkflow 0.2.0",
       "language": "markdown",
-      "lines": 76,
+      "lines": 84,
       "path": "README.md"
     },
     {
@@ -485,10 +555,10 @@
       "path": "pyproject.toml"
     },
     {
-      "bytes": 5099,
+      "bytes": 6049,
       "doc": "",
       "language": "markdown",
-      "lines": 32,
+      "lines": 34,
       "path": ".agents/skills/kyper-workflow/SKILL.md"
     },
     {
@@ -548,6 +618,13 @@
       }
     },
     {
+      "bytes": 4832,
+      "doc": "角色、组件与执行计划（KyperWorkflow）",
+      "language": "markdown",
+      "lines": 80,
+      "path": "docs/AGENT-TEAMS.md"
+    },
+    {
       "bytes": 5834,
       "doc": "首次接入配置（KyperWorkflow）",
       "language": "markdown",
@@ -555,10 +632,10 @@
       "path": "docs/FIRST-RUN-SETUP.md"
     },
     {
-      "bytes": 4697,
+      "bytes": 5457,
       "doc": "Implementation status — 2026-11-17",
       "language": "markdown",
-      "lines": 30,
+      "lines": 31,
       "path": "docs/IMPLEMENTATION-STATUS.md"
     },
     {
@@ -611,10 +688,10 @@
       "path": "docs/STAGE-20261019-0300.md"
     },
     {
-      "bytes": 6036,
+      "bytes": 6558,
       "doc": "spec-v002 implementation matrix",
       "language": "markdown",
-      "lines": 47,
+      "lines": 48,
       "path": "docs/TASK-MATRIX.md"
     },
     {
@@ -625,10 +702,10 @@
       "path": "docs/TEXT-POLISHING.md"
     },
     {
-      "bytes": 7546,
+      "bytes": 9318,
       "doc": "Current validation",
       "language": "markdown",
-      "lines": 100,
+      "lines": 127,
       "path": "docs/VALIDATION.md"
     },
     {
@@ -670,10 +747,32 @@
       }
     },
     {
-      "bytes": 5720,
+      "bytes": 21074,
+      "doc": "Reusable role cards and task components.",
+      "language": "python",
+      "lines": 405,
+      "names": [
+        "bind()",
+        "builtin()",
+        "component()",
+        "digest()",
+        "export_subagent()",
+        "instantiate()",
+        "load()",
+        "render_markdown()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/catalog.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 14
+      }
+    },
+    {
+      "bytes": 7601,
       "doc": "Local explicit actions. No automatic user confirmation through model inputs.",
       "language": "python",
-      "lines": 90,
+      "lines": 120,
       "names": [
         "main()"
       ],
@@ -794,6 +893,26 @@
       }
     },
     {
+      "bytes": 8682,
+      "doc": "Deterministic execution plan for approved tasks.",
+      "language": "python",
+      "lines": 223,
+      "names": [
+        "analyze()",
+        "chain()",
+        "digest()",
+        "next_runnable()",
+        "render_markdown()",
+        "visit()"
+      ],
+      "parse_error": null,
+      "path": "kyper_workflow/plan.py",
+      "symbols": {
+        "classes": 0,
+        "functions": 13
+      }
+    },
+    {
       "bytes": 11095,
       "doc": "Host-injected candidate generation and review; no network/provider client.",
       "language": "python",
@@ -868,22 +987,24 @@
       }
     },
     {
-      "bytes": 2928,
+      "bytes": 4228,
       "doc": "Optional MCP surface. Approval and file writes stay with trusted host actions.",
       "language": "python",
-      "lines": 60,
+      "lines": 85,
       "names": [
         "capabilities()",
         "project_map()",
         "project_memory()",
         "review_text()",
-        "setup_checklist()"
+        "role_catalog()",
+        "setup_checklist()",
+        "workflow_plan()"
       ],
       "parse_error": null,
       "path": "kyper_workflow/server.py",
       "symbols": {
         "classes": 0,
-        "functions": 5
+        "functions": 7
       }
     },
     {
@@ -966,10 +1087,10 @@
       }
     },
     {
-      "bytes": 11504,
+      "bytes": 13411,
       "doc": "Explicit revisions and trusted local approval. No content fingerprints.",
       "language": "python",
-      "lines": 189,
+      "lines": 225,
       "names": [
         "Workflow",
         "add_task()",
@@ -984,14 +1105,14 @@
       "path": "kyper_workflow/workflow.py",
       "symbols": {
         "classes": 1,
-        "functions": 14
+        "functions": 15
       }
     },
     {
-      "bytes": 5099,
+      "bytes": 6049,
       "doc": "",
       "language": "markdown",
-      "lines": 32,
+      "lines": 34,
       "path": "skills/kyper-workflow/SKILL.md"
     },
     {
@@ -1010,6 +1131,28 @@
       "symbols": {
         "classes": 1,
         "functions": 3
+      }
+    },
+    {
+      "bytes": 8450,
+      "doc": "Reusable roles and components: fail-closed validation, no hidden defaults.",
+      "language": "python",
+      "lines": 167,
+      "names": [
+        "CatalogTests",
+        "setUp()",
+        "task()",
+        "tearDown()",
+        "test_builtin_roles_and_components_validate()",
+        "test_checks_and_code_mode_must_be_allowed()",
+        "test_complexity_must_be_allowed()",
+        "test_component_rejects_unknown_and_missing_parameters()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_catalog.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 17
       }
     },
     {
@@ -1156,10 +1299,10 @@
       }
     },
     {
-      "bytes": 997,
+      "bytes": 1037,
       "doc": "",
       "language": "python",
-      "lines": 18,
+      "lines": 19,
       "names": [
         "TransportTests",
         "test_real_local_stdio()"
@@ -1191,6 +1334,28 @@
       "symbols": {
         "classes": 1,
         "functions": 10
+      }
+    },
+    {
+      "bytes": 4535,
+      "doc": "Deterministic scheduling: waves, write-scope conflicts, role limits.",
+      "language": "python",
+      "lines": 99,
+      "names": [
+        "PlanTests",
+        "t()",
+        "test_chain_becomes_one_task_per_wave()",
+        "test_cycle_and_missing_dependency_are_errors()",
+        "test_diamond_puts_siblings_together()",
+        "test_failed_upstream_blocks_downstream()",
+        "test_independent_tasks_share_a_wave_and_batch()",
+        "test_next_runnable_respects_dependencies_and_running_writes()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_plan.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 11
       }
     },
     {
@@ -1292,6 +1457,28 @@
       "symbols": {
         "classes": 1,
         "functions": 6
+      }
+    },
+    {
+      "bytes": 6483,
+      "doc": "Roles inside the workflow: scope binding, parallel limits, handoff, planning.",
+      "language": "python",
+      "lines": 137,
+      "names": [
+        "RoleWorkflowTests",
+        "evidence()",
+        "setUp()",
+        "specification()",
+        "test_component_instantiation_feeds_add_task()",
+        "test_handoff_is_required_for_a_role_task()",
+        "test_plan_lists_waves_and_batches_from_approved_tasks()",
+        "test_plan_requires_tasks()"
+      ],
+      "parse_error": null,
+      "path": "tests/test_roles.py",
+      "symbols": {
+        "classes": 1,
+        "functions": 12
       }
     },
     {

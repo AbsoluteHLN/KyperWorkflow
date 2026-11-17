@@ -4,6 +4,33 @@
 
 ## 2026-11-17 KyperWorkflow 0.2.0 (rename + project map + first-run setup)
 
+### 2026-11-17 roles, components and execution plan (same batch)
+
+`python -m unittest discover -s tests`: 247 discovered, 241 passed, 6 skipped, 0 failures
+and 0 errors on the development interpreter; 247 / 243 / 4 on the shared interpreter with the
+optional `mcp` extra, which also exercises the real stdio transport against the seven-tool
+surface. The 13 JavaScript adapter tests still pass.
+
+Added exercises:
+
+- role cards validate their own fields, and binding rejects out-of-scope writes, disallowed
+  checks, a disallowed code mode and a disallowed complexity — read-only roles cannot take any
+  write at all;
+- every builtin component instantiates from explicit parameters, renders an acceptance sentence
+  with no placeholder left, normalises backslash paths, and rejects unknown, missing or unsafe
+  parameters including drive-letter and `..` paths;
+- the planner produces dependency waves, packs start batches around write-scope conflicts and
+  role-parallel limits, names the critical path, reports blockers, and refuses cycles or unknown
+  dependencies; `next_runnable` never offers a task whose writes collide with a running one;
+- the workflow stores `role`, `component` and `component_version` inside the approved proposal,
+  enforces `max_parallel` on `start()`, requires the role's handoff keys before a `pass`, and
+  still reloads a state file written by the previous schema;
+- CLI `roles`, `component` and `plan` were run by hand against a generated state; `roles
+  --export reviewer` emits a Markdown + frontmatter subagent card.
+
+Not exercised: no role was given to a real subagent and no host was asked to run two batches in
+parallel. The plan says what may overlap; it does not prove a host isolates concurrent writes.
+
 ### 2026-11-17 machine-local config isolation + MCP reinstall (same batch)
 
 `python -m unittest discover -s tests`: 214 discovered, 208 passed, 6 skipped, 0 failures

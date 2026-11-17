@@ -23,6 +23,9 @@ def main():
  m.add_argument('--graph-format',choices=('json','mermaid','dot','graphml','tsv'),default='json')
  m.add_argument('--max-nodes',type=int,default=None)
  o=sub.add_parser('setup');o.add_argument('--root');o.add_argument('--state-dir');o.add_argument('--json',dest='as_json',action='store_true')
+ ro=sub.add_parser('roles');ro.add_argument('--catalog');ro.add_argument('--json',dest='as_json',action='store_true');ro.add_argument('--export',metavar='ROLE')
+ pl=sub.add_parser('plan');pl.add_argument('--state',required=True);pl.add_argument('--catalog');pl.add_argument('--json',dest='as_json',action='store_true')
+ cp=sub.add_parser('component');cp.add_argument('id');cp.add_argument('--name',required=True);cp.add_argument('--catalog');cp.add_argument('--param',action='append',default=[]);cp.add_argument('--json',dest='as_json',action='store_true')
  a=p.parse_args()
  stale=[]
  if a.command=='resume':
@@ -31,6 +34,33 @@ def main():
  elif a.command=='setup':
   from .onboarding import checklist
   result=checklist(a.root,state_dir=a.state_dir)
+ elif a.command=='roles':
+  from . import catalog as catalog_mod
+  loaded=catalog_mod.load(a.catalog)
+  if a.export:
+   result={'role':a.export,'card':catalog_mod.export_subagent(catalog_mod.role(loaded,a.export))}
+  else:
+   result={'catalog':loaded,'digest':catalog_mod.digest(loaded),'markdown':catalog_mod.render_markdown(loaded)}
+ elif a.command=='plan':
+  from .workflow import Workflow
+  from . import plan as plan_mod
+  from . import catalog as catalog_mod
+  w=Workflow(a.state,catalog=catalog_mod.load(a.catalog))
+  model=w.plan()
+  result={'plan':model,'digest':plan_mod.digest(model),'markdown':plan_mod.render_markdown(model)}
+ elif a.command=='component':
+  from . import catalog as catalog_mod
+  loaded=catalog_mod.load(a.catalog)
+  template=catalog_mod.component(loaded,a.id)
+  params={}
+  for pair in a.param:
+   if '=' not in pair: raise ValueError('Parameters use key=value')
+   key,value=pair.split('=',1)
+   spec=template['params'].get(key,{})
+   params[key]=[item for item in value.split(',') if item] if spec.get('type')=='paths' and ',' in value else value
+  rendered=catalog_mod.instantiate(loaded,a.id,name=a.name,params=params)
+  result={'task':rendered,'preview':True,
+          'note':'Not added. Pass these fields to Workflow.add_task in the specification stage.'}
  elif a.command=='map':
   from . import structure
   project=structure.scan(a.root,name=a.name)

@@ -42,6 +42,14 @@ No secrets are stored in profiles. Local state and host callbacks are trusted. R
 
 This private repository publishes the independent plugin source. Persistent host installation and native Windows acceptance have not been verified.
 
+## Team roles and reusable components
+
+Tasks can be bound to a declarative role card that caps what they may touch: `explorer` and `reviewer` are read-only, `test-author` may only write `tests/**`, `implementer` may write source, `integrator` may write docs. Binding is checked before the task enters the specification, so a role can only narrow a task, never widen it. `role`, `component` and `component_version` are part of the approved proposal, so changing them requires re-approval.
+
+Components are parameterised task templates (`code-change`, `test-covered-change`, `test-only`, `doc-sync`, `review-only`, `investigation`). They render `add_task` fields and never add, remove or approve a task themselves. Paths are normalised and rejected if absolute or escaping the workspace.
+
+`kyper-workflow plan --state <file>` (MCP `workflow_plan`) turns the approved graph into dependency waves, start batches that respect write-scope and role-parallel limits, the critical path and the blocker list. `kyper-workflow roles` (MCP `role_catalog`) prints the cards; `--export <role>` emits a Markdown + frontmatter card in the shape hosts such as Claude Code use for subagents. Everything is deterministic: no model calls, no process spawning, no automatic start. See [docs/AGENT-TEAMS.md](docs/AGENT-TEAMS.md).
+
 ## Interactive terminal path
 
     python -m kyper_workflow.cli wizard --root /project --state /private/task-state.json --artifact main.py
